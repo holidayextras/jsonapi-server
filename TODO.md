@@ -2,4 +2,3 @@
 
 + NPM
 + Gemnasium
-+ Code Climate
