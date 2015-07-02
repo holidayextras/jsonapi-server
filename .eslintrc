@@ -1,0 +1,12 @@
+{
+  "globals": {
+  },
+  "env": {
+    "node": true,
+    "mocha": true
+  },
+  "rules": {
+    "no-underscore-dangle": [ 0 ],
+    "curly": [2, "multi-line"]
+  }
+}

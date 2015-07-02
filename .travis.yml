@@ -1,0 +1,9 @@
+language: node_js
+node_js:
+  - "0.10"
+script: "npm run $TEST_STEP"
+env:
+  matrix:
+    - TEST_STEP=lint
+    - TEST_STEP=test
+    - TEST_STEP=coveralls

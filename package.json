@@ -1,0 +1,52 @@
+{
+  "name": "jsonapi-server",
+  "version": "0.6.0",
+  "description": "A fully featured NodeJS sever implementation of json:api. You provide the resources, we provide the api.",
+  "keywords": [
+    "json:api",
+    "jsonapi",
+    "api"
+  ],
+  "main": "lib/jsonApi.js",
+  "author": "Oliver Rumbelow",
+  "license": "GPL-3.0",
+  "repository" : {
+    "type" : "git",
+    "url" : "https://github.com/holidayextras/jsonapi-server"
+  },
+  "engines" : {
+    "node" : "*"
+  },
+  "dependencies": {
+    "async": "0.9.2",
+    "body-parser": "1.12.4",
+    "express": "4.12.4",
+    "joi": "6.4.1",
+    "request": "2.55.0",
+    "underscore": "1.8.3",
+    "node-uuid": "1.4.3"
+  },
+  "devDependencies": {
+    "mocha": "2.2.5",
+    "eslint": "0.24.0",
+    "blanket": "1.1.7",
+    "mocha-lcov-reporter": "0.0.2"
+  },
+  "scripts": {
+    "test": "./node_modules/mocha/bin/mocha -R spec ./test/*.js",
+    "start": "node example/server.js",
+    "coveralls": "./node_modules/mocha/bin/mocha --require blanket --reporter mocha-lcov-reporter ./test/*.js | ./node_modules/coveralls/bin/coveralls.js",
+    "coverage": "./node_modules/mocha/bin/mocha --require blanket --reporter html-cov ./test/*.js > coverage.html",
+    "lint": "./node_modules/.bin/eslint ./example/*.js ./lib/*.js ./test/*.js --quiet && echo '✔ All good!'"
+  },
+  "config": {
+    "blanket": {
+      "pattern": ".js",
+      "data-cover-never": [
+        "node_modules",
+        "test",
+        "example"
+      ]
+    }
+  }
+}
