@@ -1,5 +1,6 @@
 [![Coverage Status](https://coveralls.io/repos/holidayextras/jsonapi-server/badge.svg?branch=master)](https://coveralls.io/r/holidayextras/jsonapi-server?branch=master)
 [![Build Status](https://travis-ci.org/holidayextras/jsonapi-server.svg?branch=master)](https://travis-ci.org/holidayextras/jsonapi-server)
+[![npm version](https://badge.fury.io/js/jsonapi-server.svg)](http://badge.fury.io/js/jsonapi-server)
 [![Code Climate](https://codeclimate.com/github/holidayextras/jsonapi-server/badges/gpa.svg)](https://codeclimate.com/github/holidayextras/jsonapi-server)
 
 # jsonapi-server
