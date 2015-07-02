@@ -1,4 +1,0 @@
-### TODO List
-
-+ NPM
-+ Gemnasium
