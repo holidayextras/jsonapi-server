@@ -7,3 +7,5 @@ env:
     - TEST_STEP=lint
     - TEST_STEP=test
     - TEST_STEP=coveralls
+notifications:
+  email: false
