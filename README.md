@@ -1,3 +1,7 @@
+[![Coverage Status](https://coveralls.io/repos/holidayextras/jsonapi-server/badge.svg)](https://coveralls.io/r/holidayextras/jsonapi-server)
+[![Build Status](https://magnum.travis-ci.com/holidayextras/jsonapi-server.svg?token=Q8x3zqA6GD5oXmBkSVpz)](https://magnum.travis-ci.com/holidayextras/jsonapi-server)
+[![Code Climate](https://codeclimate.com/github/holidayextras/jsonapi-server/badges/gpa.svg)](https://codeclimate.com/github/holidayextras/jsonapi-server)
+
 ## jsonapi-server
 
 `jsonapi-server` is a fully featured NodeJS sever implementation of `json:api`. You provide the resources, we provide the api.
