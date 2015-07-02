@@ -2,7 +2,7 @@
 [![Build Status](https://travis-ci.org/holidayextras/jsonapi-server.svg?branch=master)](https://travis-ci.org/holidayextras/jsonapi-server)
 [![Code Climate](https://codeclimate.com/github/holidayextras/jsonapi-server/badges/gpa.svg)](https://codeclimate.com/github/holidayextras/jsonapi-server)
 
-## jsonapi-server
+# jsonapi-server
 
 `jsonapi-server` is a fully featured NodeJS sever implementation of `json:api`. You provide the resources, we provide the api.
 
