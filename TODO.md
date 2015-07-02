@@ -1,6 +1,5 @@
 ### TODO List
 
-+ Travis
 + Coveralls
 + NPM
 + Gemnasium
