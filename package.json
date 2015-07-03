@@ -38,7 +38,7 @@
     "start": "node example/server.js",
     "coveralls": "./node_modules/mocha/bin/mocha --require blanket --reporter mocha-lcov-reporter ./test/*.js | ./node_modules/coveralls/bin/coveralls.js",
     "coverage": "./node_modules/mocha/bin/mocha --require blanket --reporter html-cov ./test/*.js > coverage.html",
-    "lint": "./node_modules/.bin/eslint ./example/*.js ./lib/*.js ./test/*.js --quiet && echo '✔ All good!'"
+    "lint": "./node_modules/.bin/eslint ./example/*.js ./lib/* ./test/*.js --quiet && echo '✔ All good!'"
   },
   "config": {
     "blanket": {
