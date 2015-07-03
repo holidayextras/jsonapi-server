@@ -56,7 +56,7 @@ npm start
 ```
 and browse to
 ```
-http://localhost:16006/rest/
+http://localhost:16006/rest/photos
 ```
 
 ### Defining a json:api resource
