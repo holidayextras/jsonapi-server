@@ -5,7 +5,7 @@
 
 # jsonapi-server
 
-`jsonapi-server` is a fully featured NodeJS sever implementation of `json:api`. You provide the resources, we provide the api.
+`jsonapi-server` is a fully featured NodeJS server implementation of `json:api`. You provide the resources, we provide the api.
 
 ### The tl;dr
 

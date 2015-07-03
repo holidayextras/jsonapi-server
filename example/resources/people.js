@@ -31,28 +31,28 @@ jsonApi.define({
       type: "people",
       firstname: "Oli",
       lastname: "Rumbelow",
-      email: "oliver.rumbelow@holidayextras.com"
+      email: "oliver.rumbelow@example.com"
     },
     {
       id: "32fb0105-acaa-4adb-9ec4-8b49633695e1",
       type: "people",
       firstname: "Pedro",
       lastname: "Romano",
-      email: "pedro.romano@holidayextras.com"
+      email: "pedro.romano@example.com"
     },
     {
       id: "d850ea75-4427-4f81-8595-039990aeede5",
       type: "people",
       firstname: "Mark",
       lastname: "Fermor",
-      email: "mark.fermor@holidayextras.com"
+      email: "mark.fermor@example.com"
     },
     {
       id: "ad3aa89e-9c5b-4ac9-a652-6670f9f27587",
       type: "people",
       firstname: "Rahul",
       lastname: "Patel",
-      email: "rahul.patel@holidayextras.com"
+      email: "rahul.patel@example.com"
     }
   ]
 });
