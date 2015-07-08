@@ -56,7 +56,8 @@ jsonApi.define({
       photos: [
         { type: "photos", id: "aab14844-97e7-401c-98c8-0bd5ec922d93" },
         { type: "photos", id: "72695cbd-e9ef-44f6-85e0-0dbc06a269e8" }
-      ]
+      ],
+      comments: [ ]
     },
     {
       id: "d850ea75-4427-4f81-8595-039990aeede5",
@@ -69,7 +70,8 @@ jsonApi.define({
       ],
       photos: [
         { type: "photos", id: "aab14844-97e7-401c-98c8-0bd5ec922d93" }
-      ]
+      ],
+      comments: [ ]
     },
     {
       id: "fa2a073f-8c64-4cbb-9158-b8f67a4ab9f5",

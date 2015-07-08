@@ -139,7 +139,9 @@ describe("Testing jsonapi-server", function() {
                 "meta": {
                   "relation": "foreign",
                   "belongsTo": "articles",
-                  "readOnly": true
+                  "as": "comments",
+                  "readOnly": true,
+                  "many": false
                 },
                 "links": {
                   "self": "/rest/articles/relationships/?comments=3f1a89c2-eb85-4799-a048-6735db24b7eb",
