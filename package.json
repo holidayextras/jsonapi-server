@@ -3,8 +3,8 @@
   "version": "0.6.0",
   "description": "A fully featured NodeJS sever implementation of json:api. You provide the resources, we provide the api.",
   "keywords": [
-    "json:api",
     "jsonapi",
+    "json:api",
     "api"
   ],
   "main": "lib/jsonApi.js",
