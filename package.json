@@ -31,13 +31,15 @@
     "eslint": "0.24.0",
     "blanket": "1.1.7",
     "mocha-lcov-reporter": "0.0.2",
-    "coveralls": "2.11.2"
+    "coveralls": "2.11.2",
+    "plato": "1.5.0"
   },
   "scripts": {
     "test": "./node_modules/mocha/bin/mocha -R spec ./test/*.js",
     "start": "node example/server.js",
     "coveralls": "./node_modules/mocha/bin/mocha --require blanket --reporter mocha-lcov-reporter ./test/*.js | ./node_modules/coveralls/bin/coveralls.js",
     "coverage": "./node_modules/mocha/bin/mocha --require blanket --reporter html-cov ./test/*.js > coverage.html",
+    "complexity": "./node_modules/plato/bin/plato -r -d complexity lib",
     "lint": "./node_modules/.bin/eslint ./example/*.js ./lib/* ./test/*.js --quiet && echo '✔ All good!'"
   },
   "config": {

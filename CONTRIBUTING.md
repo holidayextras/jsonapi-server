@@ -37,4 +37,10 @@ npm run coverage
 google-chrome ./coverage.html
 ```
 
+To see code complexity statistics:
+```
+npm run complexity
+google-chrome ./complexity/index.html
+```
+
 If all of the above comes up good, go ahead and put in a pull request!
