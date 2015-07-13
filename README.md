@@ -8,6 +8,14 @@
 
 `jsonapi-server` is a fully featured NodeJS server implementation of `json:api`. You provide the resources, we provide the api.
 
+### Full documentation
+
+- [Configuring jsonapi-server](documentation/configuring.md)
+- [Defining Resources](documentation/resources.md)
+- [Foreign Key Relations](documentation/foreign-relations.md)
+- [Creating Handlers](documentation/handlers.md)
+- [Post Processing Examples](documentation/post-processing.md)
+
 ### The tl;dr
 
 You can have a complete json:api server providing a `photos` resource with just this:
@@ -34,7 +42,7 @@ jsonApi.start();
 ```
 Your new API will be alive at `http://localhost:16006/rest/` and your `photos` resources will be at `http://localhost:16006/rest/photos`.
 
-### I want to see it!!
+### Show me an full example!
 
 Fire up an example `json:api` server using the resources mentioned in the official spec via:
 ```
@@ -47,12 +55,3 @@ then browse to
 http://localhost:16006/rest/photos
 ```
 the example implementation can be found [here](example)
-
-### Full documentation
-
-Further documentation can be found at:
-- [Configuring jsonapi-server](documentation/configuring.md)
-- [Defining Resources](documentation/resources.md)
-- [Foreign Key Relations](documentation/foreign-relations.md)
-- [Creating Handlers](documentation/handlers.md)
-- [Post Processing Examples](documentation/post-processing.md)

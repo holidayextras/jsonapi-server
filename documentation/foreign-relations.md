@@ -1,4 +1,4 @@
-### Foreign Relations
+### Foreign Key Relations
 
 We want to be able to back our resources in any datastore we like, in any system we like. This means we can't rely on any database layer relationships to join resources.
 

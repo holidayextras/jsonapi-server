@@ -1,4 +1,4 @@
-### Handlers
+### Creating Custom Handlers
 
 Handlers represent the mechanism that backs a resource. Each handler is expected to provide some of the following functions:
 * initialise - when jsonapi-server loads, this is invoked once for every resource using this handler. Its an opportunity to allocate memory, connect to databases, etc.
