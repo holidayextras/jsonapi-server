@@ -9,7 +9,7 @@
   ],
   "main": "lib/jsonApi.js",
   "author": "Oliver Rumbelow",
-  "license": "GPL-3.0",
+  "license": "MIT",
   "repository" : {
     "type" : "git",
     "url" : "https://github.com/holidayextras/jsonapi-server"
@@ -32,7 +32,8 @@
     "blanket": "1.1.7",
     "mocha-lcov-reporter": "0.0.2",
     "coveralls": "2.11.2",
-    "plato": "1.5.0"
+    "plato": "1.5.0",
+    "mocha-performance": "0.1.0"
   },
   "scripts": {
     "test": "./node_modules/mocha/bin/mocha -R spec ./test/*.js",
@@ -40,6 +41,7 @@
     "coveralls": "./node_modules/mocha/bin/mocha --require blanket --reporter mocha-lcov-reporter ./test/*.js | ./node_modules/coveralls/bin/coveralls.js",
     "coverage": "./node_modules/mocha/bin/mocha --require blanket --reporter html-cov ./test/*.js > coverage.html",
     "complexity": "./node_modules/plato/bin/plato -r -d complexity lib",
+    "performance": "node --allow-natives-syntax --harmony ./node_modules/mocha/bin/_mocha --reporter mocha-performance ./test/*.js",
     "lint": "./node_modules/.bin/eslint ./example/*.js ./lib/* ./test/*.js --quiet && echo '✔ All good!'"
   },
   "config": {
