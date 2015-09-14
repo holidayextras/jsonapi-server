@@ -84,6 +84,9 @@ describe("Testing jsonapi-server", function() {
                 "author": {
                   "data": { "type": "people", "id": "d850ea75-4427-4f81-8595-039990aeede5" }
                 }
+              },
+              "meta": {
+                "created": "2013-01-01"
               }
             }
           })
@@ -148,6 +151,9 @@ describe("Testing jsonapi-server", function() {
                   "related": "/rest/articles/?relationships[comments]=3f1a89c2-eb85-4799-a048-6735db24b7eb"
                 }
               }
+            },
+            "meta": {
+              "created": "2013-01-01"
             }
           });
 

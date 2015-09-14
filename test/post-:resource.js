@@ -90,6 +90,9 @@ describe("Testing jsonapi-server", function() {
                 "photographer": {
                   "data": { "type": "people", "id": "cc5cca2e-0dd8-4b95-8cfc-a11230e73116" }
                 }
+              },
+              "meta": {
+                "created": "2015-01-01"
               }
             }
           })
@@ -116,6 +119,7 @@ describe("Testing jsonapi-server", function() {
           assert.equal(res.statusCode, "200", "Expecting 200 OK");
           assert.equal(json.included.length, 0, "Should be no included resources");
           helpers.validatePhoto(json.data);
+          assert.deepEqual(json.data.meta, { created: "2015-01-01" });
 
           done();
         });

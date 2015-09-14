@@ -70,7 +70,7 @@ describe("Testing jsonapi-server", function() {
             "Content-Type": "application/json"
           },
           body: JSON.stringify({
-            "data": { "type": "people", "id": "ad3aa89e-9c5b-4ac9-a652-6670f9f27587" }
+            "data": { "type": "people", "id": "ad3aa89e-9c5b-4ac9-a652-6670f9f27587", meta: { updated: "2012-01-01" } }
           })
         };
         request(data, function(err, res, json) {
@@ -97,7 +97,10 @@ describe("Testing jsonapi-server", function() {
 
           assert.deepEqual(json.data, {
             "type": "people",
-            "id": "ad3aa89e-9c5b-4ac9-a652-6670f9f27587"
+            "id": "ad3aa89e-9c5b-4ac9-a652-6670f9f27587",
+            "meta": {
+              "updated": "2012-01-01"
+            }
           });
 
           done();

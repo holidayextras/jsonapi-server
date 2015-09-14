@@ -70,7 +70,7 @@ describe("Testing jsonapi-server", function() {
             "Content-Type": "application/json"
           },
           body: JSON.stringify({
-            "data": { "type": "comments", "id": "6b017640-827c-4d50-8dcc-79d766abb408" }
+            "data": { "type": "comments", "id": "6b017640-827c-4d50-8dcc-79d766abb408", meta: { "updated": "2016-01-01" } }
           })
         };
         request(data, function(err, res, json) {
@@ -102,7 +102,10 @@ describe("Testing jsonapi-server", function() {
             },
             {
               "type": "comments",
-              "id": "6b017640-827c-4d50-8dcc-79d766abb408"
+              "id": "6b017640-827c-4d50-8dcc-79d766abb408",
+              "meta": {
+                "updated": "2016-01-01"
+              }
             }
           ]);
 
