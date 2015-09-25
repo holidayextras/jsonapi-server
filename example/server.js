@@ -13,6 +13,13 @@ jsonApi.setConfig({
   }
 });
 
+jsonApi.authenticate(function(request, callback) {
+  // If a "blockMe" header is provided, block access.
+  if (request.headers.blockme) return callback("Fail");
+
+  return callback();
+});
+
 fs.readdirSync(path.join(__dirname, "/resources")).filter(function(filename) {
   return /^[a-z].*\.js$/.test(filename);
 }).map(function(filename) {
