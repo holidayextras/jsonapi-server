@@ -11,3 +11,8 @@
 2015-07-13 - Split out documentation into more manageable chunks
 2015-07-13 - Updating dependencies to latest stable releases
 2015-07-13 - v0.8.0
+2015-09-25 - Enabling meta blocks on Resources and Relations
+2015-09-25 - Adding cookies to Request objects
+2015-09-25 - Updating dependencies
+2015-09-25 - Enable basic authentication
+2015-09-25 - Validate attribute names
