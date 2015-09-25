@@ -47,7 +47,7 @@ describe("Testing jsonapi-server", function() {
         if (!(someDataBlock instanceof Array)) someDataBlock = [ someDataBlock ];
         someDataBlock.forEach(function(dataBlock) {
           var keys = Object.keys(dataBlock);
-          assert.deepEqual(keys, [ "type", "id" ], "Relationship data blocks should have specific properties");
+          assert.deepEqual(keys, [ "type", "id", "meta" ], "Relationship data blocks should have specific properties");
           assert.equal(typeof dataBlock.id, "string", "Relationship data blocks id should be string");
           assert.equal(typeof dataBlock.type, "string", "Relationship data blocks type should be string");
         });

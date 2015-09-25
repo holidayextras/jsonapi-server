@@ -57,9 +57,9 @@ testHelpers.validateRelationship = function(relationship) {
   var someDataBlock = relationship.data;
   if (!(someDataBlock instanceof Array)) someDataBlock = [ someDataBlock ];
   someDataBlock.forEach(function(dataBlock) {
-    keys = Object.keys(dataBlock);
-    assert.deepEqual(keys, [ "type", "id" ], "Relationship data blocks should have specific properties");
+    assert.ok(dataBlock.id, "Relationship block should have an id");
     assert.equal(typeof dataBlock.id, "string", "Relationship data blocks id should be string");
+    assert.ok(dataBlock.type, "Relationship block should have a type");
     assert.equal(typeof dataBlock.type, "string", "Relationship data blocks type should be string");
   });
 };

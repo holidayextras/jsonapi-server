@@ -33,7 +33,7 @@ jsonApi.define({
       type: "comments",
       body: "I like XML better",
       timestamp: "2017-06-20",
-      author: { type: "people", id: "32fb0105-acaa-4adb-9ec4-8b49633695e1" }
+      author: { type: "people", id: "32fb0105-acaa-4adb-9ec4-8b49633695e1", meta: { created: "2010-01-01" } }
     }
   ]
 });

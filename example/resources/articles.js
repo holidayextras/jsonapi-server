@@ -35,14 +35,21 @@ jsonApi.define({
       type: "articles",
       title: "NodeJS Best Practices",
       content: "na",
-      author: { type: "people", id: "cc5cca2e-0dd8-4b95-8cfc-a11230e73116" },
+      author: {
+        type: "people",
+        id: "cc5cca2e-0dd8-4b95-8cfc-a11230e73116",
+        meta: { updated: "2010-11-06" }
+      },
       tags: [
         { type: "tags", id: "7541a4de-4986-4597-81b9-cf31b6762486" }
       ],
       photos: [ ],
       comments: [
         { type: "comments", id: "3f1a89c2-eb85-4799-a048-6735db24b7eb" }
-      ]
+      ],
+      meta: {
+        updated: "2011-05-10"
+      }
     },
     {
       id: "1be0913c-3c25-4261-98f1-e41174025ed5",
