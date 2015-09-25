@@ -26,7 +26,7 @@ describe("Testing jsonapi-server", function() {
         method: "delete",
         url: "http://localhost:16006/rest/articles/foobar/relationships/photos",
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/vnd.api+json"
         },
         body: JSON.stringify({
           "data": { "type": "people", "id": "fa2a073f-8c64-4cbb-9158-b8f67a4ab9f5" }
@@ -46,7 +46,7 @@ describe("Testing jsonapi-server", function() {
         method: "delete",
         url: "http://localhost:16006/rest/articles/fa2a073f-8c64-4cbb-9158-b8f67a4ab9f5/relationships/tags",
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/vnd.api+json"
         },
         body: JSON.stringify({
           "data": { "type": "tags", "id": "foobar" }
@@ -66,7 +66,7 @@ describe("Testing jsonapi-server", function() {
         method: "delete",
         url: "http://localhost:16006/rest/articles/fa2a073f-8c64-4cbb-9158-b8f67a4ab9f5/relationships/tags",
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/vnd.api+json"
         },
         body: JSON.stringify({
           "data": { "type": "people", "id": "7541a4de-4986-4597-81b9-cf31b6762486" }
@@ -87,7 +87,7 @@ describe("Testing jsonapi-server", function() {
           method: "delete",
           url: "http://localhost:16006/rest/articles/fa2a073f-8c64-4cbb-9158-b8f67a4ab9f5/relationships/tags",
           headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "application/vnd.api+json"
           },
           body: JSON.stringify({
             "data": { "type": "tags", "id": "7541a4de-4986-4597-81b9-cf31b6762486" }

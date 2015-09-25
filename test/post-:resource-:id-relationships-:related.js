@@ -26,7 +26,7 @@ describe("Testing jsonapi-server", function() {
         method: "post",
         url: "http://localhost:16006/rest/articles/foobar/relationships/author",
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/vnd.api+json"
         },
         body: JSON.stringify({
           "data": { "type": "people", "id": "ad3aa89e-9c5b-4ac9-a652-6670f9f27587" }
@@ -46,7 +46,7 @@ describe("Testing jsonapi-server", function() {
         method: "post",
         url: "http://localhost:16006/rest/articles/fa2a073f-8c64-4cbb-9158-b8f67a4ab9f5/relationships/comments",
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/vnd.api+json"
         },
         body: JSON.stringify({
           "data": { "type": "people", "id": "6b017640-827c-4d50-8dcc-79d766abb408" }
@@ -67,7 +67,7 @@ describe("Testing jsonapi-server", function() {
           method: "post",
           url: "http://localhost:16006/rest/articles/de305d54-75b4-431b-adb2-eb6b9e546014/relationships/comments",
           headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "application/vnd.api+json"
           },
           body: JSON.stringify({
             "data": { "type": "comments", "id": "6b017640-827c-4d50-8dcc-79d766abb408" }
