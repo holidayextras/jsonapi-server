@@ -17,6 +17,9 @@ jsonApi.authenticate(function(request, callback) {
   // If a "blockMe" header is provided, block access.
   if (request.headers.blockme) return callback("Fail");
 
+  // If a "blockMe" cookie is provided, block access.
+  if (request.cookies.blockMe) return callback("Fail");
+
   return callback();
 });
 
