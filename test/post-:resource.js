@@ -26,7 +26,7 @@ describe("Testing jsonapi-server", function() {
         method: "post",
         url: "http://localhost:16006/rest/photos",
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/vnd.api+json"
         },
         body: JSON.stringify({
           "data": {
@@ -48,6 +48,44 @@ describe("Testing jsonapi-server", function() {
         assert.equal(err, null);
         json = helpers.validateError(json);
         assert.equal(res.statusCode, "403", "Expecting 403");
+
+        done();
+      });
+    });
+
+    it("errors if content-type specifies a media type parameter", function(done) {
+      var data = {
+        method: "post",
+        url: "http://localhost:16006/rest/photos",
+        headers: {
+          "Content-Type": "application/vnd.api+json;foobar"
+        },
+        body: JSON.stringify({
+          "data": { }
+        })
+      };
+      request(data, function(err, res) {
+        assert.equal(err, null);
+        assert.equal(res.statusCode, "415", "Expecting 415");
+
+        done();
+      });
+    });
+
+    it("errors if accept header doesnt match JSON:APIs type", function(done) {
+      var data = {
+        method: "post",
+        url: "http://localhost:16006/rest/photos",
+        headers: {
+          "Accept": "application/vnd.api+xml, application/vnd.api+json;foobar, application/json"
+        },
+        body: JSON.stringify({
+          "data": { }
+        })
+      };
+      request(data, function(err, res) {
+        assert.equal(err, null);
+        assert.equal(res.statusCode, "406", "Expecting 406");
 
         done();
       });
@@ -75,7 +113,7 @@ describe("Testing jsonapi-server", function() {
           method: "post",
           url: "http://localhost:16006/rest/photos",
           headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "application/vnd.api+json"
           },
           body: JSON.stringify({
             "data": {

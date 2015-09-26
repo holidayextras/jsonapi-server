@@ -26,7 +26,7 @@ describe("Testing jsonapi-server", function() {
         method: "patch",
         url: "http://localhost:16006/rest/comments/foobar",
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/vnd.api+json"
         },
         body: JSON.stringify({
           "data": {
@@ -48,7 +48,7 @@ describe("Testing jsonapi-server", function() {
         method: "patch",
         url: "http://localhost:16006/rest/comments/3f1a89c2-eb85-4799-a048-6735db24b7eb",
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/vnd.api+json"
         },
         body: JSON.stringify({
           "data": {
@@ -73,7 +73,7 @@ describe("Testing jsonapi-server", function() {
           method: "patch",
           url: "http://localhost:16006/rest/comments/3f1a89c2-eb85-4799-a048-6735db24b7eb",
           headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "application/vnd.api+json"
           },
           body: JSON.stringify({
             "data": {
