@@ -16,3 +16,7 @@
 2015-09-25 - Updating dependencies
 2015-09-25 - Enable basic authentication
 2015-09-25 - Validate attribute names
+2015-09-25 - Stricter handling of HTTP Accept headers
+2015-09-25 - Stricter handling of HTTP Content-Type headers
+2015-09-27 - Improve validation when updating a relationship
+2015-09-27 - v0.9.0

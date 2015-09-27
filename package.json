@@ -1,6 +1,6 @@
 {
   "name": "jsonapi-server",
-  "version": "0.8.0",
+  "version": "0.9.0",
   "description": "A fully featured NodeJS sever implementation of json:api. You provide the resources, we provide the api.",
   "keywords": [
     "jsonapi",
