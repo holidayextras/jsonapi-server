@@ -7,6 +7,8 @@ var path = require("path");
 
 jsonApi.setConfig({
   base: "rest",
+  protocol: "http",
+  hostname: "localhost",
   port: 16006,
   meta: {
     copyright: "Blah"

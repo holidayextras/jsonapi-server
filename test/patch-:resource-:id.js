@@ -121,7 +121,7 @@ describe("Testing jsonapi-server", function() {
               "timestamp": "2017-06-29"
             },
             "links": {
-              "self": "/rest/comments/3f1a89c2-eb85-4799-a048-6735db24b7eb"
+              "self": "http://localhost:16006/rest/comments/3f1a89c2-eb85-4799-a048-6735db24b7eb"
             },
             "relationships": {
               "author": {
@@ -130,8 +130,8 @@ describe("Testing jsonapi-server", function() {
                   "readOnly": false
                 },
                 "links": {
-                  "self": "/rest/comments/3f1a89c2-eb85-4799-a048-6735db24b7eb/relationships/author",
-                  "related": "/rest/comments/3f1a89c2-eb85-4799-a048-6735db24b7eb/author"
+                  "self": "http://localhost:16006/rest/comments/3f1a89c2-eb85-4799-a048-6735db24b7eb/relationships/author",
+                  "related": "http://localhost:16006/rest/comments/3f1a89c2-eb85-4799-a048-6735db24b7eb/author"
                 },
                 "data": {
                   "type": "people",
@@ -147,8 +147,8 @@ describe("Testing jsonapi-server", function() {
                   "many": false
                 },
                 "links": {
-                  "self": "/rest/articles/relationships/?comments=3f1a89c2-eb85-4799-a048-6735db24b7eb",
-                  "related": "/rest/articles/?relationships[comments]=3f1a89c2-eb85-4799-a048-6735db24b7eb"
+                  "self": "http://localhost:16006/rest/articles/relationships/?comments=3f1a89c2-eb85-4799-a048-6735db24b7eb",
+                  "related": "http://localhost:16006/rest/articles/?relationships[comments]=3f1a89c2-eb85-4799-a048-6735db24b7eb"
                 }
               }
             },
@@ -214,7 +214,7 @@ describe("Testing jsonapi-server", function() {
               "timestamp": "2017-06-29"
             },
             "links": {
-              "self": "/rest/comments/3f1a89c2-eb85-4799-a048-6735db24b7eb"
+              "self": "http://localhost:16006/rest/comments/3f1a89c2-eb85-4799-a048-6735db24b7eb"
             },
             "relationships": {
               "author": {
@@ -223,8 +223,8 @@ describe("Testing jsonapi-server", function() {
                   "readOnly": false
                 },
                 "links": {
-                  "self": "/rest/comments/3f1a89c2-eb85-4799-a048-6735db24b7eb/relationships/author",
-                  "related": "/rest/comments/3f1a89c2-eb85-4799-a048-6735db24b7eb/author"
+                  "self": "http://localhost:16006/rest/comments/3f1a89c2-eb85-4799-a048-6735db24b7eb/relationships/author",
+                  "related": "http://localhost:16006/rest/comments/3f1a89c2-eb85-4799-a048-6735db24b7eb/author"
                 },
                 "data": null
               },
@@ -237,8 +237,8 @@ describe("Testing jsonapi-server", function() {
                   "many": false
                 },
                 "links": {
-                  "self": "/rest/articles/relationships/?comments=3f1a89c2-eb85-4799-a048-6735db24b7eb",
-                  "related": "/rest/articles/?relationships[comments]=3f1a89c2-eb85-4799-a048-6735db24b7eb"
+                  "self": "http://localhost:16006/rest/articles/relationships/?comments=3f1a89c2-eb85-4799-a048-6735db24b7eb",
+                  "related": "http://localhost:16006/rest/articles/?relationships[comments]=3f1a89c2-eb85-4799-a048-6735db24b7eb"
                 }
               }
             },
