@@ -3,11 +3,15 @@
 
 ```
 jsonApi.setConfig({
+  // HTTP / HTTPS
+  protocol: "http",
+  // The hostname the API will be sat behind, from the customer's perspective
+  hostname: "localhost",
+  // The port the customer will be using (OPTIONAL)
+  port: 16006,
   // Define a url prefix for the apiConfig
   // eg http://-----/rest/
   base: "rest",
-  // HTTP port to listen on
-  port: 16006,
   // meta block to appear in the root of every response
   meta: {
     copyright: "Blah"
