@@ -7,61 +7,172 @@ var jsonApiTestServer = require("../example/server.js");
 
 describe("Testing jsonapi-server", function() {
   describe("Updating a resource", function() {
-    it("errors with invalid type", function(done) {
-      var data = {
-        method: "patch",
-        url: "http://localhost:16006/rest/foobar/someId"
-      };
-      request(data, function(err, res, json) {
-        assert.equal(err, null);
-        json = helpers.validateError(json);
-        assert.equal(res.statusCode, "404", "Expecting 404");
+    context("with invalid urls", function() {
+      it("errors with invalid type", function(done) {
+        var data = {
+          method: "patch",
+          url: "http://localhost:16006/rest/foobar/someId"
+        };
+        request(data, function(err, res, json) {
+          assert.equal(err, null);
+          json = helpers.validateError(json);
+          assert.equal(res.statusCode, "404", "Expecting 404");
 
-        done();
+          done();
+        });
+      });
+
+      it("errors with invalid id", function(done) {
+        var data = {
+          method: "patch",
+          url: "http://localhost:16006/rest/comments/foobar",
+          headers: {
+            "Content-Type": "application/vnd.api+json"
+          },
+          body: JSON.stringify({
+            "data": {
+              "test": 123
+            }
+          })
+        };
+        request(data, function(err, res, json) {
+          assert.equal(err, null);
+          json = helpers.validateError(json);
+          assert.equal(res.statusCode, "404", "Expecting 404");
+
+          done();
+        });
       });
     });
 
-    it("errors with invalid id", function(done) {
-      var data = {
-        method: "patch",
-        url: "http://localhost:16006/rest/comments/foobar",
-        headers: {
-          "Content-Type": "application/vnd.api+json"
-        },
-        body: JSON.stringify({
-          "data": {
-            "test": 123
-          }
-        })
-      };
-      request(data, function(err, res, json) {
-        assert.equal(err, null);
-        json = helpers.validateError(json);
-        assert.equal(res.statusCode, "404", "Expecting 404");
+    context("with invalid payloads", function() {
+      it("errors with invalid attributes", function(done) {
+        var data = {
+          method: "patch",
+          url: "http://localhost:16006/rest/comments/3f1a89c2-eb85-4799-a048-6735db24b7eb",
+          headers: {
+            "Content-Type": "application/vnd.api+json"
+          },
+          body: JSON.stringify({
+            "data": {
+              "attributes": {
+                "timestamp": "foobar-date"
+              }
+            }
+          })
+        };
+        request(data, function(err, res, json) {
+          assert.equal(err, null);
+          json = helpers.validateError(json);
+          assert.equal(res.statusCode, "403", "Expecting 403");
 
-        done();
+          done();
+        });
+      });
+
+      it("errors with invalid one relations", function(done) {
+        var data = {
+          method: "patch",
+          url: "http://localhost:16006/rest/articles/d850ea75-4427-4f81-8595-039990aeede5",
+          headers: {
+            "Content-Type": "application/vnd.api+json"
+          },
+          body: JSON.stringify({
+            "data": {
+              "relationships": {
+                "author": {
+                  "data": { "foo": "bar" }
+                }
+              }
+            }
+          })
+        };
+        request(data, function(err, res, json) {
+          assert.equal(err, null);
+          json = helpers.validateError(json);
+          assert.equal(res.statusCode, "403", "Expecting 403");
+
+          done();
+        });
+      });
+
+      it("errors with invalid many relations 1", function(done) {
+        var data = {
+          method: "patch",
+          url: "http://localhost:16006/rest/articles/d850ea75-4427-4f81-8595-039990aeede5",
+          headers: {
+            "Content-Type": "application/vnd.api+json"
+          },
+          body: JSON.stringify({
+            "data": {
+              "relationships": {
+                "tags": {
+                  "data": [ undefined ]
+                }
+              }
+            }
+          })
+        };
+        request(data, function(err, res, json) {
+          assert.equal(err, null);
+          json = helpers.validateError(json);
+          assert.equal(res.statusCode, "403", "Expecting 403");
+
+          done();
+        });
+      });
+
+      it("errors with invalid many relations 2", function(done) {
+        var data = {
+          method: "patch",
+          url: "http://localhost:16006/rest/articles/d850ea75-4427-4f81-8595-039990aeede5",
+          headers: {
+            "Content-Type": "application/vnd.api+json"
+          },
+          body: JSON.stringify({
+            "data": {
+              "relationships": {
+                "tags": {
+                  "data": [ { "type": "tags", "id": "2a3bdea4-a889-480d-b886-104498c86f69" }, undefined ]
+                }
+              }
+            }
+          })
+        };
+        request(data, function(err, res, json) {
+          assert.equal(err, null);
+          json = helpers.validateError(json);
+          assert.equal(res.statusCode, "403", "Expecting 403");
+
+          done();
+        });
       });
     });
 
-    it("errors with invalid attributes", function(done) {
+
+    it("only validates named attributes", function(done) {
       var data = {
         method: "patch",
-        url: "http://localhost:16006/rest/comments/3f1a89c2-eb85-4799-a048-6735db24b7eb",
+        url: "http://localhost:16006/rest/articles/d850ea75-4427-4f81-8595-039990aeede5",
         headers: {
           "Content-Type": "application/vnd.api+json"
         },
         body: JSON.stringify({
           "data": {
             "attributes": {
-              "timestamp": "foobar-date"
+              "title": "How to use AWS"
+              // content, a required attribute, is missing.
             }
           }
         })
       };
       request(data, function(err, res, json) {
         assert.equal(err, null);
-        json = helpers.validateError(json);
-        assert.equal(res.statusCode, "403", "Expecting 403");
+        json = helpers.validateJson(json);
+
+        var keys = Object.keys(json);
+        assert.deepEqual(keys, [ "meta", "links", "data" ], "Should have meta, links and data");
+        assert.equal(res.statusCode, "201", "Expecting 201");
 
         done();
       });
