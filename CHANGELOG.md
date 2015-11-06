@@ -20,3 +20,7 @@
 2015-09-25 - Stricter handling of HTTP Content-Type headers
 2015-09-27 - Improve validation when updating a relationship
 2015-09-27 - v0.9.0
+2015-09-27 - Always respond with absolute URLs
+2015-11-05 - v0.10.0
+2015-11-06 - Improve resource-update validation
+2015-11-06 - v0.11.0
