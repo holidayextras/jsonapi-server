@@ -29,6 +29,18 @@ describe("Testing jsonapi-server", function() {
       });
     });
 
+    it("foreign relation should error", function(done) {
+      var url = "http://localhost:16006/rest/people/cc5cca2e-0dd8-4b95-8cfc-a11230e73116/articles";
+      request.get(url, function(err, res, json) {
+        assert.equal(err, null);
+        json = helpers.validateError(json);
+        assert.equal(json.errors[0].code, "EFOREIGN");
+        assert.equal(res.statusCode, "404", "Expecting 404");
+
+        done();
+      });
+    });
+
     it("Lookup by id", function(done) {
       var url = "http://localhost:16006/rest/articles/de305d54-75b4-431b-adb2-eb6b9e546014/author";
       request.get(url, function(err, res, json) {
