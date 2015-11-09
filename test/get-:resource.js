@@ -144,6 +144,34 @@ describe("Testing jsonapi-server", function() {
           done();
         });
       });
+
+      it('doesnt return with multiple filters if one returns false', function(done) {
+        var url = 'http://localhost:16006/rest/articles?filter[title]=:best&filter[title]=>Z';
+        request.get(url, function(err, res, json) {
+          assert.equal(err, null);
+          json = helpers.validateJson(json);
+
+          assert.equal(res.statusCode, "200", "Expecting 200 OK");
+          assert.deepEqual(json.data, []);
+
+          done();
+        });
+      });
+
+      it('returns when multiple filters match', function(done) {
+        var url = 'http://localhost:16006/rest/articles?filter[title]=:for&filter[content]=~NA';
+        request.get(url, function(err, res, json) {
+          assert.equal(err, null);
+          json = helpers.validateJson(json);
+
+          assert.equal(res.statusCode, "200", "Expecting 200 OK");
+          var titles = json.data.map(function(i) { return i.attributes.title; });
+          assert.deepEqual(titles, [ "Tea for Beginners" ], "expected matching resources");
+
+          done();
+        });
+      });
+
     });
 
     describe("applying fields", function() {
