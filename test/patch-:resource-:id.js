@@ -172,7 +172,7 @@ describe("Testing jsonapi-server", function() {
 
         var keys = Object.keys(json);
         assert.deepEqual(keys, [ "meta", "links", "data" ], "Should have meta, links and data");
-        assert.equal(res.statusCode, "201", "Expecting 201");
+        assert.equal(res.statusCode, "200", "Expecting 200");
 
         done();
       });
@@ -208,7 +208,7 @@ describe("Testing jsonapi-server", function() {
 
           var keys = Object.keys(json);
           assert.deepEqual(keys, [ "meta", "links", "data" ], "Should have meta, links and data");
-          assert.equal(res.statusCode, "201", "Expecting 201");
+          assert.equal(res.statusCode, "200", "Expecting 200");
 
           done();
         });
@@ -301,7 +301,7 @@ describe("Testing jsonapi-server", function() {
 
           var keys = Object.keys(json);
           assert.deepEqual(keys, [ "meta", "links", "data" ], "Should have meta, links and data");
-          assert.equal(res.statusCode, "201", "Expecting 201");
+          assert.equal(res.statusCode, "200", "Expecting 200");
 
           done();
         });
