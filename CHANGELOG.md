@@ -24,3 +24,9 @@
 2015-11-05 - v0.10.0
 2015-11-06 - Improve resource-update validation
 2015-11-06 - v0.11.0
+2015-11-09 - Ignore non-js routes within the example app
+2015-11-09 - Pass around headers on inclusion requests
+2015-11-09 - Creating resources gives a 201 CREATED
+2015-11-10 - Additional error handling for foreign relation lookup
+2015-11-10 - Additional error detail on 403 and 404
+2015-11-10 - v0.12.0
