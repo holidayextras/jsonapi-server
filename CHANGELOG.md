@@ -32,3 +32,5 @@
 2015-11-10 - v0.12.0
 2015-11-11 - Correctly build related URLs when using HTTPS
 2015-11-11 - v0.12.1
+2015-11-11 - Blacklist some HTTP headers we dont want to pass onwards
+2015-11-11 - v0.12.2
