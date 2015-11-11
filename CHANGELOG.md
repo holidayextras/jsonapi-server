@@ -30,3 +30,5 @@
 2015-11-10 - Additional error handling for foreign relation lookup
 2015-11-10 - Additional error detail on 403 and 404
 2015-11-10 - v0.12.0
+2015-11-11 - Correctly build related URLs when using HTTPS
+2015-11-11 - v0.12.1
