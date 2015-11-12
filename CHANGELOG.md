@@ -34,3 +34,5 @@
 2015-11-11 - v0.12.1
 2015-11-11 - Blacklist some HTTP headers we dont want to pass onwards
 2015-11-11 - v0.12.2
+2015-11-12 - Handlers readiness check
+2015-11-12 - v0.13.0
