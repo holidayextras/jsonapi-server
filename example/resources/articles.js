@@ -4,7 +4,12 @@ jsonApi.define({
   namespace: "json:api",
   resource: "articles",
   description: "Represents the core content, people love to read articles.",
-  handlers: jsonApi.mockHandlers,
+  handlers: new jsonApi.dynamoHandlers({
+    region: "us-west-2",
+    endpoint: "http://localhost:8000",
+    accessKeyId: "AKIAJ2YTJBP7EAYPARCA",
+    secretAccessKey: "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"
+  }),
   searchParams: {
     query: jsonApi.Joi.string()
       .description("Fuzzy text match against titles")
