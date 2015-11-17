@@ -311,6 +311,55 @@ describe("Testing jsonapi-server", function() {
         });
       });
     });
+
+    describe("by foreign key", function() {
+
+      it("should find resources by relation", function(done) {
+        var url = "http://localhost:16006/rest/articles/?relationships[photos]=aab14844-97e7-401c-98c8-0bd5ec922d93";
+        request.get(url, function(err, res, json) {
+          assert.equal(err, null);
+          json = helpers.validateJson(json);
+
+          assert.equal(res.statusCode, "200", "Expecting 200 OK");
+          assert.equal(json.data.length, 2, "Should be 2 matching resources");
+          done();
+        });
+      });
+
+      it("should error with incorrectly named relations", function(done) {
+        var url = "http://localhost:16006/rest/articles/?relationships[photo]=aab14844-97e7-401c-98c8-0bd5ec922d93";
+        request.get(url, function(err, res, json) {
+          assert.equal(err, null);
+          json = helpers.validateError(json);
+
+          assert.equal(res.statusCode, "403", "Expecting 403 EFORBIDDEN");
+          done();
+        });
+      });
+
+      it("should error when queriying with non-relation attributes", function(done) {
+        var url = "http://localhost:16006/rest/articles/?relationships[content]=aab14844-97e7-401c-98c8-0bd5ec922d93";
+        request.get(url, function(err, res, json) {
+          assert.equal(err, null);
+          json = helpers.validateError(json);
+
+          assert.equal(res.statusCode, "403", "Expecting 403 EFORBIDDEN");
+          done();
+        });
+      });
+
+      it("should error when querying the foreign end of a relationship", function(done) {
+        var url = "http://localhost:16006/rest/comments/?relationships[article]=aab14844-97e7-401c-98c8-0bd5ec922d93";
+        request.get(url, function(err, res, json) {
+          assert.equal(err, null);
+          json = helpers.validateError(json);
+
+          assert.equal(res.statusCode, "403", "Expecting 403 EFORBIDDEN");
+          done();
+        });
+      });
+
+    });
   });
 
   before(function() {
