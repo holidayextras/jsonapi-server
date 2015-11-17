@@ -36,3 +36,5 @@
 2015-11-11 - v0.12.2
 2015-11-12 - Handlers readiness check
 2015-11-12 - v0.13.0
+2015-11-17 - Additional error handling for foreign relation lookup
+2015-11-17 - v0.13.1
