@@ -325,36 +325,33 @@ describe("Testing jsonapi-server", function() {
         });
       });
 
-      it("should find resources by relation", function() {
+      it("should error with incorrectly named relations", function() {
         var url = "http://localhost:16006/rest/articles/?relationships[photo]=aab14844-97e7-401c-98c8-0bd5ec922d93";
         request.get(url, function(err, res, json) {
           assert.equal(err, null);
           json = helpers.validateError(json);
 
           assert.equal(res.statusCode, "403", "Expecting 403 EFORBIDDEN");
-          assert.equal(json.data.length, 2, "Should be 2 matching resources");
         });
       });
 
-      it("should find resources by relation", function() {
+      it("should error when queriying with non-relation attributes", function() {
         var url = "http://localhost:16006/rest/articles/?relationships[content]=aab14844-97e7-401c-98c8-0bd5ec922d93";
         request.get(url, function(err, res, json) {
           assert.equal(err, null);
           json = helpers.validateError(json);
 
           assert.equal(res.statusCode, "403", "Expecting 403 EFORBIDDEN");
-          assert.equal(json.data.length, 2, "Should be 2 matching resources");
         });
       });
 
-      it("should find resources by relation", function() {
+      it("should error when querying the foreign end of a relationship", function() {
         var url = "http://localhost:16006/rest/comments/?relationships[article]=aab14844-97e7-401c-98c8-0bd5ec922d93";
         request.get(url, function(err, res, json) {
           assert.equal(err, null);
           json = helpers.validateError(json);
 
           assert.equal(res.statusCode, "403", "Expecting 403 EFORBIDDEN");
-          assert.equal(json.data.length, 2, "Should be 2 matching resources");
         });
       });
 
