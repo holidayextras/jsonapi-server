@@ -358,7 +358,7 @@ describe("Testing jsonapi-server", function() {
         });
       });
 
-    })
+    });
   });
 
   before(function() {
