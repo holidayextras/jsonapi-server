@@ -4,7 +4,7 @@ jsonApi.define({
   namespace: "json:api",
   resource: "tags",
   description: "Used to group resources together, useful for finding related resources.",
-  handlers: jsonApi.mockHandlers,
+  handlers: new jsonApi.MockHandler(),
   searchParams: { },
   attributes: {
     name: jsonApi.Joi.string()

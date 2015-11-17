@@ -29,7 +29,7 @@ jsonApi.setConfig({
 
 jsonApi.define({
   resource: "photos",
-  handlers: jsonApi.mockHandlers,
+  handlers: new jsonApi.MockHandler(),
   attributes: {
     title: jsonApi.Joi.string()
     url: jsonApi.Joi.string().uri()

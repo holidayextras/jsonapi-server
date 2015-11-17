@@ -4,7 +4,7 @@ jsonApi.define({
   namespace: "json:api",
   resource: "people",
   description: "Used to attribute work to specific people.",
-  handlers: jsonApi.mockHandlers,
+  handlers: new jsonApi.MockHandler(),
   searchParams: { },
   attributes: {
     firstname: jsonApi.Joi.string().alphanum()

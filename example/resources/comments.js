@@ -4,7 +4,7 @@ jsonApi.define({
   namespace: "json:api",
   resource: "comments",
   description: "Allow people to attach short messages to articles",
-  handlers: jsonApi.mockHandlers,
+  handlers: new jsonApi.MockHandler(),
   searchParams: { },
   attributes: {
     body: jsonApi.Joi.string()
