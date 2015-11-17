@@ -38,3 +38,5 @@
 2015-11-12 - v0.13.0
 2015-11-17 - Additional error handling for foreign relation lookup
 2015-11-17 - v0.13.1
+2015-11-17 - Handlers are now objects instead of modules
+2015-11-17 - v0.14.0
