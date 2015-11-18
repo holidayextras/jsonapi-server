@@ -4,7 +4,7 @@ jsonApi.define({
   namespace: "json:api",
   resource: "articles",
   description: "Represents the core content, people love to read articles.",
-  handlers: new jsonApi.MockHandler(),
+  handlers: new jsonApi.MemoryHandler(),
   searchParams: {
     query: jsonApi.Joi.string()
       .description("Fuzzy text match against titles")

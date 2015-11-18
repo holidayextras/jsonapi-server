@@ -4,7 +4,7 @@ jsonApi.define({
   namespace: "json:api",
   resource: "photos",
   description: "Used to represent all the images in the system.",
-  handlers: new jsonApi.MockHandler(),
+  handlers: new jsonApi.MemoryHandler(),
   searchParams: { },
   attributes: {
     title: jsonApi.Joi.string()

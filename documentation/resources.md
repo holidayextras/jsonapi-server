@@ -12,18 +12,18 @@ jsonApi.define({
 
 #### Handlers
 
-jsonapi-server ships with an example barebones implementation of an in-memory handler. It can be found at `jsonApi.MockHandler`. You can use it as a reference for writing new handlers.
+jsonapi-server ships with an example barebones implementation of an in-memory handler. It can be found at `jsonApi.MemoryHandler`. You can use it as a reference for writing new handlers.
 
 Documentation for creating your own handlers can be found [here](handlers.md).
 
-`MockHandler` works by allowing each defined resource to contain an `examples` property, which must be an array of JSON objects representing raw resources. Those examples are loaded into memory when the server loads and are served up as if they were real resources. You can search through them, modify them, create new ones, delete them, straight away.
+`MemoryHandler` works by allowing each defined resource to contain an `examples` property, which must be an array of JSON objects representing raw resources. Those examples are loaded into memory when the server loads and are served up as if they were real resources. You can search through them, modify them, create new ones, delete them, straight away.
 
-Its a beautiful way of prototyping an experimental new API! Simply define the attributes of a resource, attach the `MockHandler` and define some `examples`:
+Its a beautiful way of prototyping an experimental new API! Simply define the attributes of a resource, attach the `MemoryHandler` and define some `examples`:
 
 ```javascript
 jsonApi.define({
   resource: "photos",
-  handlers: new jsonApi.MockHandler(),
+  handlers: new jsonApi.MemoryHandler(),
   attributes: {
     title: jsonApi.Joi.string()
     url: jsonApi.Joi.string().uri().required()
