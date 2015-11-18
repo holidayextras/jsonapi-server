@@ -40,3 +40,5 @@
 2015-11-17 - v0.13.1
 2015-11-17 - Handlers are now objects instead of modules
 2015-11-17 - v0.14.0
+2015-11-18 - Rename MockHandler to MemoryHandler
+2015-11-18 - v0.15.0
