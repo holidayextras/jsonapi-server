@@ -42,3 +42,5 @@
 2015-11-17 - v0.14.0
 2015-11-18 - Rename MockHandler to MemoryHandler
 2015-11-18 - v0.15.0
+2015-11-18 - Updated documentation
+2015-11-18 - v0.15.1
