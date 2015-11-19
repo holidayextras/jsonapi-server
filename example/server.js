@@ -43,3 +43,4 @@ jsonApi.onUncaughtException(function(request, error) {
 jsonApi.start();
 server.start = jsonApi.start;
 server.close = jsonApi.close;
+server.use = jsonApi.use;
