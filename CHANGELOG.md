@@ -44,3 +44,5 @@
 2015-11-18 - v0.15.0
 2015-11-18 - Updated documentation
 2015-11-18 - v0.15.1
+2015-11-19 - Validate filter params before handing over to resourceHandler.search
+2015-11-19 - v0.15.2
