@@ -1,3 +1,4 @@
+"use strict";
 var swagger = module.exports = {};
 
 swagger.config = {
