@@ -1,5 +1,4 @@
 "use strict";
-var request = require("request");
 var assert = require("assert");
 var helpers = require("./helpers.js");
 var jsonApiTestServer = require("../example/server.js");
@@ -9,7 +8,10 @@ describe("Testing jsonapi-server", function() {
   describe("Searching for resources", function() {
     it("unknown resource should error", function(done) {
       var url = "http://localhost:16006/rest/foobar";
-      request.get(url, function(err, res, json) {
+      helpers.request({
+        method: "GET",
+        url: url
+      }, function(err, res, json) {
         assert.equal(err, null);
         json = helpers.validateError(json);
         assert.equal(res.statusCode, "404", "Expecting 404");
@@ -19,7 +21,10 @@ describe("Testing jsonapi-server", function() {
 
     it("empty search should return all objects", function(done) {
       var url = "http://localhost:16006/rest/articles";
-      request.get(url, function(err, res, json) {
+      helpers.request({
+        method: "GET",
+        url: url
+      }, function(err, res, json) {
         assert.equal(err, null);
         json = helpers.validateJson(json);
 
@@ -39,7 +44,10 @@ describe("Testing jsonapi-server", function() {
     describe("applying sort", function() {
       it("ASC sort", function(done) {
         var url = "http://localhost:16006/rest/articles?sort=title";
-        request.get(url, function(err, res, json) {
+        helpers.request({
+          method: "GET",
+          url: url
+        }, function(err, res, json) {
           assert.equal(err, null);
           json = helpers.validateJson(json);
 
@@ -59,7 +67,10 @@ describe("Testing jsonapi-server", function() {
 
       it("DESC sort", function(done) {
         var url = "http://localhost:16006/rest/articles?sort=-title";
-        request.get(url, function(err, res, json) {
+        helpers.request({
+          method: "GET",
+          url: url
+        }, function(err, res, json) {
           assert.equal(err, null);
           json = helpers.validateJson(json);
 
@@ -81,7 +92,10 @@ describe("Testing jsonapi-server", function() {
     describe("applying filter", function() {
       it("unknown attribute should error", function(done) {
         var url = "http://localhost:16006/rest/articles?filter[foobar]=<M";
-        request.get(url, function(err, res, json) {
+        helpers.request({
+          method: "GET",
+          url: url
+        }, function(err, res, json) {
           assert.equal(err, null);
           json = helpers.validateError(json);
           assert.equal(res.statusCode, "403", "Expecting 403");
@@ -91,7 +105,10 @@ describe("Testing jsonapi-server", function() {
 
       it("less than", function(done) {
         var url = "http://localhost:16006/rest/articles?filter[title]=<M";
-        request.get(url, function(err, res, json) {
+        helpers.request({
+          method: "GET",
+          url: url
+        }, function(err, res, json) {
           assert.equal(err, null);
           json = helpers.validateJson(json);
 
@@ -105,7 +122,10 @@ describe("Testing jsonapi-server", function() {
 
       it("greater than", function(done) {
         var url = "http://localhost:16006/rest/articles?filter[title]=>M";
-        request.get(url, function(err, res, json) {
+        helpers.request({
+          method: "GET",
+          url: url
+        }, function(err, res, json) {
           assert.equal(err, null);
           json = helpers.validateJson(json);
 
@@ -119,7 +139,10 @@ describe("Testing jsonapi-server", function() {
 
       it("case insensitive", function(done) {
         var url = "http://localhost:16006/rest/articles?filter[title]=~linux rocks";
-        request.get(url, function(err, res, json) {
+        helpers.request({
+          method: "GET",
+          url: url
+        }, function(err, res, json) {
           assert.equal(err, null);
           json = helpers.validateJson(json);
 
@@ -133,7 +156,10 @@ describe("Testing jsonapi-server", function() {
 
       it("similar to", function(done) {
         var url = "http://localhost:16006/rest/articles?filter[title]=:for";
-        request.get(url, function(err, res, json) {
+        helpers.request({
+          method: "GET",
+          url: url
+        }, function(err, res, json) {
           assert.equal(err, null);
           json = helpers.validateJson(json);
 
@@ -149,7 +175,10 @@ describe("Testing jsonapi-server", function() {
     describe("applying fields", function() {
       it("unknown attribute should error", function(done) {
         var url = "http://localhost:16006/rest/articles?fields[article]=title";
-        request.get(url, function(err, res, json) {
+        helpers.request({
+          method: "GET",
+          url: url
+        }, function(err, res, json) {
           assert.equal(err, null);
           json = helpers.validateError(json);
           assert.equal(res.statusCode, "403", "Expecting 403");
@@ -159,7 +188,10 @@ describe("Testing jsonapi-server", function() {
 
       it("just title", function(done) {
         var url = "http://localhost:16006/rest/articles?fields[articles]=title";
-        request.get(url, function(err, res, json) {
+        helpers.request({
+          method: "GET",
+          url: url
+        }, function(err, res, json) {
           assert.equal(err, null);
           json = helpers.validateJson(json);
 
@@ -175,7 +207,10 @@ describe("Testing jsonapi-server", function() {
 
       it("title AND content", function(done) {
         var url = "http://localhost:16006/rest/articles?fields[articles]=title,content";
-        request.get(url, function(err, res, json) {
+        helpers.request({
+          method: "GET",
+          url: url
+        }, function(err, res, json) {
           assert.equal(err, null);
           json = helpers.validateJson(json);
 
@@ -193,7 +228,10 @@ describe("Testing jsonapi-server", function() {
     describe("applying includes", function() {
       it("unknown attribute should error", function(done) {
         var url = "http://localhost:16006/rest/articles?include=foobar";
-        request.get(url, function(err, res, json) {
+        helpers.request({
+          method: "GET",
+          url: url
+        }, function(err, res, json) {
           assert.equal(err, null);
           json = helpers.validateError(json);
           assert.equal(res.statusCode, "403", "Expecting 403");
@@ -203,7 +241,10 @@ describe("Testing jsonapi-server", function() {
 
       it("include author", function(done) {
         var url = "http://localhost:16006/rest/articles?include=author";
-        request.get(url, function(err, res, json) {
+        helpers.request({
+          method: "GET",
+          url: url
+        }, function(err, res, json) {
           assert.equal(err, null);
           json = helpers.validateJson(json);
 
@@ -221,7 +262,10 @@ describe("Testing jsonapi-server", function() {
 
       it("include author and photos", function(done) {
         var url = "http://localhost:16006/rest/articles?include=author,photos";
-        request.get(url, function(err, res, json) {
+        helpers.request({
+          method: "GET",
+          url: url
+        }, function(err, res, json) {
           assert.equal(err, null);
           json = helpers.validateJson(json);
 
@@ -244,7 +288,10 @@ describe("Testing jsonapi-server", function() {
 
       it("include author.photos and photos", function(done) {
         var url = "http://localhost:16006/rest/articles?include=author.photos,photos";
-        request.get(url, function(err, res, json) {
+        helpers.request({
+          method: "GET",
+          url: url
+        }, function(err, res, json) {
           assert.equal(err, null);
           json = helpers.validateJson(json);
 
@@ -267,7 +314,10 @@ describe("Testing jsonapi-server", function() {
 
       it("include author.photos", function(done) {
         var url = "http://localhost:16006/rest/articles?include=author.photos";
-        request.get(url, function(err, res, json) {
+        helpers.request({
+          method: "GET",
+          url: url
+        }, function(err, res, json) {
           assert.equal(err, null);
           json = helpers.validateJson(json);
 
@@ -290,7 +340,10 @@ describe("Testing jsonapi-server", function() {
 
       it("include author.photos with filter", function(done) {
         var url = "http://localhost:16006/rest/articles?include=author.photos&filter[author][firstname]=Mark";
-        request.get(url, function(err, res, json) {
+        helpers.request({
+          method: "GET",
+          url: url
+        }, function(err, res, json) {
           assert.equal(err, null);
           json = helpers.validateJson(json);
 
@@ -316,7 +369,10 @@ describe("Testing jsonapi-server", function() {
 
       it("should find resources by relation", function(done) {
         var url = "http://localhost:16006/rest/articles/?relationships[photos]=aab14844-97e7-401c-98c8-0bd5ec922d93";
-        request.get(url, function(err, res, json) {
+        helpers.request({
+          method: "GET",
+          url: url
+        }, function(err, res, json) {
           assert.equal(err, null);
           json = helpers.validateJson(json);
 
@@ -328,7 +384,10 @@ describe("Testing jsonapi-server", function() {
 
       it("should error with incorrectly named relations", function(done) {
         var url = "http://localhost:16006/rest/articles/?relationships[photo]=aab14844-97e7-401c-98c8-0bd5ec922d93";
-        request.get(url, function(err, res, json) {
+        helpers.request({
+          method: "GET",
+          url: url
+        }, function(err, res, json) {
           assert.equal(err, null);
           json = helpers.validateError(json);
 
@@ -339,7 +398,10 @@ describe("Testing jsonapi-server", function() {
 
       it("should error when queriying with non-relation attributes", function(done) {
         var url = "http://localhost:16006/rest/articles/?relationships[content]=aab14844-97e7-401c-98c8-0bd5ec922d93";
-        request.get(url, function(err, res, json) {
+        helpers.request({
+          method: "GET",
+          url: url
+        }, function(err, res, json) {
           assert.equal(err, null);
           json = helpers.validateError(json);
 
@@ -350,7 +412,10 @@ describe("Testing jsonapi-server", function() {
 
       it("should error when querying the foreign end of a relationship", function(done) {
         var url = "http://localhost:16006/rest/comments/?relationships[article]=aab14844-97e7-401c-98c8-0bd5ec922d93";
-        request.get(url, function(err, res, json) {
+        helpers.request({
+          method: "GET",
+          url: url
+        }, function(err, res, json) {
           assert.equal(err, null);
           json = helpers.validateError(json);
 

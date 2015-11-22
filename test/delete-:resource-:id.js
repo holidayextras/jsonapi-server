@@ -53,8 +53,11 @@ describe("Testing jsonapi-server", function() {
       });
 
       it("new resource is gone", function(done) {
-        var url = "http://localhost:16006/rest/rest/comments/6b017640-827c-4d50-8dcc-79d766abb408";
-        request.get(url, function(err, res, json) {
+        var url = "http://localhost:16006/rest/comments/6b017640-827c-4d50-8dcc-79d766abb408";
+        helpers.request({
+          method: "GET",
+          url: url
+        }, function(err, res, json) {
           assert.equal(err, null);
           json = helpers.validateError(json);
           assert.equal(res.statusCode, "404", "Expecting 404");

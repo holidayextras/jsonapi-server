@@ -12,7 +12,7 @@ describe("Testing jsonapi-server", function() {
         method: "post",
         url: "http://localhost:16006/rest/foobar"
       };
-      request(data, function(err, res, json) {
+      helpers.request(data, function(err, res, json) {
         assert.equal(err, null);
         json = helpers.validateError(json);
         assert.equal(res.statusCode, "404", "Expecting 404");
@@ -44,7 +44,7 @@ describe("Testing jsonapi-server", function() {
           }
         })
       };
-      request(data, function(err, res, json) {
+      helpers.request(data, function(err, res, json) {
         assert.equal(err, null);
         json = helpers.validateError(json);
         assert.equal(res.statusCode, "403", "Expecting 403");
@@ -135,7 +135,7 @@ describe("Testing jsonapi-server", function() {
             }
           })
         };
-        request(data, function(err, res, json) {
+        helpers.request(data, function(err, res, json) {
           assert.equal(err, null);
           json = helpers.validateJson(json);
 
@@ -150,7 +150,10 @@ describe("Testing jsonapi-server", function() {
 
       it("new resource is retrievable", function(done) {
         var url = "http://localhost:16006/rest/photos/" + id;
-        request.get(url, function(err, res, json) {
+        helpers.request({
+          method: "GET",
+          url: url
+        }, function(err, res, json) {
           assert.equal(err, null);
           json = helpers.validateJson(json);
 

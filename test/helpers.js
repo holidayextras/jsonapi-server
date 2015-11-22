@@ -2,6 +2,8 @@
 var testHelpers = module.exports = { };
 
 var assert = require("assert");
+var request = require("request");
+var swaggerValidator = require("./swaggerValidator.js");
 
 testHelpers.validateError = function(json) {
   try {
@@ -96,4 +98,11 @@ testHelpers.validatePhoto = function(resource) {
   assert.equal(typeof resource.attributes.width, "number", "An photos width should be a number");
   assert.equal(resource.relationships.photographer.meta.relation, "primary", "An photos photographer is a primary relation");
   assert.equal(resource.relationships.articles.meta.relation, "foreign", "An photos articles are a foreign relation");
+};
+
+testHelpers.request = function(params, callback) {
+  request(params, function(err, res, json) {
+    swaggerValidator.assert(params, res.statusCode, json);
+    return callback(err, res, json);
+  });
 };
