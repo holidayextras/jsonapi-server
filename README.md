@@ -12,6 +12,7 @@
 
 - [Configuring jsonapi-server](documentation/configuring.md)
 - [Defining Resources](documentation/resources.md)
+- [Debugging](documentation/debugging.md)
 - [Foreign Key Relations](documentation/foreign-relations.md)
 - [Creating Handlers](documentation/handlers.md)
 - [Post Processing Examples](documentation/post-processing.md)
