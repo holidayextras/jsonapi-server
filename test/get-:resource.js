@@ -114,7 +114,8 @@ describe("Testing jsonapi-server", function() {
 
           assert.equal(res.statusCode, "200", "Expecting 200 OK");
           var titles = json.data.map(function(i) { return i.attributes.title; });
-          assert.deepEqual(titles, [ "Linux Rocks", "How to AWS" ], "expected matching resources");
+          titles.sort();
+          assert.deepEqual(titles, [ "How to AWS", "Linux Rocks" ], "expected matching resources");
 
           done();
         });
@@ -131,6 +132,7 @@ describe("Testing jsonapi-server", function() {
 
           assert.equal(res.statusCode, "200", "Expecting 200 OK");
           var titles = json.data.map(function(i) { return i.attributes.title; });
+          titles.sort();
           assert.deepEqual(titles, [ "NodeJS Best Practices", "Tea for Beginners" ], "expected matching resources");
 
           done();
