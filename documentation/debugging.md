@@ -10,6 +10,11 @@ The supported namespaces are:
  - jsonApi:handler:create
  - jsonApi:handler:delete
  - jsonApi:handler:update
+ - jsonApi:validation:input
+ - jsonApi:validation:output
+ - jsonApi:include
+ - jsonApi:errors
+
 
 To view the debugging output, provide a comma separated list (or wildcarded via `*`) of namespaces in the `DEBUG` environment variable, for example:
 ```
