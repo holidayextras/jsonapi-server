@@ -5,6 +5,7 @@
   "keywords": [
     "jsonapi",
     "json:api",
+    "swagger",
     "api"
   ],
   "main": "lib/jsonApi.js",

@@ -1,5 +1,4 @@
 "use strict";
-var request = require("request");
 var assert = require("assert");
 var helpers = require("./helpers.js");
 var jsonApiTestServer = require("../example/server.js");
@@ -12,7 +11,7 @@ describe("Testing jsonapi-server", function() {
         method: "patch",
         url: "http://localhost:16006/rest/foobar/someId/relationships/author"
       };
-      request(data, function(err, res, json) {
+      helpers.request(data, function(err, res, json) {
         assert.equal(err, null);
         json = helpers.validateError(json);
         assert.equal(res.statusCode, "404", "Expecting 404");
@@ -32,7 +31,7 @@ describe("Testing jsonapi-server", function() {
           "data": { "type": "people", "id": "ad3aa89e-9c5b-4ac9-a652-6670f9f27587" }
         })
       };
-      request(data, function(err, res, json) {
+      helpers.request(data, function(err, res, json) {
         assert.equal(err, null);
         json = helpers.validateError(json);
         assert.equal(res.statusCode, "404", "Expecting 404");
@@ -52,7 +51,7 @@ describe("Testing jsonapi-server", function() {
           "data": { "type": "articles", "id": "de305d54-75b4-431b-adb2-eb6b9e546014" }
         })
       };
-      request(data, function(err, res, json) {
+      helpers.request(data, function(err, res, json) {
         assert.equal(err, null);
         json = helpers.validateError(json);
         assert.equal(res.statusCode, "403", "Expecting 403");
@@ -73,7 +72,7 @@ describe("Testing jsonapi-server", function() {
             "data": { "type": "people", "id": "ad3aa89e-9c5b-4ac9-a652-6670f9f27587", meta: { updated: "2012-01-01" } }
           })
         };
-        request(data, function(err, res, json) {
+        helpers.request(data, function(err, res, json) {
           assert.equal(err, null);
           json = helpers.validateJson(json);
 
@@ -87,7 +86,10 @@ describe("Testing jsonapi-server", function() {
 
       it("new resource has changed", function(done) {
         var url = "http://localhost:16006/rest/comments/3f1a89c2-eb85-4799-a048-6735db24b7eb/relationships/author";
-        request.get(url, function(err, res, json) {
+        helpers.request({
+          method: "GET",
+          url: url
+        }, function(err, res, json) {
           assert.equal(err, null);
           json = helpers.validateJson(json);
 

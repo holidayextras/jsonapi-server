@@ -6,12 +6,26 @@ var fs = require("fs");
 var path = require("path");
 
 jsonApi.setConfig({
+  swagger: {
+    title: "Example JSON:API Server",
+    version: "0.1.1",
+    description: "This is the API description block that shows up in the swagger.json",
+    contact: {
+      name: "API Contact",
+      email: "apicontact@holidayextras.com",
+      url: "docs.hapi.holidayextras.com"
+    },
+    license: {
+      name: "MIT",
+      url: "http://opensource.org/licenses/MIT"
+    }
+  },
   protocol: "http",
   hostname: "localhost",
   port: 16006,
   base: "rest",
   meta: {
-    copyright: "Blah"
+    description: "This block shows up in the root node of every payload"
   }
 });
 

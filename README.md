@@ -11,6 +11,7 @@
 ### Full documentation
 
 - [Configuring jsonapi-server](documentation/configuring.md)
+- [Automatic Swagger Generation](documentation/swagger.md)
 - [Defining Resources](documentation/resources.md)
 - [Debugging](documentation/debugging.md)
 - [Foreign Key Relations](documentation/foreign-relations.md)
