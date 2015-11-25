@@ -46,3 +46,7 @@
 2015-11-18 - v0.15.1
 2015-11-19 - Validate filter params before handing over to resourceHandler.search
 2015-11-19 - v0.15.2
+2015-11-25 - Automatic Swagger Generation
+2015-11-25 - Debugging functionality
+2015-11-25 - Validation around handlers behaviour
+2015-11-25 - v0.16.0
