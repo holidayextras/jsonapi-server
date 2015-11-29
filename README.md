@@ -2,6 +2,7 @@
 [![Build Status](https://travis-ci.org/holidayextras/jsonapi-server.svg?branch=master)](https://travis-ci.org/holidayextras/jsonapi-server)
 [![npm version](https://badge.fury.io/js/jsonapi-server.svg)](http://badge.fury.io/js/jsonapi-server)
 [![Code Climate](https://codeclimate.com/github/holidayextras/jsonapi-server/badges/gpa.svg)](https://codeclimate.com/github/holidayextras/jsonapi-server)
+[![Codacy Badge](https://api.codacy.com/project/badge/grade/dd604d6548d8467caa224f078d59b182)](https://www.codacy.com/app/oliver-rumbelow/jsonapi-server)
 [![Dependencies Status](https://david-dm.org/holidayextras/jsonapi-server.svg)](https://david-dm.org/holidayextras/jsonapi-server)
 
 # jsonapi-server
