@@ -29,8 +29,6 @@ describe("Testing jsonapi-server", function() {
         json = helpers.validateJson(json);
 
         assert.equal(res.statusCode, "200", "Expecting 200 OK");
-        var keys = Object.keys(json);
-        assert.deepEqual(keys, [ "meta", "links", "data", "included" ], "Response should have specific properties");
         assert.deepEqual(json.included, [ ], "Response should have no included resources");
         assert.equal(json.data.length, 4, "Response should contain exactly 4 resources");
         json.data.forEach(function(resource) {
