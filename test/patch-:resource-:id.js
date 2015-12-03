@@ -170,8 +170,6 @@ describe("Testing jsonapi-server", function() {
         assert.equal(err, null);
         json = helpers.validateJson(json);
 
-        var keys = Object.keys(json);
-        assert.deepEqual(keys, [ "meta", "links", "data" ], "Should have meta, links and data");
         assert.equal(res.statusCode, "200", "Expecting 200");
 
         done();
@@ -206,8 +204,6 @@ describe("Testing jsonapi-server", function() {
           assert.equal(err, null);
           json = helpers.validateJson(json);
 
-          var keys = Object.keys(json);
-          assert.deepEqual(keys, [ "meta", "links", "data" ], "Should have meta, links and data");
           assert.equal(res.statusCode, "200", "Expecting 200");
 
           done();
@@ -223,8 +219,6 @@ describe("Testing jsonapi-server", function() {
           assert.equal(err, null);
           json = helpers.validateJson(json);
 
-          var keys = Object.keys(json);
-          assert.deepEqual(keys, [ "meta", "links", "data", "included" ], "Should have meta, links, data and included");
           assert.equal(res.statusCode, "200", "Expecting 200");
 
           assert.deepEqual(json.data, {
@@ -302,8 +296,6 @@ describe("Testing jsonapi-server", function() {
           assert.equal(err, null);
           json = helpers.validateJson(json);
 
-          var keys = Object.keys(json);
-          assert.deepEqual(keys, [ "meta", "links", "data" ], "Should have meta, links and data");
           assert.equal(res.statusCode, "200", "Expecting 200");
 
           done();
@@ -319,8 +311,6 @@ describe("Testing jsonapi-server", function() {
           assert.equal(err, null);
           json = helpers.validateJson(json);
 
-          var keys = Object.keys(json);
-          assert.deepEqual(keys, [ "meta", "links", "data", "included" ], "Should have meta, links, data and included");
           assert.equal(res.statusCode, "200", "Expecting 200");
 
           assert.deepEqual(json.data, {
