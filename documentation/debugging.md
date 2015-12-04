@@ -13,6 +13,7 @@ The supported namespaces are:
  - jsonApi:validation:input
  - jsonApi:validation:output
  - jsonApi:include
+ - jsonApi:filter
  - jsonApi:errors
 
 
