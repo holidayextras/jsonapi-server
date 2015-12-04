@@ -172,7 +172,7 @@ describe("Testing jsonapi-server", function() {
       });
 
       it("allows filtering by id", function(done) {
-        var url = "http://localhost:16006/rest/articles?filter[id]=1be0913c-3c25-4261-98f1-e41174025ed5,de305d54-75b4-431b-adb2-eb6b9e546014";
+        var url = "http://localhost:16006/rest/articles?filter[id]=1be0913c-3c25-4261-98f1-e41174025ed5&filter[id]=de305d54-75b4-431b-adb2-eb6b9e546014";
         helpers.request({
           method: "GET",
           url: url
