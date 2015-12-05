@@ -383,7 +383,7 @@ describe("Testing jsonapi-server", function() {
 
     describe("by foreign key", function() {
 
-      it("should find resources by relation", function(done) {
+      it("should find resources by a relation", function(done) {
         var url = "http://localhost:16006/rest/articles/?relationships[photos]=aab14844-97e7-401c-98c8-0bd5ec922d93";
         helpers.request({
           method: "GET",
@@ -394,6 +394,21 @@ describe("Testing jsonapi-server", function() {
 
           assert.equal(res.statusCode, "200", "Expecting 200 OK");
           assert.equal(json.data.length, 2, "Should be 2 matching resources");
+          done();
+        });
+      });
+
+      it("should find resources by many relations", function(done) {
+        var url = "http://localhost:16006/rest/articles/?relationships[photos]=aab14844-97e7-401c-98c8-0bd5ec922d93&relationships[photos]=4a8acd65-78bb-4020-b9eb-2d058a86a2a0";
+        helpers.request({
+          method: "GET",
+          url: url
+        }, function(err, res, json) {
+          assert.equal(err, null);
+          json = helpers.validateJson(json);
+
+          assert.equal(res.statusCode, "200", "Expecting 200 OK");
+          assert.equal(json.data.length, 3, "Should be 3 matching resources");
           done();
         });
       });
