@@ -20,11 +20,11 @@ describe("Testing jsonapi-server", function() {
       });
     });
 
-    it("clicks through a full result set", function() {
+    describe("clicks through a full result set", function() {
       it("fetches the first page", function(done) {
         var data = {
           method: "get",
-          url: "http://localhost:16006/rest/articles?page[offset]=0&page[limit]=1"
+          url: "http://localhost:16006/rest/articles?page[offset]=0&page[limit]=1&sort=title"
         };
         helpers.request(data, function(err, res, json) {
           assert.equal(err, null);
@@ -35,7 +35,7 @@ describe("Testing jsonapi-server", function() {
           assert.equal(json.meta.page.limit, 1, "should have a limit of 1 record");
           assert.equal(json.meta.page.total, 4, "should have a total of 4 records");
 
-          assert.equal(json.data[0].attributes.title, "NodeJS Best Practices", "should be on the first article");
+          assert.equal(json.data[0].attributes.title, "How to AWS", "should be on the first article");
 
           assert.ok(Object.keys(json.links).length, 3, "should have 3x links");
           assert.ok(json.links.last.match(/page%5Boffset%5D=3&page%5Blimit%5D=1/), "last should target offset-3 limit-1");
@@ -87,7 +87,7 @@ describe("Testing jsonapi-server", function() {
           assert.equal(json.meta.page.limit, 1, "should have a limit of 1 record");
           assert.equal(json.meta.page.total, 4, "should have a total of 4 records");
 
-          assert.equal(json.data[0].attributes.title, "How to AWS", "should be on the third article");
+          assert.equal(json.data[0].attributes.title, "NodeJS Best Practices", "should be on the first article");
 
           assert.ok(Object.keys(json.links).length, 5, "should have 5x links");
           assert.ok(json.links.first.match(/page%5Boffset%5D=0&page%5Blimit%5D=1/), "first should target offset-0 limit-1");
