@@ -129,7 +129,7 @@ describe("Testing jsonapi-server", function() {
     it("fetches an obscure page", function(done) {
       var data = {
         method: "get",
-        url: "http://localhost:16006/rest/articles?page[offset]=1&page[limit]=2"
+        url: "http://localhost:16006/rest/articles?page[offset]=1&page[limit]=2&sort=title"
       };
       helpers.request(data, function(err, res, json) {
         assert.equal(err, null);
@@ -141,7 +141,7 @@ describe("Testing jsonapi-server", function() {
         assert.equal(json.meta.page.total, 4, "should have a total of 4 records");
 
         assert.equal(json.data[0].attributes.title, "Linux Rocks", "should be on the third article");
-        assert.equal(json.data[1].attributes.title, "How to AWS", "should be on the third article");
+        assert.equal(json.data[1].attributes.title, "NodeJS Best Practices", "should be on the third article");
 
         assert.ok(Object.keys(json.links).length, 5, "should have 5x links");
         assert.ok(json.links.first.match(/page%5Boffset%5D=0&page%5Blimit%5D=2/), "first should target offset-0 limit-2");
