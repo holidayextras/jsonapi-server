@@ -15,6 +15,7 @@ The supported namespaces are:
  - jsonApi:include
  - jsonApi:filter
  - jsonApi:errors
+ - jsonApi:requestCounter
 
 
 To view the debugging output, provide a comma separated list (or wildcarded via `*`) of namespaces in the `DEBUG` environment variable, for example:
