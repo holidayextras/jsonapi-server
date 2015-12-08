@@ -186,6 +186,23 @@ describe("Testing jsonapi-server", function() {
           done();
         });
       });
+
+      it("allows deep filtering", function(done) {
+        var url = "http://localhost:16006/rest/articles?include=author&filter[author]=d850ea75-4427-4f81-8595-039990aeede5&filter[author][firstname]=Mark";
+        helpers.request({
+          method: "GET",
+          url: url
+        }, function(err, res, json) {
+          assert.equal(err, null);
+          json = helpers.validateJson(json);
+
+          assert.equal(res.statusCode, "200", "Expecting 200 OK");
+          assert.equal(json.data.length, 1, "Should give the one matching resource");
+          assert.equal(json.included.length, 1, "Should give the one matching include");
+
+          done();
+        });
+      });
     });
 
     describe("applying fields", function() {
