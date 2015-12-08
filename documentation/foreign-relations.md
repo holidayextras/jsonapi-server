@@ -174,7 +174,7 @@ relationships: {
       // get information about the linkage - list of ids and types
       self: "http://localhost:16006/rest/articles/relationships/?comments=6b017640-827c-4d50-8dcc-79d766abb408",
       // get full details of all linked resources (perform a search against the foreign key)
-      related: "http://localhost:16006/rest/articles/?relationships[comments]=6b017640-827c-4d50-8dcc-79d766abb408"
+      related: "http://localhost:16006/rest/articles/?filter[comments]=6b017640-827c-4d50-8dcc-79d766abb408"
     }
   }
 }

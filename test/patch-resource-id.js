@@ -256,7 +256,7 @@ describe("Testing jsonapi-server", function() {
                 },
                 "links": {
                   "self": "http://localhost:16006/rest/articles/relationships/?comments=3f1a89c2-eb85-4799-a048-6735db24b7eb",
-                  "related": "http://localhost:16006/rest/articles/?relationships[comments]=3f1a89c2-eb85-4799-a048-6735db24b7eb"
+                  "related": "http://localhost:16006/rest/articles/?filter[comments]=3f1a89c2-eb85-4799-a048-6735db24b7eb"
                 }
               }
             },
@@ -345,7 +345,7 @@ describe("Testing jsonapi-server", function() {
                 },
                 "links": {
                   "self": "http://localhost:16006/rest/articles/relationships/?comments=3f1a89c2-eb85-4799-a048-6735db24b7eb",
-                  "related": "http://localhost:16006/rest/articles/?relationships[comments]=3f1a89c2-eb85-4799-a048-6735db24b7eb"
+                  "related": "http://localhost:16006/rest/articles/?filter[comments]=3f1a89c2-eb85-4799-a048-6735db24b7eb"
                 }
               }
             },

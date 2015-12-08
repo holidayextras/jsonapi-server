@@ -384,7 +384,7 @@ describe("Testing jsonapi-server", function() {
     describe("by foreign key", function() {
 
       it("should find resources by a relation", function(done) {
-        var url = "http://localhost:16006/rest/articles/?relationships[photos]=aab14844-97e7-401c-98c8-0bd5ec922d93";
+        var url = "http://localhost:16006/rest/articles/?filter[photos]=aab14844-97e7-401c-98c8-0bd5ec922d93";
         helpers.request({
           method: "GET",
           url: url
@@ -399,7 +399,7 @@ describe("Testing jsonapi-server", function() {
       });
 
       it("should find resources by many relations", function(done) {
-        var url = "http://localhost:16006/rest/articles/?relationships[photos]=aab14844-97e7-401c-98c8-0bd5ec922d93&relationships[photos]=4a8acd65-78bb-4020-b9eb-2d058a86a2a0";
+        var url = "http://localhost:16006/rest/articles/?filter[photos]=aab14844-97e7-401c-98c8-0bd5ec922d93&filter[photos]=4a8acd65-78bb-4020-b9eb-2d058a86a2a0";
         helpers.request({
           method: "GET",
           url: url
@@ -414,21 +414,7 @@ describe("Testing jsonapi-server", function() {
       });
 
       it("should error with incorrectly named relations", function(done) {
-        var url = "http://localhost:16006/rest/articles/?relationships[photo]=aab14844-97e7-401c-98c8-0bd5ec922d93";
-        helpers.request({
-          method: "GET",
-          url: url
-        }, function(err, res, json) {
-          assert.equal(err, null);
-          json = helpers.validateError(json);
-
-          assert.equal(res.statusCode, "403", "Expecting 403 EFORBIDDEN");
-          done();
-        });
-      });
-
-      it("should error when queriying with non-relation attributes", function(done) {
-        var url = "http://localhost:16006/rest/articles/?relationships[content]=aab14844-97e7-401c-98c8-0bd5ec922d93";
+        var url = "http://localhost:16006/rest/articles/?filter[photo]=aab14844-97e7-401c-98c8-0bd5ec922d93";
         helpers.request({
           method: "GET",
           url: url
@@ -442,7 +428,7 @@ describe("Testing jsonapi-server", function() {
       });
 
       it("should error when querying the foreign end of a relationship", function(done) {
-        var url = "http://localhost:16006/rest/comments/?relationships[article]=aab14844-97e7-401c-98c8-0bd5ec922d93";
+        var url = "http://localhost:16006/rest/comments/?filter[article]=aab14844-97e7-401c-98c8-0bd5ec922d93";
         helpers.request({
           method: "GET",
           url: url
