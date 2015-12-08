@@ -57,3 +57,12 @@ http://localhost:16006/rest/articles?sort=-title
 To sort `articles` `ASC` by `title`:
 
 http://localhost:16006/rest/articles?sort=+title
+
+#### Pagination
+
+Use `page[limit]=50` to limit the number of resources in a search request to 50.
+
+Use `page[offset]=10` to chose which resulting resource should start the result set.
+
+To fetch resources 100-149:
+http://localhost:16006/rest/articles?page[offset]=100&page[limit]=50

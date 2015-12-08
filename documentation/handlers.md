@@ -1,9 +1,10 @@
 ### Creating Custom Handlers
 
-Handlers represent the mechanism that backs a resource. Each handler is expected to provide:
+Handlers represent the mechanism that backs a resource. Each handler is an object expected to provide:
 
+* a constructor with an option parameter that can be used to inject any required handler specific configuration.
 * a `ready` property indicating the handler is ready to process requests.
-* some of the following functions:
+* some of the following methods:
  * `initialise` - when jsonapi-server loads, this is invoked once for every resource using this handler. Its an opportunity to allocate memory, connect to databases, etc.
  * `search` - for searching for resources that match some vague parameters.
  * `find` - for finding a specific resource by id.
@@ -66,6 +67,10 @@ All errors should be provided in the following format:
   detail: "There is no "+request.params.type+" with id "+request.params.id
 }
 ```
+
+#### constructor
+
+The handler object constructor can, depending on the handler's requirements, expect a object parameter which will contain any properties required for configuring the handler. For example if the handler uses a database for persistence the configuration object will contain the properties required to connect to the database.
 
 #### ready
 

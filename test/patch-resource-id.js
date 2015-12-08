@@ -1,6 +1,6 @@
 "use strict";
-var request = require("request");
 var assert = require("assert");
+var request = require("request");
 var helpers = require("./helpers.js");
 var jsonApiTestServer = require("../example/server.js");
 
@@ -13,7 +13,7 @@ describe("Testing jsonapi-server", function() {
           method: "patch",
           url: "http://localhost:16006/rest/foobar/someId"
         };
-        request(data, function(err, res, json) {
+        helpers.request(data, function(err, res, json) {
           assert.equal(err, null);
           json = helpers.validateError(json);
           assert.equal(res.statusCode, "404", "Expecting 404");
@@ -61,7 +61,7 @@ describe("Testing jsonapi-server", function() {
             }
           })
         };
-        request(data, function(err, res, json) {
+        helpers.request(data, function(err, res, json) {
           assert.equal(err, null);
           json = helpers.validateError(json);
           assert.equal(res.statusCode, "403", "Expecting 403");
@@ -113,7 +113,7 @@ describe("Testing jsonapi-server", function() {
             }
           })
         };
-        request(data, function(err, res, json) {
+        helpers.request(data, function(err, res, json) {
           assert.equal(err, null);
           json = helpers.validateError(json);
           assert.equal(res.statusCode, "403", "Expecting 403");
@@ -139,7 +139,7 @@ describe("Testing jsonapi-server", function() {
             }
           })
         };
-        request(data, function(err, res, json) {
+        helpers.request(data, function(err, res, json) {
           assert.equal(err, null);
           json = helpers.validateError(json);
           assert.equal(res.statusCode, "403", "Expecting 403");
@@ -166,12 +166,10 @@ describe("Testing jsonapi-server", function() {
           }
         })
       };
-      request(data, function(err, res, json) {
+      helpers.request(data, function(err, res, json) {
         assert.equal(err, null);
         json = helpers.validateJson(json);
 
-        var keys = Object.keys(json);
-        assert.deepEqual(keys, [ "meta", "links", "data" ], "Should have meta, links and data");
         assert.equal(res.statusCode, "200", "Expecting 200");
 
         done();
@@ -202,12 +200,10 @@ describe("Testing jsonapi-server", function() {
             }
           })
         };
-        request(data, function(err, res, json) {
+        helpers.request(data, function(err, res, json) {
           assert.equal(err, null);
           json = helpers.validateJson(json);
 
-          var keys = Object.keys(json);
-          assert.deepEqual(keys, [ "meta", "links", "data" ], "Should have meta, links and data");
           assert.equal(res.statusCode, "200", "Expecting 200");
 
           done();
@@ -216,12 +212,13 @@ describe("Testing jsonapi-server", function() {
 
       it("new resource has changed", function(done) {
         var url = "http://localhost:16006/rest/comments/3f1a89c2-eb85-4799-a048-6735db24b7eb";
-        request.get(url, function(err, res, json) {
+        helpers.request({
+          method: "GET",
+          url: url
+        }, function(err, res, json) {
           assert.equal(err, null);
           json = helpers.validateJson(json);
 
-          var keys = Object.keys(json);
-          assert.deepEqual(keys, [ "meta", "links", "data", "included" ], "Should have meta, links, data and included");
           assert.equal(res.statusCode, "200", "Expecting 200");
 
           assert.deepEqual(json.data, {
@@ -295,12 +292,10 @@ describe("Testing jsonapi-server", function() {
             }
           })
         };
-        request(data, function(err, res, json) {
+        helpers.request(data, function(err, res, json) {
           assert.equal(err, null);
           json = helpers.validateJson(json);
 
-          var keys = Object.keys(json);
-          assert.deepEqual(keys, [ "meta", "links", "data" ], "Should have meta, links and data");
           assert.equal(res.statusCode, "200", "Expecting 200");
 
           done();
@@ -309,12 +304,13 @@ describe("Testing jsonapi-server", function() {
 
       it("new resource has changed", function(done) {
         var url = "http://localhost:16006/rest/comments/3f1a89c2-eb85-4799-a048-6735db24b7eb";
-        request.get(url, function(err, res, json) {
+        helpers.request({
+          method: "GET",
+          url: url
+        }, function(err, res, json) {
           assert.equal(err, null);
           json = helpers.validateJson(json);
 
-          var keys = Object.keys(json);
-          assert.deepEqual(keys, [ "meta", "links", "data", "included" ], "Should have meta, links, data and included");
           assert.equal(res.statusCode, "200", "Expecting 200");
 
           assert.deepEqual(json.data, {
