@@ -25,9 +25,11 @@
     "debug": "2.2.0",
     "express": "4.13.3",
     "joi": "6.7.1",
+    "node-inspector": "0.12.5",
     "node-uuid": "1.4.3",
     "request": "2.63.0",
-    "underscore": "1.8.3"
+    "underscore": "1.8.3",
+    "v8-profiler": "5.5.0"
   },
   "devDependencies": {
     "mocha": "2.2.5",

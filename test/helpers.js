@@ -4,6 +4,18 @@ var testHelpers = module.exports = { };
 var assert = require("assert");
 var request = require("request");
 var swaggerValidator = require("./swaggerValidator.js");
+var profiler = require("v8-profiler");
+var fs = require("fs");
+
+before(function() {
+  profiler.startProfiling("", true);
+});
+
+after(function(done) {
+  var profile = profiler.stopProfiling("");
+  fs.writeFileSync("jsonapi-server.cpuprofile", JSON.stringify(profile));
+  setTimeout(done, 1000 * 1000 * 1000);
+});
 
 testHelpers.validateError = function(json) {
   try {
