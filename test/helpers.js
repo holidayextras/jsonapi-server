@@ -6,6 +6,7 @@ var request = require("request");
 var swaggerValidator = require("./swaggerValidator.js");
 var profiler = require("v8-profiler");
 var fs = require("fs");
+var path = require("path");
 
 before(function() {
   profiler.startProfiling("", true);
@@ -13,8 +14,11 @@ before(function() {
 
 after(function(done) {
   var profile = profiler.stopProfiling("");
-  fs.writeFileSync("jsonapi-server.cpuprofile", JSON.stringify(profile));
-  setTimeout(done, 1000 * 1000 * 1000);
+  var profileFileName = "jsonapi-server.cpuprofile";
+  var filePath = path.join(__dirname, "..", profileFileName);
+  fs.writeFileSync(filePath, JSON.stringify(profile));
+  console.error("Saved CPU profile to", filePath);
+  done();
 });
 
 testHelpers.validateError = function(json) {
