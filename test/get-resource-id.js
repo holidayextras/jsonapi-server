@@ -135,6 +135,22 @@ describe("Testing jsonapi-server", function() {
         assert.deepEqual(manuallyExpanded, automaticallyExpanded);
         done();
       });
+
+      it("should expand out nested include path", function(done) {
+        var url = "http://localhost:16006/rest/tags/2a3bdea4-a889-480d-b886-104498c86f69?include=[articles.tags.children][2]";
+        helpers.request({
+          method: "GET",
+          url: url
+        }, function(err, res, json) {
+          assert.equal(err, null);
+          json = helpers.validateJson(json);
+
+          assert.equal(res.statusCode, "200", "Expecting 200 OK");
+          assert.equal(json.included.length, 4, "Should be 4 included resources");
+          automaticallyExpanded = json;
+          done();
+        });
+      });
     });
   });
 
