@@ -73,7 +73,7 @@ jsonApi.define({
       content: "na",
       author: { type: "people", id: "32fb0105-acaa-4adb-9ec4-8b49633695e1" },
       tags: [
-        { type: "tags", id: "7541a4de-4986-4597-81b9-cf31b6762486" }
+        { type: "tags", id: "8d196606-134c-4504-a93a-0d372f78d6c5" }
       ],
       photos: [
         { type: "photos", id: "aab14844-97e7-401c-98c8-0bd5ec922d93" }
