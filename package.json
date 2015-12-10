@@ -25,9 +25,12 @@
     "debug": "2.2.0",
     "express": "4.13.3",
     "joi": "6.7.1",
+    "lodash.assign": "3.2.0",
+    "lodash.omit": "3.1.0",
+    "lodash.pick": "3.1.0",
+    "lodash.uniq": "3.2.2",
     "node-uuid": "1.4.3",
-    "request": "2.63.0",
-    "underscore": "1.8.3"
+    "request": "2.63.0"
   },
   "devDependencies": {
     "mocha": "2.2.5",
