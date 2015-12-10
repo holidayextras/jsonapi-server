@@ -59,3 +59,5 @@
 2015-12-10 - Use filter[] instead of relationships[]
 2015-12-10 - Inclusion bug fixes
 2015-12-10 - v1.0.0
+2015-12-10 - Correcting v8-profiler dependency
+2015-12-10 - v1.0.1
