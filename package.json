@@ -30,7 +30,8 @@
     "lodash.pick": "3.1.0",
     "lodash.uniq": "3.2.2",
     "node-uuid": "1.4.3",
-    "request": "2.63.0"
+    "request": "2.63.0",
+    "v8-profiler": "5.5.0"
   },
   "devDependencies": {
     "mocha": "2.2.5",
@@ -40,7 +41,6 @@
     "coveralls": "2.11.2",
     "plato": "1.5.0",
     "mocha-performance": "0.1.0",
-    "v8-profiler": "5.5.0",
     "node-inspector": "0.12.5"
   },
   "scripts": {
