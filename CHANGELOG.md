@@ -50,3 +50,12 @@
 2015-11-25 - Debugging functionality
 2015-11-25 - Validation around handlers behaviour
 2015-11-25 - v0.16.0
+2015-12-03 - Top level jsonapi blocks
+2015-12-05 - Tooling improvements
+2015-12-07 - Efficient inclusions
+2015-12-08 - Pagination support
+2015-12-10 - CPU profiling
+2015-12-10 - Move to lodash
+2015-12-10 - Use filter[] instead of relationships[]
+2015-12-10 - Inclusion bug fixes
+2015-12-10 - v1.0.0
