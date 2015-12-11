@@ -61,3 +61,5 @@
 2015-12-10 - v1.0.0
 2015-12-10 - Correcting v8-profiler dependency
 2015-12-10 - v1.0.1
+2015-12-11 - Test harness improvements
+2015-12-11 - v1.0.2
