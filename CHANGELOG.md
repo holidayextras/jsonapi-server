@@ -63,3 +63,6 @@
 2015-12-10 - v1.0.1
 2015-12-11 - Test harness improvements
 2015-12-11 - v1.0.2
+2015-12-17 - Don't pass on content-length HTTP headers on inclusion requests
+2015-12-17 - Filter won't match undefined properties anymore
+2015-12-17 - v1.0.3
