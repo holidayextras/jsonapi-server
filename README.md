@@ -78,7 +78,7 @@ jsonApi.start();
 ```
 Your new API will be alive at `http://localhost:16006/rest/` and your `photos` resources will be at `http://localhost:16006/rest/photos`.
 
-### Show me an full example!
+### Show me a full example!
 
 Fire up an example `json:api` server using the resources mentioned in the official spec via:
 ```
