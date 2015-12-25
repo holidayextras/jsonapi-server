@@ -30,7 +30,7 @@ Ultimately, the only things you as a user of this framework need to care about a
    * `delete`ing a resource
    * `search`ing for many resources
    * `find`ing a specific resource
-   * `updating`ing a specific resource
+   * `update`ing a specific resource
 
 We've created `handler`s to automatically map our config over to database solutions help people get off the ground:
  * [jsonapi-store-memoryhandler](https://github.com/holidayextras/jsonapi-server/blob/master/lib/MemoryHandler.js) - an in-memory data store to enable rapid prototyping. This ships as a part of `jsonapi-server` and powers the core test suite.
