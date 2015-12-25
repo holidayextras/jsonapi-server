@@ -1,7 +1,7 @@
 
 ### Configuring jsonapi-server
 
-```
+```javascript
 jsonApi.setConfig({
   // HTTP / HTTPS
   protocol: "http",
@@ -21,7 +21,7 @@ jsonApi.setConfig({
 
 #### Error Handling
 
-```
+```javascript
 jsonApi.onUncaughtException(function(request, error) {
   // log the error somewhere
 });
@@ -29,7 +29,7 @@ jsonApi.onUncaughtException(function(request, error) {
 
 #### Basic Authentication
 
-```
+```javascript
 // This function will be invoked on every request, as soon as the HTTP
 // request has been parsed into a "request" object.
 jsonApi.authenticate(function(request, callback) {
@@ -45,12 +45,12 @@ jsonApi.authenticate(function(request, callback) {
 
 Note: You should only start the server once all your resources have been declared!
 
-```
+```javascript
 jsonApi.start();
 ```
 
 #### Stopping jsonapi-server
 
-```
+```javascript
 jsonApi.close();
 ```

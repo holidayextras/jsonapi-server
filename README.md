@@ -30,13 +30,14 @@ Ultimately, the only things you as a user of this framework need to care about a
    * `delete`ing a resource
    * `search`ing for many resources
    * `find`ing a specific resource
-   * `updating`ing a speciic resource
+   * `updating`ing a specific resource
 
-We've created `handler`s to automatically map our config over to ORM solutions:
+We've created `handler`s to automatically map our config over to database solutions help people get off the ground:
+ * [jsonapi-store-memoryhandler](https://github.com/holidayextras/jsonapi-server/blob/master/lib/MemoryHandler.js) - an in-memory data store to enable rapid prototyping. This ships as a part of `jsonapi-server` and powers the core test suite.
  * [jsonapi-store-relationaldb](https://github.com/holidayextras/jsonapi-store-relationaldb) - using `sequelize` to support PostgreSQL, MySQL, MSSQL, MariaDB and SQLite.
  * [jsonapi-store-mongodb](https://github.com/holidayextras/jsonapi-store-mongodb) - for MongoDB.
  * [jsonapi-store-elasticsearch](https://github.com/holidayextras/jsonapi-store-elasticsearch) - *WIP* for Elasticsearch.
- * [jsonapi-store-dynamodb](https://github.com/holidayextras/jsonapi-server/compare/dynamodb?expand=1) - *!SIGNIFICANT WIP!* for AWS DynamoDB
+ * [jsonapi-store-dynamodb](https://github.com/holidayextras/jsonapi-server/compare/dynamodb?expand=1) - *!SIGNIFICANT WIP!* for AWS DynamoDB.
 
 We've also written a library to ease the consumption of a json:api compliant service:
  * [jsonapi-client](https://github.com/holidayextras/jsonapi-client) - for NodeJS and Browsers
@@ -82,9 +83,9 @@ Your new API will be alive at `http://localhost:16006/rest/` and your `photos` r
 
 Fire up an example `json:api` server using the resources mentioned in the official spec via:
 ```
-git clone https://github.com/holidayextras/jsonapi-server.git
-npm install
-npm start
+$ git clone https://github.com/holidayextras/jsonapi-server.git
+$ npm install
+$ npm start
 ```
 then browse to
 ```
