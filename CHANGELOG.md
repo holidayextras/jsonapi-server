@@ -66,3 +66,5 @@
 2015-12-17 - Don't pass on content-length HTTP headers on inclusion requests
 2015-12-17 - Filter won't match undefined properties anymore
 2015-12-17 - v1.0.3
+2015-12-30 - Enable path-less API
+2015-12-30 - v1.0.4
