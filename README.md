@@ -60,7 +60,6 @@ You can have a complete json:api server providing a `photos` resource with just 
 var jsonApi = require("jsonapi-server");
 
 jsonApi.setConfig({
-  base: "rest",
   port: 16006,
 });
 
@@ -77,7 +76,7 @@ jsonApi.define({
 
 jsonApi.start();
 ```
-Your new API will be alive at `http://localhost:16006/rest/` and your `photos` resources will be at `http://localhost:16006/rest/photos`.
+Your new API will be alive at `http://localhost:16006/` and your `photos` resources will be at `http://localhost:16006/photos`.
 
 ### Show me a full example!
 
