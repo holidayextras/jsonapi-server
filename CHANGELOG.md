@@ -68,3 +68,5 @@
 2015-12-17 - v1.0.3
 2015-12-30 - Enable path-less API
 2015-12-30 - v1.0.4
+2015-12-31 - Set Location header correctly when creating resources
+2015-12-31 - v1.0.5

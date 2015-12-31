@@ -139,6 +139,7 @@ describe("Testing jsonapi-server", function() {
           assert.equal(err, null);
           json = helpers.validateJson(json);
 
+          assert.equal(res.headers.location, "http://localhost:16006/rest/photos/" + json.data.id);
           assert.equal(res.statusCode, "201", "Expecting 201");
           assert.equal(json.data.type, "photos", "Should be a people resource");
           helpers.validatePhoto(json.data);
