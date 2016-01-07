@@ -10,8 +10,8 @@ jsonApi.define({
     body: jsonApi.Joi.string()
       .description("The tag name")
       .example("Summer"),
-    timestamp: jsonApi.Joi.date().format("YYYY-MM-DD")
-      .description("The date on which the comment was created, YYYY-MM-DD")
+    timestamp: jsonApi.Joi.string()
+      .description("The date on which the comment was created, YYYY-MM-DD (TODO: change to date() format)")
       .example("2017-05-01"),
     author: jsonApi.Joi.one("people")
       .description("The person who wrote the comment"),
