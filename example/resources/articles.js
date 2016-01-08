@@ -20,6 +20,9 @@ jsonApi.define({
     created: jsonApi.Joi.date().format("YYYY-MM-DD")
       .description("The date on which the article was created, YYYY-MM-DD")
       .example("2017-05-01"),
+    status: jsonApi.Joi.string().default("published")
+      .description("The status of the article - draft, ready, published")
+      .example("published"),
     author: jsonApi.Joi.one("people")
       .description("The person who wrote the article"),
     tags: jsonApi.Joi.many("tags")
