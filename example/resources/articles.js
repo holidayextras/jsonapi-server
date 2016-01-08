@@ -6,9 +6,9 @@ jsonApi.define({
   description: "Represents the core content, people love to read articles.",
   handlers: new jsonApi.MemoryHandler(),
   searchParams: {
-    query: jsonApi.Joi.string()
+    query: jsonApi.Joi.number()
       .description("Fuzzy text match against titles")
-      .example("learn")
+      .example(123)
   },
   attributes: {
     title: jsonApi.Joi.string().required()
