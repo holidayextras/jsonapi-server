@@ -45,6 +45,7 @@ We've also written a library to ease the consumption of a json:api compliant ser
 
 ### Full documentation
 
+- [Suggested Project Structure](documentation/suggested-project-structure.md)
 - [Configuring jsonapi-server](documentation/configuring.md)
 - [Automatic Swagger Generation](documentation/swagger.md)
 - [Defining Resources](documentation/resources.md)
@@ -52,6 +53,7 @@ We've also written a library to ease the consumption of a json:api compliant ser
 - [Foreign Key Relations](documentation/foreign-relations.md)
 - [Custom Handlers](documentation/handlers.md)
 - [Post Processing Examples](documentation/post-processing.md)
+- [Migrating from an existing express server](documentation/api-migration.md)
 
 ### The tl;dr
 

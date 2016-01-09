@@ -45,7 +45,7 @@ jsonApi.start();
 
 #### Example resource
 
-The idea is to stick to having one resource per file and stick to pure config. Each file should do nothing more than define a resource. Handlers should be referenced from the `../handlers` folder, which enables us to easily abstract functionality by sharing features amongst handlers. Resource files are effectively defining your routing  layer.
+The idea is to stick to having one resource per file and stick to pure config. Each file should do nothing more than define a resource. Handlers should be referenced from the `../handlers` folder, which enables us to easily abstract functionality by sharing features amongst handlers. Resource files are effectively defining your routing layer.
 
 ```javascript
 var commentHandler = require("../handlers/commentHandler.js");
@@ -64,7 +64,7 @@ jsonApi.define({
 
 #### Example handler
 
-Handlers are like your controllers - they need to, are very least, provide the functionality described in the [handler documentation](handlers.md). The follow example covers how you implement [jsonapi-store-elasticsearch](https://github.com/holidayextras/jsonapi-store-elasticsearch).
+Handlers are like your controllers - they need to, at very least, provide the functionality described in the [handler documentation](handlers.md). The follow example covers how you implement [jsonapi-store-elasticsearch](https://github.com/holidayextras/jsonapi-store-elasticsearch).
 
 ```javascript
 var EsHandler = require("jsonapi-store-elasticsearch");
