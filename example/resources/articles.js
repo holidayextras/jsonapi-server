@@ -1,10 +1,11 @@
 var jsonApi = require("../../.");
+var articleHandler = require("../handlers/articleHandler.js");
 
 jsonApi.define({
   namespace: "json:api",
   resource: "articles",
   description: "Represents the core content, people love to read articles.",
-  handlers: new jsonApi.MemoryHandler(),
+  handlers: articleHandler,
   searchParams: {
     query: jsonApi.Joi.string()
       .description("Fuzzy text match against titles")

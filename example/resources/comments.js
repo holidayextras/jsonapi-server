@@ -1,10 +1,11 @@
 var jsonApi = require("../../.");
+var commentHandler = require("../handlers/commentHandler.js");
 
 jsonApi.define({
   namespace: "json:api",
   resource: "comments",
   description: "Allow people to attach short messages to articles",
-  handlers: new jsonApi.MemoryHandler(),
+  handlers: commentHandler,
   searchParams: { },
   attributes: {
     body: jsonApi.Joi.string()
