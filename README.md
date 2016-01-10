@@ -11,7 +11,7 @@ A config driven NodeJS framework implementing [`json:api`](http://jsonapi.org/).
 
 ### Motivation / Justification / Rationale
 
-This framework solves the challenge of json:api without coupling us to any one ORM solution. Every other module out there is either tightly coupled to a database implementation, tracking an old version of the json:api spec, or is merely a helper library for a small feature. If you're building an API and your use case only involves reading and writing to a data store... well count yourself lucky. For everyone else, this framework provides the flexibility to provide a complex API without wasting developer time focusing on anything other than shipping valuable features.
+This framework solves the challenge of json:api without coupling us to any one ORM solution. Every other module out there is either tightly coupled to a database implementation, tracking an old version of the json:api spec, or is merely a helper library for a small feature. If you're building an API and your use case only involves reading and writing to a data store... well count yourself lucky. For everyone else, this framework provides the flexibility to provide a complex API without being confined to any one technology.
 
 A config driven approach to building an API enables:
  * Enforced json:api responses
