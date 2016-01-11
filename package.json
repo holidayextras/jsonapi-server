@@ -19,18 +19,18 @@
     "node": "*"
   },
   "dependencies": {
-    "async": "1.4.2",
-    "body-parser": "1.14.0",
+    "async": "1.5.2",
+    "body-parser": "1.14.2",
     "cookie-parser": "1.4.0",
     "debug": "2.2.0",
     "express": "4.13.3",
-    "joi": "6.7.1",
+    "joi": "6.10.1",
     "lodash.assign": "3.2.0",
     "lodash.omit": "3.1.0",
     "lodash.pick": "3.1.0",
     "lodash.uniq": "3.2.2",
-    "node-uuid": "1.4.3",
-    "request": "2.63.0"
+    "node-uuid": "1.4.7",
+    "request": "2.67.0"
   },
   "devDependencies": {
     "mocha": "2.2.5",
