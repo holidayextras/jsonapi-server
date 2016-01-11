@@ -24,7 +24,7 @@ var bootstrapJsonApi = function(expressApp) {
   // Alter the expressJs constructor to return your existing instance
   // preventing jsonapi-server from trying to build a new one
   require.cache[express].exports = function() {
-    return app;
+    return expressApp;
   };
   // Now load jsonapi-server, which will require express and call The
   // constructor, which now returns your existing express instance

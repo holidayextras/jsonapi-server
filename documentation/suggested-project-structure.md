@@ -64,14 +64,14 @@ jsonApi.define({
 
 #### Example handler
 
-Handlers are like your controllers - they need to, at very least, provide the functionality described in the [handler documentation](handlers.md). The follow example covers how you implement [jsonapi-store-elasticsearch](https://github.com/holidayextras/jsonapi-store-elasticsearch).
+Handlers are like your controllers - they need to, at very least, provide the functionality described in the [handler documentation](handlers.md). The following example covers how you implement [jsonapi-store-elasticsearch](https://github.com/holidayextras/jsonapi-store-elasticsearch).
 
 ```javascript
 var EsHandler = require("jsonapi-store-elasticsearch");
 
 // You might want to pull this out further to share it
 // amongst other handlers
-var specificEsCluster = var new ElasticsearchStore({
+var specificEsCluster = var new EsHandler({
   host: "localhost:9200"
 });
 
