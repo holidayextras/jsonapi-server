@@ -1,10 +1,11 @@
 var jsonApi = require("../../.");
+var photoHandler = require("../handlers/photoHandler.js");
 
 jsonApi.define({
   namespace: "json:api",
   resource: "photos",
   description: "Used to represent all the images in the system.",
-  handlers: new jsonApi.MemoryHandler(),
+  handlers: photoHandler,
   searchParams: { },
   attributes: {
     title: jsonApi.Joi.string()
