@@ -70,3 +70,8 @@
 2015-12-30 - v1.0.4
 2015-12-31 - Set Location header correctly when creating resources
 2015-12-31 - v1.0.5
+2015-01-11 - Big documentation improvements
+2015-01-11 - Sanitise input + output with Joi
+2015-01-11 - Updating dependencies
+2015-01-11 - Error hard and fast when incorrectly defining foreign relations
+2015-01-11 - v1.1.0
