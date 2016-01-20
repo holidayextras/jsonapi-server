@@ -19,6 +19,7 @@ describe("Testing jsonapi-server", function() {
         assert.equal(res.headers["content-type"], "application/vnd.api+json", "should have a content-type");
         assert.equal(res.headers["access-control-allow-origin"], "*", "should have CORS headers");
         assert.equal(res.headers["access-control-allow-methods"], "*", "should have CORS headers");
+        assert.equal(res.headers["access-control-allow-headers"], "*", "should have CORS headers");
         done();
       });
     });
