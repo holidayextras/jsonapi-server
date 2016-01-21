@@ -75,3 +75,5 @@
 2015-01-11 - Updating dependencies
 2015-01-11 - Error hard and fast when incorrectly defining foreign relations
 2015-01-11 - v1.1.0
+2015-01-21 - Set better default CORS headers
+2015-01-21 - v1.2.0
