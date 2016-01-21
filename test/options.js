@@ -18,8 +18,8 @@ describe("Testing jsonapi-server", function() {
         assert.strictEqual(res.statusCode, 204, "Expecting 200 OK");
         assert.equal(res.headers["content-type"], "application/vnd.api+json", "should have a content-type");
         assert.equal(res.headers["access-control-allow-origin"], "*", "should have CORS headers");
-        assert.equal(res.headers["access-control-allow-methods"], "*", "should have CORS headers");
-        assert.equal(res.headers["access-control-allow-headers"], "*", "should have CORS headers");
+        assert.equal(res.headers["access-control-allow-methods"], "GET, POST, PATCH, DELETE, OPTIONS", "should have CORS headers");
+        assert.equal(res.headers["access-control-allow-headers"], "", "should have CORS headers");
         done();
       });
     });
