@@ -11,7 +11,7 @@ A config driven NodeJS framework implementing [`json:api`](http://jsonapi.org/).
 
 ### Motivation / Justification / Rationale
 
-This framework solves the challenge of json:api without coupling us to any one ORM solution. Every other module out there is either tightly coupled to a database implementation, tracking an old version of the json:api spec, or is merely a helper library for a small feature. If you're building an API and your use case only involves reading and writing to a data store... well count yourself lucky. For everyone else, this framework provides the flexibility to provide a complex API without wasting developer time focusing on anything other than shipping valuable features.
+This framework solves the challenge of json:api without coupling us to any one ORM solution. Every other module out there is either tightly coupled to a database implementation, tracking an old version of the json:api spec, or is merely a helper library for a small feature. If you're building an API and your use case only involves reading and writing to a data store... well count yourself lucky. For everyone else, this framework provides the flexibility to provide a complex API without being confined to any one technology.
 
 A config driven approach to building an API enables:
  * Enforced json:api responses
@@ -45,6 +45,7 @@ We've also written a library to ease the consumption of a json:api compliant ser
 
 ### Full documentation
 
+- [Suggested Project Structure](documentation/suggested-project-structure.md)
 - [Configuring jsonapi-server](documentation/configuring.md)
 - [Automatic Swagger Generation](documentation/swagger.md)
 - [Defining Resources](documentation/resources.md)
@@ -52,6 +53,7 @@ We've also written a library to ease the consumption of a json:api compliant ser
 - [Foreign Key Relations](documentation/foreign-relations.md)
 - [Custom Handlers](documentation/handlers.md)
 - [Post Processing Examples](documentation/post-processing.md)
+- [Migrating from an existing express server](documentation/api-migration.md)
 
 ### The tl;dr
 
@@ -60,7 +62,6 @@ You can have a complete json:api server providing a `photos` resource with just 
 var jsonApi = require("jsonapi-server");
 
 jsonApi.setConfig({
-  base: "rest",
   port: 16006,
 });
 
@@ -77,7 +78,7 @@ jsonApi.define({
 
 jsonApi.start();
 ```
-Your new API will be alive at `http://localhost:16006/rest/` and your `photos` resources will be at `http://localhost:16006/rest/photos`.
+Your new API will be alive at `http://localhost:16006/` and your `photos` resources will be at `http://localhost:16006/photos`.
 
 ### Show me a full example!
 

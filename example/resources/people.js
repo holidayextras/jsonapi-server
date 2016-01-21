@@ -1,10 +1,11 @@
 var jsonApi = require("../../.");
+var peopleHandler = require("../handlers/peopleHandler.js");
 
 jsonApi.define({
   namespace: "json:api",
   resource: "people",
   description: "Used to attribute work to specific people.",
-  handlers: new jsonApi.MemoryHandler(),
+  handlers: peopleHandler,
   searchParams: { },
   attributes: {
     firstname: jsonApi.Joi.string().alphanum()

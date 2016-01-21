@@ -94,6 +94,7 @@ testHelpers.validateArticle = function(resource) {
   assert.equal(resource.type, "articles", "Resources must have a type of articles");
   assert.equal(typeof resource.attributes.title, "string", "An articles title should be a string");
   assert.equal(typeof resource.attributes.content, "string", "An articles content should be a string");
+  assert.equal(typeof resource.attributes.status, "string", "An articles status should default to, and always be, a string");
   assert.equal(resource.relationships.author.meta.relation, "primary", "An articles author is a primary relation");
   testHelpers.validateRelationship(resource.relationships.author);
   assert.equal(resource.relationships.tags.meta.relation, "primary", "An articles tags are a primary relation");
