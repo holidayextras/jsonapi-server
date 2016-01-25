@@ -20,6 +20,8 @@ describe("Testing jsonapi-server", function() {
         assert.equal(res.headers["access-control-allow-origin"], "*", "should have CORS headers");
         assert.equal(res.headers["access-control-allow-methods"], "GET, POST, PATCH, DELETE, OPTIONS", "should have CORS headers");
         assert.equal(res.headers["access-control-allow-headers"], "", "should have CORS headers");
+        assert.equal(res.headers["cache-control"], "private, must-revalidate, max-age=0", "should have non-caching headers");
+        assert.equal(res.headers.expires, "Thu, 01 Jan 1970 00:00:00", "should have non-caching headers");
         done();
       });
     });
