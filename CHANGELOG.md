@@ -77,3 +77,5 @@
 2015-01-11 - v1.1.0
 2015-01-21 - Set better default CORS headers
 2015-01-21 - v1.2.0
+2015-01-25 - Aggressive cache-expiry headers by default
+2015-01-25 - v1.3.0
