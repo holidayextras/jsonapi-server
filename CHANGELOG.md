@@ -1,3 +1,5 @@
+- 2016-02-10 - v1.3.1
+- 2016-02-10 - Correctly handle missing to-one related resources
 - 2016-01-25 - v1.3.0
 - 2016-01-25 - Aggressive cache-expiry headers by default
 - 2016-01-21 - v1.2.0
