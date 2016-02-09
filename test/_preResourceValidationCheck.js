@@ -7,7 +7,7 @@ var jsonApiTestServer = require("../example/server.js");
 describe("Testing jsonapi-server", function() {
 
   [ { name: "articles", count: 4 },
-    { name: "comments", count: 2 },
+    { name: "comments", count: 3 },
     { name: "people", count: 4 },
     { name: "photos", count: 3 },
     { name: "tags", count: 5 }

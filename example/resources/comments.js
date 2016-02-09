@@ -35,6 +35,13 @@ jsonApi.define({
       body: "I like XML better",
       timestamp: "2017-06-20",
       author: { type: "people", id: "32fb0105-acaa-4adb-9ec4-8b49633695e1", meta: { created: "2010-01-01" } }
+    },
+    {
+      id: "2f716574-cef6-4238-8285-520911af86c1",
+      type: "comments",
+      body: "Wibble wibble.",
+      timestamp: "2017-12-31",
+      author: null
     }
   ]
 });
