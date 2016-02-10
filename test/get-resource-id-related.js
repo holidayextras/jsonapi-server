@@ -66,6 +66,23 @@ describe("Testing jsonapi-server", function() {
       });
     });
 
+    it("with null data", function(done) {
+      var url = "http://localhost:16006/rest/comments/2f716574-cef6-4238-8285-520911af86c1/author";
+      helpers.request({
+        method: "GET",
+        url: url
+      }, function(err, res, json) {
+        assert.equal(err, null);
+        json = helpers.validateJson(json);
+        assert.equal(res.statusCode, "200", "Expecting 200 OK");
+        assert.strictEqual(json.data, null);
+        assert(!("included" in json), "Null resource not NOT have `includes` attribute");
+
+        done();
+
+      });
+    });
+
     it("with fields", function(done) {
       var url = "http://localhost:16006/rest/articles/de305d54-75b4-431b-adb2-eb6b9e546014/author?fields[people]=email";
       helpers.request({
