@@ -76,7 +76,7 @@ describe("Testing jsonapi-server", function() {
         json = helpers.validateJson(json);
         assert.equal(res.statusCode, "200", "Expecting 200 OK");
         assert.strictEqual(json.data, null);
-        assert(!("included" in json), "Null resource not NOT have `includes` attribute");
+        assert(!("included" in json), "Null resource DON'T have `includes` attribute");
 
         done();
 
