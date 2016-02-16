@@ -101,6 +101,42 @@ describe("Testing jsonapi-server", function() {
         });
       });
 
+      it("equality", function(done) {
+        var url = "http://localhost:16006/rest/articles?filter[title]=How%20to%20AWS";
+        helpers.request({
+          method: "GET",
+          url: url
+        }, function(err, res, json) {
+          assert.equal(err, null);
+          json = helpers.validateJson(json);
+
+          assert.equal(res.statusCode, "200", "Expecting 200 OK");
+          var titles = json.data.map(function(i) { return i.attributes.title; });
+          titles.sort();
+          assert.deepEqual(titles, [ "How to AWS" ], "expected matching resources");
+
+          done();
+        });
+      });
+
+      it("equality for non-string types", function(done) {
+        var url = "http://localhost:16006/rest/articles?filter[created]=2016-01-05";
+        helpers.request({
+          method: "GET",
+          url: url
+        }, function(err, res, json) {
+          assert.equal(err, null);
+          json = helpers.validateJson(json);
+
+          assert.equal(res.statusCode, "200", "Expecting 200 OK");
+          var titles = json.data.map(function(i) { return i.attributes.title; });
+          titles.sort();
+          assert.deepEqual(titles, [ "NodeJS Best Practices" ], "expected matching resources");
+
+          done();
+        });
+      });
+
       it("less than", function(done) {
         var url = "http://localhost:16006/rest/articles?filter[title]=<M";
         helpers.request({
