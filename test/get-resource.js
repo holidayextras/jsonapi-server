@@ -101,7 +101,7 @@ describe("Testing jsonapi-server", function() {
         });
       });
 
-      it("equality", function(done) {
+      it("equality for strings", function(done) {
         var url = "http://localhost:16006/rest/articles?filter[title]=How%20to%20AWS";
         helpers.request({
           method: "GET",
@@ -119,8 +119,8 @@ describe("Testing jsonapi-server", function() {
         });
       });
 
-      it("equality for non-string types", function(done) {
-        var url = "http://localhost:16006/rest/articles?filter[created]=2016-01-05";
+      it("equality for numbers", function(done) {
+        var url = "http://localhost:16006/rest/articles?filter[views]=10";
         helpers.request({
           method: "GET",
           url: url
@@ -137,7 +137,7 @@ describe("Testing jsonapi-server", function() {
         });
       });
 
-      it("less than", function(done) {
+      it("less than for strings", function(done) {
         var url = "http://localhost:16006/rest/articles?filter[title]=<M";
         helpers.request({
           method: "GET",
@@ -155,8 +155,8 @@ describe("Testing jsonapi-server", function() {
         });
       });
 
-      it("less than for non-string types", function(done) {
-        var url = "http://localhost:16006/rest/articles?filter[created]=<2016-01-01";
+      it("less than for numbers", function(done) {
+        var url = "http://localhost:16006/rest/articles?filter[views]=<23";
         helpers.request({
           method: "GET",
           url: url
@@ -167,13 +167,13 @@ describe("Testing jsonapi-server", function() {
           assert.equal(res.statusCode, "200", "Expecting 200 OK");
           var titles = json.data.map(function(i) { return i.attributes.title; });
           titles.sort();
-          assert.deepEqual(titles, [ "Linux Rocks", "Tea for Beginners" ], "expected matching resources");
+          assert.deepEqual(titles, [ "Linux Rocks", "NodeJS Best Practices" ], "expected matching resources");
 
           done();
         });
       });
 
-      it("greater than", function(done) {
+      it("greater than for strings", function(done) {
         var url = "http://localhost:16006/rest/articles?filter[title]=>M";
         helpers.request({
           method: "GET",
@@ -191,8 +191,8 @@ describe("Testing jsonapi-server", function() {
         });
       });
 
-      it("greater than for non-string types", function(done) {
-        var url = "http://localhost:16006/rest/articles?filter[created]=>2016-01-01";
+      it("greater than for numbers", function(done) {
+        var url = "http://localhost:16006/rest/articles?filter[views]=>27";
         helpers.request({
           method: "GET",
           url: url
@@ -203,7 +203,7 @@ describe("Testing jsonapi-server", function() {
           assert.equal(res.statusCode, "200", "Expecting 200 OK");
           var titles = json.data.map(function(i) { return i.attributes.title; });
           titles.sort();
-          assert.deepEqual(titles, [ "How to AWS", "NodeJS Best Practices" ], "expected matching resources");
+          assert.deepEqual(titles, [ "How to AWS", "Tea for Beginners" ], "expected matching resources");
 
           done();
         });
