@@ -1,3 +1,5 @@
+- 2016-02-16 - v1.3.2
+- 2016-02-16 - Correctly filter by non-string attributes
 - 2016-02-10 - v1.3.1
 - 2016-02-10 - Correctly handle missing to-one related resources
 - 2016-01-25 - v1.3.0
