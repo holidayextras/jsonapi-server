@@ -1,3 +1,5 @@
+- 2016-02-16 - v1.3.3
+- 2016-02-16 - Filtering falsy boolean values
 - 2016-02-16 - v1.3.2
 - 2016-02-16 - Correctly filter by non-string attributes
 - 2016-02-10 - v1.3.1

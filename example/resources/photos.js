@@ -20,6 +20,10 @@ jsonApi.define({
     width: jsonApi.Joi.number().min(1).max(10000).precision(0)
       .description("The photos width in pixels")
       .example(512),
+    raw: jsonApi.Joi.boolean()
+      .default(false)
+      .description("File in RAW format")
+      .example(false),
     photographer: jsonApi.Joi.one("people")
       .description("The person who took the photo"),
     articles: jsonApi.Joi.belongsToMany({
@@ -35,6 +39,7 @@ jsonApi.define({
       url: "http://www.example.com/foobar",
       height: 1080,
       width: 1920,
+      raw: true,
       photographer: { type: "people", id: "ad3aa89e-9c5b-4ac9-a652-6670f9f27587" }
     },
     {

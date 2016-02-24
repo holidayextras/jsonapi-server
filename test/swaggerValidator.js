@@ -119,6 +119,10 @@ swaggerValidator._validateOther = function(model, payload, urlPath, validationPa
     if (typeof payload !== "number") {
       throw new Error("Swagger Validation: " + urlPath + " Expected number at " + validationPath + ", got " + typeof payload);
     }
+  } else if (model.type === "boolean") {
+    if (typeof payload !== "boolean") {
+      throw new Error("Swagger Validation: " + urlPath + " Expected boolean at " + validationPath + ", got " + typeof payload);
+    }
   } else {
     throw new Error("Swagger Validation: " + urlPath + " Unknown type " + model.type + " at " + validationPath);
   }

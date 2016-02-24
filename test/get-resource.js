@@ -137,6 +137,46 @@ describe("Testing jsonapi-server", function() {
         });
       });
 
+      describe("equality for booleans", function() {
+
+        it("matches false", function(done) {
+          var url = "http://localhost:16006/rest/photos?filter[raw]=false";
+          helpers.request({
+            method: "GET",
+            url: url
+          }, function(err, res, json) {
+            assert.equal(err, null);
+            json = helpers.validateJson(json);
+
+            assert.equal(res.statusCode, "200", "Expecting 200 OK");
+            var photoTypes = json.data.map(function(i) { return i.attributes.raw; });
+            assert.deepEqual(photoTypes, [ false, false ], "expected matching resources");
+
+            done();
+          });
+        });
+
+        it("matches true", function(done) {
+          var url = "http://localhost:16006/rest/photos?filter[raw]=true";
+          helpers.request({
+            method: "GET",
+            url: url
+          }, function(err, res, json) {
+            assert.equal(err, null);
+            json = helpers.validateJson(json);
+
+            assert.equal(res.statusCode, "200", "Expecting 200 OK");
+            var photoTypes = json.data.map(function(i) { return i.attributes.raw; });
+            assert.deepEqual(photoTypes, [ true ], "expected matching resources");
+
+            done();
+          });
+        });
+
+
+      });
+
+
       it("less than for strings", function(done) {
         var url = "http://localhost:16006/rest/articles?filter[title]=<M";
         helpers.request({
