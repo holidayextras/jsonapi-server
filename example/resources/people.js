@@ -5,16 +5,7 @@ jsonApi.define({
   namespace: "json:api",
   resource: "people",
   description: "Used to attribute work to specific people.",
-<<<<<<< HEAD
-  handlers: new jsonApi.dynamoHandlers({
-    region: "us-west-2",
-    endpoint: "http://localhost:8000",
-    accessKeyId: "AKIAJ2YTJBP7EAYPARCA",
-    secretAccessKey: "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"
-  }),
-=======
   handlers: peopleHandler,
->>>>>>> master
   searchParams: { },
   attributes: {
     firstname: jsonApi.Joi.string().alphanum()

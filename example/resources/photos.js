@@ -5,16 +5,7 @@ jsonApi.define({
   namespace: "json:api",
   resource: "photos",
   description: "Used to represent all the images in the system.",
-<<<<<<< HEAD
-  handlers: new jsonApi.dynamoHandlers({
-    region: "us-west-2",
-    endpoint: "http://localhost:8000",
-    accessKeyId: "AKIAJ2YTJBP7EAYPARCA",
-    secretAccessKey: "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"
-  }),
-=======
   handlers: photoHandler,
->>>>>>> master
   searchParams: { },
   attributes: {
     title: jsonApi.Joi.string()
