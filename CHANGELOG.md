@@ -36,3 +36,46 @@
 2015-11-11 - v0.12.2
 2015-11-12 - Handlers readiness check
 2015-11-12 - v0.13.0
+2015-11-17 - Additional error handling for foreign relation lookup
+2015-11-17 - v0.13.1
+2015-11-17 - Handlers are now objects instead of modules
+2015-11-17 - v0.14.0
+2015-11-18 - Rename MockHandler to MemoryHandler
+2015-11-18 - v0.15.0
+2015-11-18 - Updated documentation
+2015-11-18 - v0.15.1
+2015-11-19 - Validate filter params before handing over to resourceHandler.search
+2015-11-19 - v0.15.2
+2015-11-25 - Automatic Swagger Generation
+2015-11-25 - Debugging functionality
+2015-11-25 - Validation around handlers behaviour
+2015-11-25 - v0.16.0
+2015-12-03 - Top level jsonapi blocks
+2015-12-05 - Tooling improvements
+2015-12-07 - Efficient inclusions
+2015-12-08 - Pagination support
+2015-12-10 - CPU profiling
+2015-12-10 - Move to lodash
+2015-12-10 - Use filter[] instead of relationships[]
+2015-12-10 - Inclusion bug fixes
+2015-12-10 - v1.0.0
+2015-12-10 - Correcting v8-profiler dependency
+2015-12-10 - v1.0.1
+2015-12-11 - Test harness improvements
+2015-12-11 - v1.0.2
+2015-12-17 - Don't pass on content-length HTTP headers on inclusion requests
+2015-12-17 - Filter won't match undefined properties anymore
+2015-12-17 - v1.0.3
+2015-12-30 - Enable path-less API
+2015-12-30 - v1.0.4
+2015-12-31 - Set Location header correctly when creating resources
+2015-12-31 - v1.0.5
+2015-01-11 - Big documentation improvements
+2015-01-11 - Sanitise input + output with Joi
+2015-01-11 - Updating dependencies
+2015-01-11 - Error hard and fast when incorrectly defining foreign relations
+2015-01-11 - v1.1.0
+2015-01-21 - Set better default CORS headers
+2015-01-21 - v1.2.0
+2015-01-25 - Aggressive cache-expiry headers by default
+2015-01-25 - v1.3.0

@@ -1,5 +1,4 @@
 "use strict";
-var request = require("request");
 var assert = require("assert");
 var helpers = require("./helpers.js");
 var jsonApiTestServer = require("../example/server.js");
@@ -12,7 +11,7 @@ describe("Testing jsonapi-server", function() {
         method: "delete",
         url: "http://localhost:16006/rest/foobar/someId/relationships/author"
       };
-      request(data, function(err, res, json) {
+      helpers.request(data, function(err, res, json) {
         assert.equal(err, null);
         json = helpers.validateError(json);
         assert.equal(res.statusCode, "404", "Expecting 404");
@@ -32,7 +31,7 @@ describe("Testing jsonapi-server", function() {
           "data": { "type": "people", "id": "fa2a073f-8c64-4cbb-9158-b8f67a4ab9f5" }
         })
       };
-      request(data, function(err, res, json) {
+      helpers.request(data, function(err, res, json) {
         assert.equal(err, null);
         json = helpers.validateError(json);
         assert.equal(res.statusCode, "404", "Expecting 404");
@@ -52,7 +51,7 @@ describe("Testing jsonapi-server", function() {
           "data": { "type": "tags", "id": "foobar" }
         })
       };
-      request(data, function(err, res, json) {
+      helpers.request(data, function(err, res, json) {
         assert.equal(err, null);
         json = helpers.validateError(json);
         assert.equal(res.statusCode, "403", "Expecting 403");
@@ -72,7 +71,7 @@ describe("Testing jsonapi-server", function() {
           "data": { "type": "people", "id": "7541a4de-4986-4597-81b9-cf31b6762486" }
         })
       };
-      request(data, function(err, res, json) {
+      helpers.request(data, function(err, res, json) {
         assert.equal(err, null);
         json = helpers.validateError(json);
         assert.equal(res.statusCode, "403", "Expecting 403");
@@ -93,13 +92,11 @@ describe("Testing jsonapi-server", function() {
             "data": { "type": "tags", "id": "7541a4de-4986-4597-81b9-cf31b6762486" }
           })
         };
-        request(data, function(err, res, json) {
+        helpers.request(data, function(err, res, json) {
           assert.equal(err, null);
           json = helpers.validateJson(json);
 
-          var keys = Object.keys(json);
-          assert.deepEqual(keys, [ "meta", "links", "data" ], "Should have meta, links and data");
-          assert.equal(res.statusCode, "201", "Expecting 201");
+          assert.equal(res.statusCode, "200", "Expecting 200");
 
           done();
         });
@@ -107,12 +104,13 @@ describe("Testing jsonapi-server", function() {
 
       it("new resource has changed", function(done) {
         var url = "http://localhost:16006/rest/articles/fa2a073f-8c64-4cbb-9158-b8f67a4ab9f5/relationships/tags";
-        request.get(url, function(err, res, json) {
+        helpers.request({
+        method: "GET",
+        url: url
+      }, function(err, res, json) {
           assert.equal(err, null);
           json = helpers.validateJson(json);
 
-          var keys = Object.keys(json);
-          assert.deepEqual(keys, [ "meta", "links", "data" ], "Should have meta, links, data and included");
           assert.equal(res.statusCode, "200", "Expecting 200");
 
           assert.deepEqual(json.data, [

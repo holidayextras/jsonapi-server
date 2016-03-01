@@ -2,6 +2,24 @@
 var testHelpers = module.exports = { };
 
 var assert = require("assert");
+var request = require("request");
+var swaggerValidator = require("./swaggerValidator.js");
+var profiler = require("v8-profiler");
+var fs = require("fs");
+var path = require("path");
+
+before(function() {
+  profiler.startProfiling("", true);
+});
+
+after(function(done) {
+  var profile = profiler.stopProfiling("");
+  var profileFileName = "jsonapi-server.cpuprofile";
+  var filePath = path.join(__dirname, "..", profileFileName);
+  fs.writeFileSync(filePath, JSON.stringify(profile));
+  console.error("Saved CPU profile to", filePath);
+  done();
+});
 
 testHelpers.validateError = function(json) {
   try {
@@ -11,7 +29,7 @@ testHelpers.validateError = function(json) {
     throw new Error("Failed to parse response");
   }
   var keys = Object.keys(json);
-  assert.deepEqual(keys, [ "meta", "links", "errors" ], "Errors should have specific properties");
+  assert.deepEqual(keys, [ "jsonapi", "meta", "links", "errors" ], "Errors should have specific properties");
   assert.equal(typeof json.links.self, "string", "Errors should have a \"self\" link");
   assert.ok(json.errors instanceof Array, "errors should be an array");
   json.errors.forEach(function(error) {
@@ -33,16 +51,15 @@ testHelpers.validateJson = function(json) {
     throw new Error("Failed to parse response");
   }
   assert.ok(json instanceof Object, "Response should be an object");
+  assert.ok(json.jsonapi instanceof Object, "Response should have a jsonapi block");
   assert.ok(json.meta instanceof Object, "Response should have a meta block");
   assert.ok(json.links instanceof Object, "Response should have a links block");
+  assert.ok(!(json.errors instanceof Object), "Response should not have any errors");
   assert.equal(typeof json.links.self, "string", "Response should have a \"self\" link");
   return json;
 };
 
 testHelpers.validateRelationship = function(relationship) {
-  var keys = Object.keys(relationship);
-  assert.deepEqual(keys, [ "meta", "links", "data" ], "Relationships should have specific properties");
-
   assert.ok(relationship.meta instanceof Object, "Relationships should have a meta block");
   assert.equal(typeof relationship.meta.relation, "string", "Relationships should have a relation type");
   assert.ok([ "primary", "foreign" ].indexOf(relationship.meta.relation) > -1, "Relationships must be primary or foreign");
@@ -77,6 +94,7 @@ testHelpers.validateArticle = function(resource) {
   assert.equal(resource.type, "articles", "Resources must have a type of articles");
   assert.equal(typeof resource.attributes.title, "string", "An articles title should be a string");
   assert.equal(typeof resource.attributes.content, "string", "An articles content should be a string");
+  assert.equal(typeof resource.attributes.status, "string", "An articles status should default to, and always be, a string");
   assert.equal(resource.relationships.author.meta.relation, "primary", "An articles author is a primary relation");
   testHelpers.validateRelationship(resource.relationships.author);
   assert.equal(resource.relationships.tags.meta.relation, "primary", "An articles tags are a primary relation");
@@ -96,4 +114,11 @@ testHelpers.validatePhoto = function(resource) {
   assert.equal(typeof resource.attributes.width, "number", "An photos width should be a number");
   assert.equal(resource.relationships.photographer.meta.relation, "primary", "An photos photographer is a primary relation");
   assert.equal(resource.relationships.articles.meta.relation, "foreign", "An photos articles are a foreign relation");
+};
+
+testHelpers.request = function(params, callback) {
+  request(params, function(err, res, json) {
+    swaggerValidator.assert(params, res.statusCode, json);
+    return callback(err, res, json);
+  });
 };

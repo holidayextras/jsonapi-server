@@ -1,18 +1,18 @@
 
 ### Configuring jsonapi-server
 
-```
+```javascript
 jsonApi.setConfig({
-  // HTTP / HTTPS
+  // (optional) HTTP / HTTPS
   protocol: "http",
-  // The hostname the API will be sat behind, from the customer's perspective
+  // (optional) The hostname the API will be sat behind, from the customer's perspective
   hostname: "localhost",
-  // The port the customer will be using (OPTIONAL)
+  // (required) The port the customer will be using (OPTIONAL)
   port: 16006,
-  // Define a url prefix for the apiConfig
+  // (optional) Define a url prefix for the apiConfig
   // eg http://-----/rest/
   base: "rest",
-  // meta block to appear in the root of every response
+  // (optional) meta block to appear in the root of every response
   meta: {
     copyright: "Blah"
   }
@@ -21,7 +21,7 @@ jsonApi.setConfig({
 
 #### Error Handling
 
-```
+```javascript
 jsonApi.onUncaughtException(function(request, error) {
   // log the error somewhere
 });
@@ -29,7 +29,7 @@ jsonApi.onUncaughtException(function(request, error) {
 
 #### Basic Authentication
 
-```
+```javascript
 // This function will be invoked on every request, as soon as the HTTP
 // request has been parsed into a "request" object.
 jsonApi.authenticate(function(request, callback) {
@@ -43,14 +43,16 @@ jsonApi.authenticate(function(request, callback) {
 
 #### Starting jsonapi-server
 
-Note: You should only start the server once all your resources have been declared!
+Note: You should only start the server once you've called `setConfig` as per the example above. Resources can be defined before OR after the server has been started.
 
-```
+```javascript
 jsonApi.start();
 ```
 
 #### Stopping jsonapi-server
 
-```
+To gracefully shutdown the service, you can call `.close()`. This will inform all handlers that the server is shutting down, they'll have an opportunity to close any open files or connections, then the HTTP server will stop listening.
+
+```javascript
 jsonApi.close();
 ```

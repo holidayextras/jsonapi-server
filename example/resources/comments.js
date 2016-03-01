@@ -1,21 +1,26 @@
 var jsonApi = require("../../.");
+var commentHandler = require("../handlers/commentHandler.js");
 
 jsonApi.define({
   namespace: "json:api",
   resource: "comments",
   description: "Allow people to attach short messages to articles",
+<<<<<<< HEAD
   handlers: new jsonApi.dynamoHandlers({
     region: "us-west-2",
     endpoint: "http://localhost:8000",
     accessKeyId: "AKIAJ2YTJBP7EAYPARCA",
     secretAccessKey: "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"
   }),
+=======
+  handlers: commentHandler,
+>>>>>>> master
   searchParams: { },
   attributes: {
     body: jsonApi.Joi.string()
       .description("The tag name")
       .example("Summer"),
-    timestamp: jsonApi.Joi.date().format("YYYY-MM-DD")
+    timestamp: jsonApi.Joi.string().regex(/^[12]\d\d\d-[01]\d-[0123]\d$/)
       .description("The date on which the comment was created, YYYY-MM-DD")
       .example("2017-05-01"),
     author: jsonApi.Joi.one("people")

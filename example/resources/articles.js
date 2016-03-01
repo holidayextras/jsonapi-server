@@ -1,19 +1,24 @@
 var jsonApi = require("../../.");
+var articleHandler = require("../handlers/articleHandler.js");
 
 jsonApi.define({
   namespace: "json:api",
   resource: "articles",
   description: "Represents the core content, people love to read articles.",
+<<<<<<< HEAD
   handlers: new jsonApi.dynamoHandlers({
     region: "us-west-2",
     endpoint: "http://localhost:8000",
     accessKeyId: "AKIAJ2YTJBP7EAYPARCA",
     secretAccessKey: "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"
   }),
+=======
+  handlers: articleHandler,
+>>>>>>> master
   searchParams: {
-    query: jsonApi.Joi.string()
+    query: jsonApi.Joi.number()
       .description("Fuzzy text match against titles")
-      .example("learn")
+      .example(123)
   },
   attributes: {
     title: jsonApi.Joi.string().required()
@@ -25,6 +30,9 @@ jsonApi.define({
     created: jsonApi.Joi.date().format("YYYY-MM-DD")
       .description("The date on which the article was created, YYYY-MM-DD")
       .example("2017-05-01"),
+    status: jsonApi.Joi.string().default("published")
+      .description("The status of the article - draft, ready, published")
+      .example("published"),
     author: jsonApi.Joi.one("people")
       .description("The person who wrote the article"),
     tags: jsonApi.Joi.many("tags")
@@ -78,7 +86,7 @@ jsonApi.define({
       content: "na",
       author: { type: "people", id: "32fb0105-acaa-4adb-9ec4-8b49633695e1" },
       tags: [
-        { type: "tags", id: "7541a4de-4986-4597-81b9-cf31b6762486" }
+        { type: "tags", id: "8d196606-134c-4504-a93a-0d372f78d6c5" }
       ],
       photos: [
         { type: "photos", id: "aab14844-97e7-401c-98c8-0bd5ec922d93" }
