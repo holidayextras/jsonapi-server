@@ -24,29 +24,22 @@ describe("Testing jsonapi-server", function() {
     it("errors if resource doesnt validate", function(done) {
       var data = {
         method: "post",
-        url: "http://localhost:16006/rest/photos",
+        url: "http://localhost:16006/rest/articles",
         headers: {
           "Content-Type": "application/vnd.api+json"
         },
         body: JSON.stringify({
           "data": {
             "type": "photos",
-            "attributes": {
-              "title": "Ember Hamster",
-              "height": 512,
-              "width": 1024
-            },
-            "relationships": {
-              "photographer": {
-                "data": { "type": "people", "id": "cc5cca2e-0dd8-4b95-8cfc-a11230e73116" }
-              }
-            }
+            "attributes": { },
+            "relationships": { }
           }
         })
       };
       helpers.request(data, function(err, res, json) {
         assert.equal(err, null);
         json = helpers.validateError(json);
+        assert.equal(json.errors[0].detail.length, 2, "Expecting several validation errors");
         assert.equal(res.statusCode, "403", "Expecting 403");
 
         done();
