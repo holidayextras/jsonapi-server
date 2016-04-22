@@ -1,3 +1,5 @@
+- 2016-04-22 - v1.4.0
+- 2016-04-22 - Return all validation errors
 - 2016-02-16 - v1.3.3
 - 2016-02-16 - Filtering falsy boolean values
 - 2016-02-16 - v1.3.2
