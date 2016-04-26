@@ -1,0 +1,10 @@
+[include]
+./lib/
+
+[ignore]
+.*bad-locale\.json
+
+[options]
+module.ignore_non_literal_requires=true
+munge_underscores=true
+suppress_comment= \\(.\\|\n\\)*\\$FlowFixMe
