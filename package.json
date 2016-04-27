@@ -26,6 +26,7 @@
     "express": "4.13.3",
     "flow-bin": "^0.23.1",
     "joi": "6.10.1",
+    "jscpd": "^0.6.1",
     "lodash.assign": "3.2.0",
     "lodash.isequal": "3.0.4",
     "lodash.omit": "3.1.0",
@@ -53,6 +54,7 @@
     "complexity": "node ./node_modules/plato/bin/plato -r -d complexity lib",
     "performance": "node --allow-natives-syntax --harmony ./node_modules/mocha/bin/_mocha -S --reporter mocha-performance ./test/*.js",
     "lint": "node ./node_modules/eslint/bin/eslint ./example ./lib ./test --quiet && echo '✔ All good!'",
+    "jscpd": "jscpd --blame -p ./lib/ || echo 'Finished!'",
     "flow": "node ./node_modules/flow-bin/cli.js && echo '✔ All good!'"
   },
   "config": {
