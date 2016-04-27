@@ -26,6 +26,11 @@ To verify all the code changes pass our style guidelines:
 npm run lint
 ```
 
+To run the static analysis tool (provided by Flow):
+```
+npm run flow
+```
+
 To verify everything still behaves as expected:
 ```
 npm test
