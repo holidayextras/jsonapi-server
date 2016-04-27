@@ -25,6 +25,7 @@
     "debug": "2.2.0",
     "express": "4.13.3",
     "joi": "6.10.1",
+    "jscpd": "^0.6.1",
     "lodash.assign": "3.2.0",
     "lodash.isequal": "3.0.4",
     "lodash.omit": "3.1.0",
@@ -51,7 +52,8 @@
     "coverage": "node ./node_modules/mocha/bin/mocha -S --require blanket --reporter html-cov ./test/*.js > coverage.html",
     "complexity": "node ./node_modules/plato/bin/plato -r -d complexity lib",
     "performance": "node --allow-natives-syntax --harmony ./node_modules/mocha/bin/_mocha -S --reporter mocha-performance ./test/*.js",
-    "lint": "node ./node_modules/eslint/bin/eslint ./example ./lib ./test --quiet && echo '✔ All good!'"
+    "lint": "node ./node_modules/eslint/bin/eslint ./example ./lib ./test --quiet && echo '✔ All good!'",
+    "jscpd": "jscpd --blame -p ./lib/ || echo 'Finished!'"
   },
   "config": {
     "blanket": {
