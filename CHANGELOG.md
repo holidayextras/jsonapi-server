@@ -1,3 +1,6 @@
+- 2016-05-05 - v1.5.0
+- 2016-05-05 - Allow overriding debug output functions
+- 2016-04-27 - Static code analysis with Flow and JSCPD
 - 2016-04-22 - v1.4.0
 - 2016-04-22 - Return all validation errors
 - 2016-02-16 - v1.3.3
