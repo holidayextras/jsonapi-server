@@ -125,6 +125,68 @@ describe("Testing jsonapi-server", function() {
         });
       });
     });
+
+    describe("with recursive includes", function() {
+      var manuallyExpanded;
+      var automaticallyExpanded;
+
+      it("works with a manually expanded string", function(done) {
+        var url = "http://localhost:16006/rest/tags/7541a4de-4986-4597-81b9-cf31b6762486?include=parent.parent.parent.parent.articles";
+        helpers.request({
+          method: "GET",
+          url: url
+        }, function(err, res, json) {
+          assert.equal(err, null);
+          json = helpers.validateJson(json);
+
+          assert.equal(res.statusCode, "200", "Expecting 200 OK");
+          assert.equal(json.included.length, 5, "Should be 5 included resources");
+          assert.equal(json.included[4].type, "articles", "Last include should be an article");
+          manuallyExpanded = json;
+          done();
+        });
+      });
+
+      it("works with a automatically expanded string", function(done) {
+        var url = "http://localhost:16006/rest/tags/7541a4de-4986-4597-81b9-cf31b6762486?include=parent[4].articles";
+        helpers.request({
+          method: "GET",
+          url: url
+        }, function(err, res, json) {
+          assert.equal(err, null);
+          json = helpers.validateJson(json);
+
+          assert.equal(res.statusCode, "200", "Expecting 200 OK");
+          assert.equal(json.included.length, 5, "Should be 5 included resources");
+          assert.equal(json.included[4].type, "articles", "Last include should be an article");
+          automaticallyExpanded = json;
+          done();
+        });
+      });
+
+      it("should have identical payloads for both methods of recursive inclusion", function(done) {
+        manuallyExpanded.links.self = null;
+        automaticallyExpanded.links.self = null;
+        assert.deepEqual(manuallyExpanded, automaticallyExpanded);
+        done();
+      });
+
+      it("should expand out nested include path", function(done) {
+        var url = "http://localhost:16006/rest/tags/2a3bdea4-a889-480d-b886-104498c86f69?include=[articles.tags.children][2]";
+        helpers.request({
+          method: "GET",
+          url: url
+        }, function(err, res, json) {
+          assert.equal(err, null);
+          json = helpers.validateJson(json);
+
+          assert.equal(res.statusCode, "200", "Expecting 200 OK");
+          assert.equal(json.included.length, 4, "Should be 4 included resources");
+          automaticallyExpanded = json;
+          done();
+        });
+      });
+    });
   });
 
   before(function() {
