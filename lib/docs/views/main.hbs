@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Blarg</title>
+    <script src="/documentation/d3-3.5.5/d3.min.js"></script>
+    <script src="/documentation/jquery-2.1.4/jquery.min.js"></script>
+    <script src="/documentation/bootstrap-3.3.4/js/bootstrap.min.js"></script>
+    <script src="/documentation/svg-script.js"></script>
+
+    <link rel="stylesheet" href="/documentation/bootstrap-3.3.4/css/bootstrap.css">
+    <link rel="stylesheet" href="/documentation/styles.css">
+    <link rel="stylesheet" href="/documentation/svg-styles.css">
+  </head>
+  <body>
+    <div class="jumbotron">
+      <div class="container">
+        <h1>{{config.name}}</h1>
+        <p>{{config.description}}</p>
+      </div>
+    </div>
+
+    <div class="container">
+			<div id="main-content" class="col-md-9">
+        {{>about}}
+
+        {{>routes}}
+
+        {{>overview}}
+
+        {{#each namespaces}}
+          {{>resourceSummary}}
+          {{#each resources}}
+            {{>resource}}
+          {{/each}}
+        {{/each}}
+      </div>
+
+      {{>rest}}
+
+      <div id="nav-container" class="col-md-3">
+        <ul id="nav-menu" class="nav nav-stacked hidden-xs hidden-sm" data-spy="affix" data-offset-top="250"></ul>
+      </div>
+		</div>
+
+    <script type="text/javascript">
+      window.data = {{{serialised}}};
+    </script>
+    <script src="/documentation/scripts.js"></script>
+    <script src="/documentation/rest-script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,47 @@
+<br />
+<h3>{{name}}</h3>
+
+<p>{{description}}</p>
+
+{{#each operations}}
+  <button type="button" class="btn btn-success btn-xs" onclick="doRestModalFor('{{resource}}', '{{type}}');">{{type}}</button>
+{{/each}}
+<br /><br />
+
+<table class="table table-hover table-condensed">
+  <tr>
+    <th>Attribute</th>
+    <th>Type</th>
+    <th>Description</th>
+    <th>Example</th>
+  </tr>
+  {{#each searchParams}}
+    {{#if resourceSpecific}}
+      <tr class="{{#if required}} warning {{/if}}">
+        <td>{{name}}</td>
+        <td>{{type}}{{ref}}</td>
+        <td>{{description}}</td>
+        <td>{{example}}</td>
+      </tr>
+    {{/if}}
+  {{/each}}
+</table>
+
+<table class="table table-hover table-condensed">
+  <tr>
+    <th>Attribute</th>
+    <th>Type</th>
+    <th>Description</th>
+    <th>Example</th>
+  </tr>
+  {{#each attributes}}
+    {{#if resourceSpecific}}
+      <tr class="{{#if required}} warning {{/if}}">
+        <td>{{name}}</td>
+        <td>{{type}}{{ref}}</td>
+        <td>{{description}}</td>
+        <td>{{example}}</td>
+      </tr>
+    {{/if}}
+  {{/each}}
+</table>

@@ -1,0 +1,63 @@
+<div class="modal fade" id="rest" tabindex="-1" role="dialog" aria-labelledby="JSON:API Explorer">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">JSON:API Explorer</h4>
+      </div>
+      <div class="modal-body" id="rest-body">
+
+        <div id="rest-1">
+          <form class="form-horizontal">
+            <div class="form-group">
+              <label for="inputEmail3" class="col-sm-2 control-label">Resource</label>
+              <div class="col-sm-10">
+                <select id="rest-resource" class="form-control">
+                  {{#each namespaces}}
+                  <optgroup label="{{namespace}}">
+                    {{#each resources}}
+                      <option value="{{name}}">{{name}}</option>
+                    {{/each}}
+                  </optgroup>
+                  {{/each}}
+                </select>
+                <p id="rest-resource-description">resource description goes here?!</p>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="inputEmail3" class="col-sm-2 control-label">Method</label>
+              <div class="col-sm-10">
+                <select id="rest-route" class="form-control">
+                  <option value="search">Search for resources</option>
+                  <option value="find">Find a specific resource</option>
+                  <option value="create">Create a new resource</option>
+                  <option value="update">Update a specific resource</option>
+                  <option value="delete">Delete a specific resource</option>
+                </select>
+              </div>
+            </div>
+            <div id="rest-params"></div>
+            <div id="rest-additional"></div>
+          </div>
+        </form>
+
+        <div id="rest-2">
+          <pre id="rest-request" class="pre-scrollable">
+POST /bin/login HTTP/1.1
+Host: 127.0.0.1:8000
+
+
+User=Peter+Lee&pw=123456&action=login
+          </pre>
+          <img id="rest-loading" src="/documentation/ajax-loader.gif" />
+
+          <pre id="rest-response" class="pre-scrollable"></pre>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button id="rest-back" type="button" class="btn btn-primary">Back</button>
+        <button id="rest-submit" type="button" class="btn btn-primary">Submit</button>
+      </div>
+    </div>
+  </div>
+</div>
