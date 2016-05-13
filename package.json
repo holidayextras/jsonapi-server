@@ -50,6 +50,7 @@
     "test": "node ./node_modules/mocha/bin/mocha -S -R spec ./test/*.js",
     "start": "node example/server.js",
     "coveralls": "node ./node_modules/mocha/bin/mocha -S --require blanket --reporter mocha-lcov-reporter ./test/*.js | node ./node_modules/coveralls/bin/coveralls.js",
+    "stop": "pkill jsonapi-server",
     "coverage": "node ./node_modules/mocha/bin/mocha -S --require blanket --reporter html-cov ./test/*.js > coverage.html",
     "complexity": "node ./node_modules/plato/bin/plato -r -d complexity lib",
     "performance": "node --allow-natives-syntax --harmony ./node_modules/mocha/bin/_mocha -S --reporter mocha-performance ./test/*.js",

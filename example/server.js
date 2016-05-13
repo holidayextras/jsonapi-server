@@ -5,14 +5,16 @@ var jsonApi = require("../.");
 var fs = require("fs");
 var path = require("path");
 
+process.title = "jsonapi-server";
+
 jsonApi.setConfig({
   swagger: {
-    title: "Example JSON:API Server",
+    title: "Apple DP JSON:API Server",
     version: "0.1.1",
     description: "This is the API description block that shows up in the swagger.json",
     contact: {
       name: "API Contact",
-      email: "apicontact@holidayextras.com",
+      email: "akirka@gmail.com",
       url: "docs.hapi.holidayextras.com"
     },
     license: {
@@ -23,7 +25,7 @@ jsonApi.setConfig({
   protocol: "http",
   hostname: "localhost",
   port: 16006,
-  base: "rest",
+  base: "1",
   meta: {
     description: "This block shows up in the root node of every payload"
   }
