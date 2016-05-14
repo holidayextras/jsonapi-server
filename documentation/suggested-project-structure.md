@@ -80,9 +80,9 @@ module.exports = specificEsCluster;
 // // If you want to intercept calls to extend existing behaviour:
 //
 // var baseCreate = specificEsCluster.create;
-// specificEsCluster.create = function(request, callback) {
+// specificEsCluster.create = function(request, newResource, callback) {
 //   // tweak something?
-//   baseCreate.call(specificEsCluster, request, function(err, result) {
+//   baseCreate.call(specificEsCluster, request, newResource, function(err, result) {
 //     // tweak something else?
 //     return callback(err, result);
 //   });
