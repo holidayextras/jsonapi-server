@@ -2,7 +2,7 @@
 var request = require("request");
 var assert = require("assert");
 var jsonApiTestServer = require("../example/server.js");
-
+var helpers = require("./helpers.js");
 
 describe("Testing jsonapi-server", function() {
   describe("authentication", function() {
@@ -14,10 +14,10 @@ describe("Testing jsonapi-server", function() {
           "blockMe": "please"
         }
       };
-      request(data, function(err, res) {
+      request(data, function(err, res, json) {
         assert.equal(err, null);
         assert.equal(res.statusCode, "401", "Expecting 401");
-
+        helpers.validateError(json);
         done();
       });
     });
@@ -30,10 +30,10 @@ describe("Testing jsonapi-server", function() {
           "cookie": "blockMe=please"
         }
       };
-      request(data, function(err, res) {
+      request(data, function(err, res, json) {
         assert.equal(err, null);
         assert.equal(res.statusCode, "401", "Expecting 401");
-
+        helpers.validateError(json);
         done();
       });
     });
