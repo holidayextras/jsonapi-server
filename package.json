@@ -48,13 +48,13 @@
   },
   "scripts": {
     "test": "node ./node_modules/mocha/bin/mocha -S -R spec ./test/*.js",
-    "start": "node example/server.js",
+    "start": "node apple/server.js",
     "coveralls": "node ./node_modules/mocha/bin/mocha -S --require blanket --reporter mocha-lcov-reporter ./test/*.js | node ./node_modules/coveralls/bin/coveralls.js",
     "stop": "pkill jsonapi-server",
     "coverage": "node ./node_modules/mocha/bin/mocha -S --require blanket --reporter html-cov ./test/*.js > coverage.html",
     "complexity": "node ./node_modules/plato/bin/plato -r -d complexity lib",
     "performance": "node --allow-natives-syntax --harmony ./node_modules/mocha/bin/_mocha -S --reporter mocha-performance ./test/*.js",
-    "lint": "node ./node_modules/eslint/bin/eslint ./example ./lib ./test --quiet && echo '✔ All good!'",
+    "lint": "node ./node_modules/eslint/bin/eslint ./apple ./lib ./test --quiet && echo '✔ All good!'",
     "jscpd": "jscpd --blame -p ./lib/ || echo 'Finished!'",
     "flow": "node ./node_modules/flow-bin/cli.js && echo '✔ All good!'"
   },
@@ -64,7 +64,7 @@
       "data-cover-never": [
         "node_modules",
         "test",
-        "example"
+        "apple"
       ]
     }
   }
