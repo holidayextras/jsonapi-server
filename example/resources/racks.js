@@ -12,9 +12,12 @@ jsonApi.define({
   }),
   searchParams: {},
   attributes: {
-     name: jsonApi.Joi.string().required()
-      .description("The rack name.")
-      .example("RACK0"),
+     rack: jsonApi.Joi.string().required()
+      .description("The rack number 0-5.")
+      .example("0"),
+     cabinet: jsonApi.Joi.string().required()
+      .description("The cabinet number 1-35.")
+      .example("1"),
      circuits: jsonApi.Joi.many("circuits")
       .description("All of the circuits associated with this rack. RACK0 will have no circuits."),
      tags: jsonApi.Joi.many("tags")

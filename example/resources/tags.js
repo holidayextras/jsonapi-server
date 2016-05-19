@@ -1,56 +1,81 @@
 var jsonApi = require("../../.");
-var tagHandler = require("../handlers/tagHandler.js");
+var MongoStore = require("../../../jsonapi-store-mongodb");
+//var rppHandler = require("../handlers/rppHandler.js");
 
 jsonApi.define({
   namespace: "json:api",
   resource: "tags",
-  description: "Used to group resources together, useful for finding related resources.",
-  handlers: tagHandler,
-  searchParams: { },
+  description: "Represents a tag.",
+  handlers: new MongoStore({
+    //url: "mongodb://localhost:27017/",
+    url: "mongodb://swagger:swagger1234@bigharddoors.com:27017/?ssl=true",
+  }),
+  searchParams: {},
   attributes: {
-    name: jsonApi.Joi.string()
-      .description("The tag name")
-      .example("Summer"),
-    articles: jsonApi.Joi.belongsToMany({
-      resource: "articles",
+     tagPrefix: jsonApi.Joi.string().required()
+      .description("The tag prefix name.")
+      .example("DP01A"),
+     circuit: jsonApi.Joi.string().required()
+      .description("The circuit number of 1 or 2.")
+      .example("1"),
+     phase: jsonApi.Joi.string().required()
+      .description("Phase A, B, or C")
+      .example("A"),
+     memLocation: jsonApi.Joi.string().required()
+      .description("PLC memory location.")
+      .example("N21:0"),
+     postTagname: jsonApi.Joi.string().required()
+      .description("The tag suffix name.")
+      .example("CB1_CR1_PHA_Volts"),
+     description: jsonApi.Joi.string().required()
+      .description("The tag description.")
+      .example("Volts from TrendPoint."),
+     units: jsonApi.Joi.string().required()
+      .description("The tag units.")
+      .example("Volts"),
+     isWritable: jsonApi.Joi.boolean().required()
+      .description("Can you write to this tag.")
+      .example("FALSE"),
+     isEnabled: jsonApi.Joi.boolean().required()
+      .description("Is this tag enabled. If false, then the tag will be ignored.")
+      .example("TRUE"),
+     isHistorical: jsonApi.Joi.boolean().required()
+      .description("Should we store historical data for this tag.")
+      .example("TRUE"),
+     divider: jsonApi.Joi.number().required()
+      .description("The tag value scaling factor to convert from raw counts to eng units.")
+      .example("1000"),
+     modbusAddress: jsonApi.Joi.number().integer()
+      .description("The modbus address for this tag, must be an integer.")
+      .example("44001"),
+     circuit: jsonApi.Joi.belongsToOne({
+      resource: "circuits",
       as: "tags"
-    }),
-    parent: jsonApi.Joi.one("tags"),
-    children: jsonApi.Joi.belongsToMany({
-      resource: "tags",
-      as: "parent"
+      }).optional(),
+     rpp: jsonApi.Joi.belongsToOne({
+      resource: "rpps",
+      as: "tags"
+      }),
+     rack: jsonApi.Joi.belongsToOne({
+      resource: "racks",
+      as: "tags"
     })
   },
   examples: [
     {
-      id: "7541a4de-4986-4597-81b9-cf31b6762486",
-      type: "tags",
-      name: "live",
-      parent: { type: "tags", id: "2a3bdea4-a889-480d-b886-104498c86f69" }
-    },
-    {
-      id: "2a3bdea4-a889-480d-b886-104498c86f69",
-      type: "tags",
-      name: "staging",
-      parent: { type: "tags", id: "6ec62f6d-9f82-40c5-b4f4-279ed1765492" }
-    },
-    {
-      id: "6ec62f6d-9f82-40c5-b4f4-279ed1765492",
-      type: "tags",
-      name: "building",
-      parent: { type: "tags", id: "68538177-7a62-4752-bc4e-8f971d253b42" }
-    },
-    {
-      id: "68538177-7a62-4752-bc4e-8f971d253b42",
-      type: "tags",
-      name: "development",
-      parent: { type: "tags", id: "8d196606-134c-4504-a93a-0d372f78d6c5" }
-    },
-    {
-      id: "8d196606-134c-4504-a93a-0d372f78d6c5",
-      type: "tags",
-      name: "planning",
-      parent: null
-    }
+            id: "6847a4de-1234-4597-81b9-cf31b4859486",
+            type: "tags",
+            circuitNumber: "1",
+            phase: "A",
+            memLocation: "N21:0",
+            postTagname: "CB1_CR1_PHA_Volts",
+            description: "Volts from TrendPoint.",
+            units: "Volts",
+            isWritable: "true",
+            isEnabled: "true",
+            isHistorical: "true",
+            divider: "1000",
+            modbusAddress: "44001"
+        }
   ]
 });

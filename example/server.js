@@ -23,7 +23,7 @@ jsonApi.setConfig({
     }
   },
   protocol: "http",
-  hostname: "localhost",
+  hostname: "162.243.36.108",
   port: 16006,
   base: "1",
   meta: {

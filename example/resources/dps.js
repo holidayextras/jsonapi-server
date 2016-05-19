@@ -15,6 +15,12 @@ jsonApi.define({
      name: jsonApi.Joi.string().required()
       .description("The panel name.")
       .example("DP01A"),
+     cabinet: jsonApi.Joi.string().required()
+      .description("The cabinet number (1-35).")
+      .example("1"),
+     rack: jsonApi.Joi.string().required()
+      .description("The rack number (0-5).")
+      .example("1"),     
      ipAddressPlc: jsonApi.Joi.string().required()
       .description("The IP address of the plc.")
       .example("10.10.10.12"),
