@@ -8,7 +8,7 @@ jsonApi.define({
   description: "History table for storing timestamped tag values.",
   handlers: new MongoStore({
     //url: "mongodb://localhost:27017/",
-    url: "mongodb://swagger:swagger1234@bigharddoors.com:27017/?ssl=true",
+    url: "mongodb://swagger:swagger1234@bigharddoors.com:27017/Apple/?ssl=true",
   }),
   searchParams: {},
   attributes: {
