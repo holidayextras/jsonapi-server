@@ -5155,6 +5155,13 @@ definitions:
           modbusAddress:
             description: 'The modbus address for this tag, must be an integer.'
             type: number
+          value:
+            description: The current value of the tag in engineering units.
+            type: number
+          lastUpdate:
+            description: The last time the current value was updated in UNIX time (ms).
+            type: string
+            format: date
       relationships:
         type: object
         

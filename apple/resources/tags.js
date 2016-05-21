@@ -48,6 +48,12 @@ jsonApi.define({
      modbusAddress: jsonApi.Joi.number().integer()
       .description("The modbus address for this tag, must be an integer.")
       .example("44001"),
+     value: jsonApi.Joi.number()
+      .description("The current value of the tag in engineering units.")
+      .example("24.5"),
+     lastUpdate: jsonApi.Joi.date()
+      .description("The last time the current value was updated in UNIX time (ms).")
+      .example("1463776147123"),
      history: jsonApi.Joi.many("history")
       .description("The timestamped history of the tag."),
      circuit: jsonApi.Joi.belongsToOne({
