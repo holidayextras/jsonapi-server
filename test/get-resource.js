@@ -105,6 +105,22 @@ describe("Testing jsonapi-server", function() {
         });
       });
 
+      it("unknown multiple attribute should error", function(done) {
+        var url = "http://localhost:16006/rest/articles?filter[foo]=bar&filter[foo]=baz";
+        helpers.request({
+          method: "GET",
+          url: url
+        }, function(err, res, json) {
+          assert.equal(err, null);
+          json = helpers.validateError(json);
+          assert.equal(res.statusCode, "403", "Expecting 403 FORBIDDEN");
+          var error = json.errors[0];
+          assert.equal(error.code, "EFORBIDDEN");
+          assert.equal(error.title, "Invalid filter");
+          done();
+        });
+      });
+
       it("equality for strings", function(done) {
         var url = "http://localhost:16006/rest/articles?filter[title]=How%20to%20AWS";
         helpers.request({
