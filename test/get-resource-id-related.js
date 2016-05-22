@@ -111,7 +111,7 @@ describe("Testing jsonapi-server", function() {
         json = helpers.validateJson(json);
 
         assert.equal(res.statusCode, "200", "Expecting 200 OK");
-        assert.deepEqual(json.data, null);
+        assert(!json.data);
 
         done();
       });
