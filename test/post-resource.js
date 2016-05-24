@@ -36,7 +36,7 @@ describe("Testing jsonapi-server", function() {
           }
         })
       };
-      helpers.request(data, function(err, res, json) {
+      request(data, function(err, res, json) {
         assert.equal(err, null);
         json = helpers.validateError(json);
         assert.equal(json.errors[0].detail.length, 2, "Expecting several validation errors");
