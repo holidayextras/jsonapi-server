@@ -1,3 +1,5 @@
+- 2016-05-24 - v1.8.0
+- 2016-05-24 - HTTPS support
 - 2016-05-24 - v1.7.0
 - 2016-05-24 - Resolves swagger validation errors
 - 2016-05-24 - Generated swagger doc adheres to required() fields
