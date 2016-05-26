@@ -1,6 +1,7 @@
 "use strict";
 var assert = require("assert");
 var helpers = require("./helpers.js");
+var request = require("request");
 var jsonApiTestServer = require("../example/server.js");
 
 
@@ -38,7 +39,7 @@ describe("Testing jsonapi-server", function() {
 
     it("with fields", function(done) {
       var url = "http://localhost:16006/rest/articles/de305d54-75b4-431b-adb2-eb6b9e546014?fields[articles]=title";
-      helpers.request({
+      request({
         method: "GET",
         url: url
       }, function(err, res, json) {

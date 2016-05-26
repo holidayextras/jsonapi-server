@@ -1,6 +1,6 @@
 {
   "name": "jsonapi-server",
-  "version": "1.5.0",
+  "version": "1.8.0",
   "description": "A config driven NodeJS framework implementing json:api",
   "keywords": [
     "jsonapi",
@@ -24,26 +24,28 @@
     "cookie-parser": "1.4.0",
     "debug": "2.2.0",
     "express": "4.13.3",
-    "flow-bin": "^0.23.1",
     "joi": "6.10.1",
-    "jscpd": "^0.6.1",
     "lodash.assign": "3.2.0",
     "lodash.isequal": "3.0.4",
     "lodash.omit": "3.1.0",
     "lodash.pick": "3.1.0",
     "lodash.uniq": "3.2.2",
     "node-uuid": "1.4.7",
+    "qs": "^6.2.0",
     "request": "2.67.0"
   },
   "devDependencies": {
-    "mocha": "2.2.5",
-    "eslint": "0.24.1",
     "blanket": "1.1.7",
-    "mocha-lcov-reporter": "0.0.2",
     "coveralls": "2.11.2",
-    "plato": "1.5.0",
+    "eslint": "0.24.1",
+    "flow-bin": "^0.23.1",
+    "jscpd": "^0.6.1",
+    "mocha": "2.2.5",
+    "mocha-lcov-reporter": "0.0.2",
     "mocha-performance": "0.1.0",
     "node-inspector": "0.12.5",
+    "plato": "1.5.0",
+    "swagger-tools": "^0.10.1",
     "v8-profiler": "5.5.0"
   },
   "scripts": {
@@ -56,7 +58,8 @@
     "performance": "node --allow-natives-syntax --harmony ./node_modules/mocha/bin/_mocha -S --reporter mocha-performance ./test/*.js",
     "lint": "node ./node_modules/eslint/bin/eslint ./apple ./lib ./test --quiet && echo '✔ All good!'",
     "jscpd": "jscpd --blame -p ./lib/ || echo 'Finished!'",
-    "flow": "node ./node_modules/flow-bin/cli.js && echo '✔ All good!'"
+    "flow": "node ./node_modules/flow-bin/cli.js && echo '✔ All good!'",
+    "swagger": "node ./node_modules/mocha/bin/mocha -S -R spec ./swaggerValidator.js --timeout 60000"
   },
   "config": {
     "blanket": {

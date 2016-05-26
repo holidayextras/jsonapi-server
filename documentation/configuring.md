@@ -19,6 +19,40 @@ jsonApi.setConfig({
 });
 ```
 
+#### Configuring HTTPS
+
+To run over HTTPS, set the protocol to _https_ and configure the appropriate TLS settings
+
+For example: 
+
+```javascript
+var fs = require("fs");
+jsonApi.setConfig({
+  protocol: "https",
+  port: 16006,
+  tls: {
+    cert: fs.readFileSync('server.crt'),
+    key: fs.readFileSync('server.key')
+    passphrase: 'pass'
+  }
+});
+```
+or
+
+```javascript
+var fs = require("fs");
+jsonApi.setConfig({
+  protocol: "https",
+  port: 16006,
+  tls: {
+    pfx: fs.readFileSync('server.pfx'),
+    passphrase: 'pass'
+  }
+});
+```
+
+For a full set of tls options, see https://nodejs.org/api/tls.html#tls_tls_createserver_options_secureconnectionlistener
+
 #### Error Handling
 
 ```javascript

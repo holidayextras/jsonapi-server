@@ -1,3 +1,12 @@
+- 2016-05-24 - v1.8.0
+- 2016-05-24 - HTTPS support
+- 2016-05-24 - v1.7.0
+- 2016-05-24 - Resolves swagger validation errors
+- 2016-05-24 - Generated swagger doc adheres to required() fields
+- 2016-05-16 - v1.6.0
+- 2016-05-16 - Enable authentication errors
+- 2016-05-16 - Avoid the HTTP stack for inclusions
+- 2016-05-16 - Fix crash when opt-ing out of resource operations
 - 2016-05-05 - v1.5.0
 - 2016-05-05 - Allow overriding debug output functions
 - 2016-04-27 - Static code analysis with Flow and JSCPD
