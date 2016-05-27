@@ -1,3 +1,5 @@
+- 2016-05-27 - v1.9.0
+- 2016-05-27 - Make parsed and validated filter available in request for handlers
 - 2016-05-24 - v1.8.0
 - 2016-05-24 - HTTPS support
 - 2016-05-24 - v1.7.0
