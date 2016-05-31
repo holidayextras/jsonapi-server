@@ -12,10 +12,10 @@ jsonApi.define({
   }),
   searchParams: {},
   attributes: {
-     circuit: jsonApi.Joi.string().required()
+     circuitNum: jsonApi.Joi.string().required()
       .description("The circuit name CR1 or CR2.")
       .example("CR1"),
-     cabinet: jsonApi.Joi.string().required()
+     cabinetNum: jsonApi.Joi.string().required()
       .description("The cabinet number 1-35.")
       .example("1"),
      tags: jsonApi.Joi.many("tags")
@@ -27,6 +27,6 @@ jsonApi.define({
   },
   examples: [
     {
-        }
+    }
   ]
 });

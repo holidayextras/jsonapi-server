@@ -12,30 +12,18 @@ jsonApi.define({
   }),
   searchParams: {},
   attributes: {
-     rack: jsonApi.Joi.string().required()
-      .description("The rack number 0-5.")
-      .example("0"),
-     cabinet: jsonApi.Joi.string().required()
+     rackNum: jsonApi.Joi.string().required()
+      .description("The rack number 1-5.")
+      .example("1"),
+     cabinetNum: jsonApi.Joi.string().required().allow('')
       .description("The cabinet number 1-35.")
       .example("1"),
-     circuits: jsonApi.Joi.many("circuits")
+     circuits: jsonApi.Joi.many("circuits").optional()
       .description("All of the circuits associated with this rack. RACK0 will have no circuits."),
-     tags: jsonApi.Joi.many("tags")
-      .description("All of the tags associated with this rack. Only RACK0 will have tags."),
-     dps: jsonApi.Joi.belongsToMany({
+     dps: jsonApi.Joi.belongsToOne({
       resource: "dps",
       as: "racks"
     })
   },
-  examples: [
-    {
-            id: "7541a4de-4986-4597-81b9-cf31b4859486",
-            type: "racks",
-            name: "RACK1",
-            circuits: [
-              { type: "circuits", id: "1234a4de-4986-4597-81b9-cf31b4859486" }
-            ],
-            tags: []
-        }
-  ]
+  examples: [{}]
 });

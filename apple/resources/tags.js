@@ -15,10 +15,10 @@ jsonApi.define({
      tagPrefix: jsonApi.Joi.string().required()
       .description("The tag prefix name.")
       .example("DP01A"),
-     circuit: jsonApi.Joi.string().required()
+     circuitNum: jsonApi.Joi.string().required().allow('')
       .description("The circuit number of 1 or 2.")
       .example("1"),
-     phase: jsonApi.Joi.string().required()
+     phase: jsonApi.Joi.string().optional().allow('')
       .description("Phase A, B, or C")
       .example("A"),
      memLocation: jsonApi.Joi.string().required()
@@ -60,30 +60,10 @@ jsonApi.define({
       resource: "circuits",
       as: "tags"
       }).optional(),
-     rpp: jsonApi.Joi.belongsToOne({
-      resource: "rpps",
+     local: jsonApi.Joi.belongsToOne({
+      resource: "locals",
       as: "tags"
-      }),
-     rack: jsonApi.Joi.belongsToOne({
-      resource: "racks",
-      as: "tags"
-    })
+      }).optional()
   },
-  examples: [
-    {
-            id: "6847a4de-1234-4597-81b9-cf31b4859486",
-            type: "tags",
-            circuitNumber: "1",
-            phase: "A",
-            memLocation: "N21:0",
-            postTagname: "CB1_CR1_PHA_Volts",
-            description: "Volts from TrendPoint.",
-            units: "Volts",
-            isWritable: "true",
-            isEnabled: "true",
-            isHistorical: "true",
-            divider: "1000",
-            modbusAddress: "44001"
-        }
-  ]
+  examples: [{}]
 });

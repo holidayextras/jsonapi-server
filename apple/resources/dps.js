@@ -15,10 +15,10 @@ jsonApi.define({
      name: jsonApi.Joi.string().required()
       .description("The panel name.")
       .example("DP01A"),
-     cabinet: jsonApi.Joi.string().required()
+     cabinetNum: jsonApi.Joi.string().required()
       .description("The cabinet number (1-35).")
       .example("1"),
-     rack: jsonApi.Joi.string().required()
+     rackNum: jsonApi.Joi.string().required()
       .description("The rack number (0-5).")
       .example("1"),     
      ipAddressPlc: jsonApi.Joi.string().required()
@@ -31,24 +31,13 @@ jsonApi.define({
       .description("The label <Country>.<Location>.<Building>.<Floor>.<Room>.<Row>.<DP>.<PrimaryOrSec>")
       .example("US.MSC.01.01.0001.01.02.1"),
      racks: jsonApi.Joi.many("racks")
-      .description("All of the racks associated with this DP")
-      .optional(),
+      .description("All of the racks associated with this DP"),
+     local: jsonApi.Joi.one("locals")
+      .description("All of the local tags associated with this DP."),
      rpp: jsonApi.Joi.belongsToOne({
       resource: "rpps",
       as: "dps"
-    }).optional()
-
+    })
   },
-  examples: [
-    {
-            id: "753334de-4986-4597-81b9-cf31b6762486",
-            type: "dps",
-            label: "US.MSC.01.02.0001.01.02.1",
-            ipAddressPlc: "10.10.10.12",
-            macAddressPlc: "00:CA:F1:AB:A9:42",
-            racks: [
-              { type: "racks", id: "7541a4de-4986-4597-81b9-cf31b4859486" }
-            ]
-        }
-  ]
+  examples: [{}]
 });
