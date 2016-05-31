@@ -1,3 +1,5 @@
+- 2016-05-31 - v1.10.0
+- 2016-05-31 - Export module version so data stores can check for a minimum required version
 - 2016-05-27 - v1.9.0
 - 2016-05-27 - Make parsed and validated filter available in request for handlers
 - 2016-05-24 - v1.8.0
