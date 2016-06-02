@@ -1,3 +1,6 @@
+- 2016-06-02 - v1.11.0
+- 2016-06-02 - Error when interacting with broken resources
+- 2016-06-02 - Unable to patch relationships on resources with required attributes
 - 2016-05-31 - v1.10.0
 - 2016-05-31 - Export module version so data stores can check for a minimum required version
 - 2016-05-27 - v1.9.0
