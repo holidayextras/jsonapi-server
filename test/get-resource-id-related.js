@@ -102,7 +102,7 @@ describe("Testing jsonapi-server", function() {
     });
 
     it("with filter", function(done) {
-      var url = "http://localhost:16006/rest/articles/de305d54-75b4-431b-adb2-eb6b9e546014/author?filter[email]=email";
+      var url = "http://localhost:16006/rest/articles/de305d54-75b4-431b-adb2-eb6b9e546014/author?filter[email]=email@example.com";
       helpers.request({
         method: "GET",
         url: url
@@ -111,7 +111,7 @@ describe("Testing jsonapi-server", function() {
         json = helpers.validateJson(json);
 
         assert.equal(res.statusCode, "200", "Expecting 200 OK");
-        assert.deepEqual(json.data, null);
+        assert(!json.data);
 
         done();
       });
