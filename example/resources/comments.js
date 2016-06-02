@@ -8,7 +8,7 @@ jsonApi.define({
   handlers: commentHandler,
   searchParams: { },
   attributes: {
-    body: jsonApi.Joi.string()
+    body: jsonApi.Joi.string().required()
       .description("The tag name")
       .example("Summer"),
     timestamp: jsonApi.Joi.string().regex(/^[12]\d\d\d-[01]\d-[0123]\d$/)
