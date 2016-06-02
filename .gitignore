@@ -3,3 +3,4 @@ coverage.html
 complexity
 npm-debug.log
 jsonapi-server.cpuprofile
+/.idea
