@@ -1,3 +1,15 @@
+- 2016-06-02 - v1.11.0
+- 2016-06-02 - Error when interacting with broken resources
+- 2016-06-02 - Unable to patch relationships on resources with required attributes
+- 2016-05-31 - v1.10.0
+- 2016-05-31 - Export module version so data stores can check for a minimum required version
+- 2016-05-27 - v1.9.0
+- 2016-05-27 - Make parsed and validated filter available in request for handlers
+- 2016-05-24 - v1.8.0
+- 2016-05-24 - HTTPS support
+- 2016-05-24 - v1.7.0
+- 2016-05-24 - Resolves swagger validation errors
+- 2016-05-24 - Generated swagger doc adheres to required() fields
 - 2016-05-16 - v1.6.0
 - 2016-05-16 - Enable authentication errors
 - 2016-05-16 - Avoid the HTTP stack for inclusions
