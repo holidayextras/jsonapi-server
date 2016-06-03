@@ -16,11 +16,11 @@ jsonApi.define({
       .description("All of the local tags associated with this DP or RPP."),
      rpp: jsonApi.Joi.belongsToOne({
       resource: "rpps",
-      as: "locals"
+      as: "local"
     }).optional(),
      dp: jsonApi.Joi.belongsToOne({
       resource: "dps",
-      as: "locals"
+      as: "local"
     }).optional()
   },
   examples: [{}]
