@@ -27,6 +27,9 @@ jsonApi.define({
      postTagname: jsonApi.Joi.string().required()
       .description("The tag suffix name.")
       .example("CB1_CR1_PHA_Volts"),
+     tagname: jsonApi.Joi.string().required()
+      .description("The tagPrefix_postTagname.")
+      .example("DP01a_CB1_CR1_PHA_Volts"),
      description: jsonApi.Joi.string().required()
       .description("The tag description.")
       .example("Volts from TrendPoint."),

@@ -13,8 +13,8 @@ jsonApi.define({
   searchParams: {},
   attributes: {
      circuitNum: jsonApi.Joi.string().required()
-      .description("The circuit name CR1 or CR2.")
-      .example("CR1"),
+      .description("The circuit name 1 or 2.")
+      .example("1"),
      cabinetNum: jsonApi.Joi.string().required()
       .description("The cabinet number 1-35.")
       .example("1"),
