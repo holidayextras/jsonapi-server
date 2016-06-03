@@ -1,6 +1,6 @@
 var jsonApi = require("../../.");
 var commentHandler = require("../handlers/commentHandler.js");
-
+//
 jsonApi.define({
   namespace: "json:api",
   resource: "comments",
