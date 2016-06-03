@@ -1,7 +1,7 @@
 var jsonApi = require("../../.");
 var MongoStore = require("../../../jsonapi-store-mongodb");
 //var rppHandler = require("../handlers/rppHandler.js");
-
+//
 jsonApi.define({
   namespace: "json:api",
   resource: "locals",

@@ -1,6 +1,6 @@
 var jsonApi = require("../../.");
 var peopleHandler = require("../handlers/peopleHandler.js");
-//
+///
 jsonApi.define({
   namespace: "json:api",
   resource: "people",
