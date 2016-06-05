@@ -15,6 +15,12 @@ jsonApi.define({
      tagPrefix: jsonApi.Joi.string().required()
       .description("The tag prefix name.")
       .example("DP01A"),
+     cabinetNum: jsonApi.Joi.string().required().allow('')
+      .description("The cabinet number of 1 - 35 or rpp.")
+      .example("1"),
+     rackNum: jsonApi.Joi.string().required().allow('')
+      .description("The rack number of 1 - 5 or local")
+      .example("1"),
      circuitNum: jsonApi.Joi.string().required().allow('')
       .description("The circuit number of 1 or 2.")
       .example("1"),
