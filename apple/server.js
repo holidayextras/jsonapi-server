@@ -15,7 +15,7 @@ jsonApi.setConfig({
     contact: {
       name: "API Contact",
       email: "akirka@gmail.com",
-      url: "docs.hapi.holidayextras.com"
+      url: "megawin-corp.com"
     },
     license: {
       name: "MIT",
