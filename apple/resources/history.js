@@ -22,10 +22,12 @@ jsonApi.define({
     dataQuality: jsonApi.Joi.string().required()
       .description("Can only be OK or Bad")
       .example("OK"),
+    tagId: jsonApi.Joi.one("tags")
+      .description("The tag this history is for."),    
     tag: jsonApi.Joi.belongsToOne({
       resource: "tags",
       as: "history"
-      })
+    })
   },
   examples: [{}]
 });
