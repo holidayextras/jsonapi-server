@@ -16,17 +16,14 @@ jsonApi.define({
     timestamp: jsonApi.Joi.date().required() // also, for javascript timestamp (milliseconds)
       .description("The Unix time in milliseconds of the tag.")
       .example("1463672736248"),
-    value: jsonApi.Joi.string().required()
+    value: jsonApi.Joi.number().required()
       .description("The current value at the timestamp time of the tag.")
       .example("1245.76"),
     dataQuality: jsonApi.Joi.string().required()
       .description("Can only be OK or Bad")
       .example("OK"),
-    tagId: jsonApi.Joi.one("tags")
-      .description("The tag this history is for."),    
-    tag: jsonApi.Joi.belongsToOne({
-      resource: "tags",
-      as: "history"
+    tagId: jsonApi.Joi.string().required()
+      .description("The tag this history is for.")    
     })
   },
   examples: [{}]

@@ -63,8 +63,6 @@ jsonApi.define({
      lastUpdate: jsonApi.Joi.date()
       .description("The last time the current value was updated in UNIX time (ms).")
       .example("1463776147123"),
-     history: jsonApi.Joi.many("history")
-      .description("All of the history associated with a tag."),     
      circuit: jsonApi.Joi.belongsToOne({
       resource: "circuits",
       as: "tags"
