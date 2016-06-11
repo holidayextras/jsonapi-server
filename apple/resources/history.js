@@ -23,8 +23,7 @@ jsonApi.define({
       .description("Can only be OK or Bad")
       .example("OK"),
     tagId: jsonApi.Joi.string().required()
-      .description("The tag this history is for.")    
-    })
+      .description("The tag this history is for.")
   },
   examples: [{}]
 });
