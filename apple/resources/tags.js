@@ -57,6 +57,9 @@ jsonApi.define({
      modbusAddress: jsonApi.Joi.number().integer()
       .description("The modbus address for this tag, must be an integer.")
       .example("44001"),
+     dataQuality: jsonApi.Joi.string()
+      .description("The data quality of the value of this tag.")
+      .example("Ok"),
      value: jsonApi.Joi.number()
       .description("The current value of the tag in engineering units.")
       .example("24.5"),
