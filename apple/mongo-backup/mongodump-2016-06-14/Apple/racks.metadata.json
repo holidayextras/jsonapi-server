@@ -1,0 +1,1 @@
+{"options":{},"indexes":[{"v":1,"key":{"_id":1},"name":"_id_","ns":"Apple.racks"},{"v":1,"key":{"circuits.id":1,"dps.id":1},"name":"circuits.id_1_dps.id_1","ns":"Apple.racks"}]}
