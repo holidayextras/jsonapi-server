@@ -1,0 +1,1 @@
+{"options":{},"indexes":[{"v":1,"key":{"_id":1},"name":"_id_","ns":"admin.dps"},{"v":1,"key":{"racks.id":1,"rpp.id":1},"name":"racks.id_1_rpp.id_1","ns":"admin.dps"}]}

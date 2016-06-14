@@ -1,0 +1,1 @@
+{"options":{},"indexes":[{"v":1,"key":{"_id":1},"name":"_id_","ns":"admin.system.users"},{"v":1,"unique":true,"key":{"user":1,"db":1},"name":"user_1_db_1","ns":"admin.system.users"}]}
