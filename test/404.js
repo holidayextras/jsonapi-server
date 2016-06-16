@@ -37,6 +37,10 @@ describe("Testing jsonapi-server", function() {
   });
 
   before(function() {
+    jsonApiTestServer.getExpressServer().use(function(req, res, next) {
+      console.log("YAY");
+      return next();
+    });
     jsonApiTestServer.start();
   });
   after(function() {

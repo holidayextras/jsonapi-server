@@ -54,6 +54,11 @@ jsonApi.onUncaughtException(function(request, error) {
   }));
 });
 
-jsonApi.start();
+// If we're using the example server for the test suite,
+// wait for the tests to call .start();
+if (typeof describe !== undefined) {
+  jsonApi.start();
+}
 server.start = jsonApi.start;
 server.close = jsonApi.close;
+server.getExpressServer = jsonApi.getExpressServer;
