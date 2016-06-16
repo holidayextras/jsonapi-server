@@ -1,3 +1,5 @@
+- 2016-06-09 - v1.12.0
+- 2016-06-09 - MemoryHandler clones all objects
 - 2016-06-02 - v1.11.0
 - 2016-06-02 - Error when interacting with broken resources
 - 2016-06-02 - Unable to patch relationships on resources with required attributes
