@@ -63,6 +63,9 @@ jsonApi.define({
      value: jsonApi.Joi.number()
       .description("The current value of the tag in engineering units.")
       .example("24.5"),
+     input: jsonApi.Joi.number()
+      .description("If tag is writeable, the value to write to the tag in engineering units.")
+      .example("24.5"),
      lastUpdate: jsonApi.Joi.date()
       .description("The last time the current value was updated in UNIX time (ms).")
       .example("1463776147123"),

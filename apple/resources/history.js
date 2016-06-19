@@ -19,6 +19,9 @@ jsonApi.define({
     value: jsonApi.Joi.number().required()
       .description("The current value at the timestamp time of the tag.")
       .example("1245.76"),
+    input: jsonApi.Joi.number().required()
+      .description("The input value to write at the timestamp time of the tag.")
+      .example("1245.76"),
     dataQuality: jsonApi.Joi.string().required()
       .description("Can only be OK or Bad")
       .example("OK"),
