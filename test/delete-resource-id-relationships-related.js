@@ -81,7 +81,7 @@ describe("Testing jsonapi-server", function() {
     });
 
     describe("deleting", function() {
-      it("deletes the resource", function(done) {
+      it("deletes the resource on many()", function(done) {
         var data = {
           method: "delete",
           url: "http://localhost:16006/rest/articles/fa2a073f-8c64-4cbb-9158-b8f67a4ab9f5/relationships/tags",
@@ -119,6 +119,45 @@ describe("Testing jsonapi-server", function() {
               "id": "6ec62f6d-9f82-40c5-b4f4-279ed1765492"
             }
           ]);
+
+          done();
+        });
+      });
+    });
+
+    describe("deleting", function() {
+      it("deletes the resource on one()", function(done) {
+        var data = {
+          method: "delete",
+          url: "http://localhost:16006/rest/articles/fa2a073f-8c64-4cbb-9158-b8f67a4ab9f5/relationships/tags",
+          headers: {
+            "Content-Type": "application/vnd.api+json"
+          },
+          body: JSON.stringify({
+            "data": { "type": "tags", "id": "6ec62f6d-9f82-40c5-b4f4-279ed1765492" }
+          })
+        };
+        helpers.request(data, function(err, res, json) {
+          assert.equal(err, null);
+          json = helpers.validateJson(json);
+
+          assert.equal(res.statusCode, "200", "Expecting 200");
+
+          done();
+        });
+      });
+
+      it("new resource has changed", function(done) {
+        var url = "http://localhost:16006/rest/articles/fa2a073f-8c64-4cbb-9158-b8f67a4ab9f5/relationships/tags";
+        helpers.request({
+        method: "GET",
+        url: url
+      }, function(err, res, json) {
+          assert.equal(err, null);
+          json = helpers.validateJson(json);
+
+          assert.equal(res.statusCode, "200", "Expecting 200");
+          assert.deepEqual(json.data, [ ]);
 
           done();
         });

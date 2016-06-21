@@ -60,7 +60,7 @@ describe("Testing jsonapi-server", function() {
       });
     });
 
-    describe("adding", function() {
+    describe("adding to a many()", function() {
       it("updates the resource", function(done) {
         var data = {
           method: "post",
@@ -106,6 +106,49 @@ describe("Testing jsonapi-server", function() {
               }
             }
           ]);
+
+          done();
+        });
+      });
+    });
+
+    describe("adding to a one()", function() {
+      it("updates the resource", function(done) {
+        var data = {
+          method: "post",
+          url: "http://localhost:16006/rest/articles/fa2a073f-8c64-4cbb-9158-b8f67a4ab9f5/relationships/author",
+          headers: {
+            "Content-Type": "application/vnd.api+json"
+          },
+          body: JSON.stringify({
+            "data": { "type": "people", "id": "cc5cca2e-0dd8-4b95-8cfc-a11230e73116" }
+          })
+        };
+        helpers.request(data, function(err, res, json) {
+          assert.equal(err, null);
+          json = helpers.validateJson(json);
+
+          assert.equal(res.statusCode, "201", "Expecting 201");
+
+          done();
+        });
+      });
+
+      it("new resource has changed", function(done) {
+        var url = "http://localhost:16006/rest/articles/fa2a073f-8c64-4cbb-9158-b8f67a4ab9f5/relationships/author";
+        helpers.request({
+          method: "GET",
+          url: url
+        }, function(err, res, json) {
+          assert.equal(err, null);
+          json = helpers.validateJson(json);
+
+          assert.equal(res.statusCode, "200", "Expecting 200");
+
+          assert.deepEqual(json.data, {
+            "type": "people",
+            "id": "cc5cca2e-0dd8-4b95-8cfc-a11230e73116"
+          });
 
           done();
         });
