@@ -1,1 +1,1 @@
-{"options":{},"indexes":[{"v":1,"key":{"_id":1},"name":"_id_","ns":"Apple.dps"},{"v":1,"key":{"racks.id":1,"local.id":1,"rpp.id":1},"name":"racks.id_1_local.id_1_rpp.id_1","ns":"Apple.dps"}]}
+{"options":{},"indexes":[{"v":1,"key":{"_id":1},"name":"_id_","ns":"Apple.dps"}]}
