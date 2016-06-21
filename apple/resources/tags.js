@@ -73,8 +73,12 @@ jsonApi.define({
       resource: "circuits",
       as: "tags"
       }).optional(),
-     local: jsonApi.Joi.belongsToOne({
-      resource: "locals",
+     rpp: jsonApi.Joi.belongsToOne({
+      resource: "rpps",
+      as: "tags"
+     }).optional(),
+     dp: jsonApi.Joi.belongsToOne({
+      resource: "dps",
       as: "tags"
       }).optional()
   },
