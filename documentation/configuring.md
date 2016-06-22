@@ -23,7 +23,7 @@ jsonApi.setConfig({
 
 To run over HTTPS, set the protocol to _https_ and configure the appropriate TLS settings
 
-For example: 
+For example:
 
 ```javascript
 var fs = require("fs");
@@ -89,4 +89,14 @@ To gracefully shutdown the service, you can call `.close()`. This will inform al
 
 ```javascript
 jsonApi.close();
+```
+
+#### Gaining access to the Express server
+
+Whilst interfering with the routing layer of jsonapi-server is not recommended (any modifications you make will go against the specification) I can appreciate the needs of businesses and the need to get stuff done. There is therefore an accessor to enable a consumer of jsonapi-server to inject their own custom routes / middleware BEFORE the json:api routes and middleware are applied.
+
+```javascript
+var app = jsonApi.getExpressServer();
+app.use(someMiddleware);
+jsonApi.start() // this line applies the json:api routing and starts the service
 ```
