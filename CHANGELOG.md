@@ -1,3 +1,6 @@
+- 2016-06-22 - v1.13.0
+- 2016-06-22 - Fixed bug when setting singular relationships via deep urls
+- 2016-06-22 - Enable access to expressJS instance
 - 2016-06-09 - v1.12.0
 - 2016-06-09 - MemoryHandler clones all objects
 - 2016-06-02 - v1.11.0
