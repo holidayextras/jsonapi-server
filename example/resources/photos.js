@@ -1,6 +1,6 @@
 var jsonApi = require("../../.");
 var photoHandler = require("../handlers/photoHandler.js");
-///
+
 jsonApi.define({
   namespace: "json:api",
   resource: "photos",
