@@ -1,3 +1,7 @@
+- 2016-06-28 - v1.15.0
+- 2016-06-28 - Scrap sub-millisecond accuracy on metrics
+- 2016-06-27 - v1.14.0
+- 2016-06-27 - Enabled application metrics
 - 2016-06-22 - v1.13.0
 - 2016-06-22 - Fixed bug when setting singular relationships via deep urls
 - 2016-06-22 - Enable access to expressJS instance

@@ -54,6 +54,7 @@ We've also written a library to ease the consumption of a json:api compliant ser
 - [Custom Handlers](documentation/handlers.md)
 - [Post Processing Examples](documentation/post-processing.md)
 - [Migrating from an existing express server](documentation/api-migration.md)
+- [Application metrics](documentation/metrics.md)
 
 ### The tl;dr
 

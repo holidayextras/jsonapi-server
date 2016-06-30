@@ -4,6 +4,7 @@ var server = module.exports = { };
 var jsonApi = require("../.");
 var fs = require("fs");
 var path = require("path");
+var debug = require("debug");
 
 process.title = "jsonapi-server";
 
@@ -54,6 +55,10 @@ jsonApi.onUncaughtException(function(request, error) {
     error: errorDetails.shift(),
     stack: errorDetails
   }));
+});
+
+jsonApi.metrics.on("data", function(data) {
+  debug("metrics")(data);
 });
 
 // If we're using the example server for the test suite,
