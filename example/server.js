@@ -25,7 +25,7 @@ jsonApi.setConfig({
   protocol: "http",
   hostname: "localhost",
   port: 16006,
-  base: "1",
+  base: "rest",
   meta: {
     description: "This block shows up in the root node of every payload"
   }
