@@ -69,6 +69,9 @@ jsonApi.define({
      lastUpdate: jsonApi.Joi.date()
       .description("The last time the current value was updated in UNIX time (ms).")
       .example("1463776147123"),
+     histDeadbandPercent: jsonApi.Joi.number()
+      .description("The percent of change of value field required to trigger a history sample where .03 is 3%. 0 means collect everything.")
+      .example(".03"),
      circuit: jsonApi.Joi.belongsToOne({
       resource: "circuits",
       as: "tags"

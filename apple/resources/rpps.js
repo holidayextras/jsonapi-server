@@ -28,6 +28,9 @@ jsonApi.define({
     label: jsonApi.Joi.string().required()
       .description("The label <Country>.<Location>.<Building>.<Floor>.<Room>.<Row>")
       .example("US.MSC.01.01.0001.01"),
+    plcStatus: jsonApi.Joi.string()
+      .description("Is the plc up or down or some other status.")
+      .example("OK"),
     tags: jsonApi.Joi.many("tags")
       .description("All of the common tags associated with this RPP"),
     dps: jsonApi.Joi.many("dps")

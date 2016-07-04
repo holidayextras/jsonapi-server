@@ -31,6 +31,9 @@ jsonApi.define({
     label: jsonApi.Joi.string().required()
       .description("The label <Country>.<Location>.<Building>.<Floor>.<Room>.<Row>.<DP>.<PrimaryOrSec>")
       .example("US.MSC.01.01.0001.01.02.1"),
+    plcStatus: jsonApi.Joi.string()
+      .description("Is the plc up or down or some other status.")
+      .example("OK"),
     racks: jsonApi.Joi.many("racks")
       .description("All of the racks associated with this DP"),
     tags: jsonApi.Joi.many("tags")
