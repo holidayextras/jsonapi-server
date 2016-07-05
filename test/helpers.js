@@ -56,7 +56,31 @@ testHelpers.validateJson = function(json) {
   assert.ok(json.links instanceof Object, "Response should have a links block");
   assert.ok(!(json.errors instanceof Object), "Response should not have any errors");
   assert.equal(typeof json.links.self, "string", "Response should have a \"self\" link");
+  testHelpers.validatePagination(json);
   return json;
+};
+
+testHelpers.validatePagination = function(json) {
+  if (!json.meta.page) return;
+  if (!(json.data instanceof Array)) return;
+
+  var page = json.meta.page;
+  var expectedCount = null;
+  if ((page.offset + page.limit) > page.total) {
+    expectedCount = page.total - page.offset;
+  } else if (page.limit < page.total) {
+    expectedCount = page.limit;
+  } else {
+    expectedCount = page.total;
+  }
+
+  if (expectedCount !== json.data.length) {
+    console.warn("!!!!!!!!!!!!");
+    console.warn(json.links.self);
+    console.warn("WARNING: Pagination count doesn't match resource count.");
+    console.warn("This usually indicates the resource hanlder is not filtering correctly!");
+    console.warn("!!!!!!!!!!!!");
+  }
 };
 
 testHelpers.validateRelationship = function(relationship) {
