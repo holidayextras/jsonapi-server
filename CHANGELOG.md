@@ -1,3 +1,6 @@
+- 2016-07-05 - v1.15.1
+- 2016-07-05 - Fixed bug when deleting singular relationships via deep urls
+- 2016-07-05 - Added warning messages to test suite to warn when handlers don't filter
 - 2016-06-28 - v1.15.0
 - 2016-06-28 - Scrap sub-millisecond accuracy on metrics
 - 2016-06-27 - v1.14.0
