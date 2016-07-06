@@ -1,3 +1,5 @@
+- 2016-07-06 - v1.15.4
+- 2016-07-06 - Prevent express from appending the charset to the content-type header
 - 2016-07-06 - v1.15.3
 - 2016-07-06 - Provide text error to help debug HTTP 415s
 - 2016-07-06 - v1.15.2
