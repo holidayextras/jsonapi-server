@@ -1,3 +1,5 @@
+- 2016-07-06 - v1.15.3
+- 2016-07-06 - Provide text error to help debug HTTP 415s
 - 2016-07-06 - v1.15.2
 - 2016-07-06 - CORS headers are now applier further up the middleware chain
 - 2016-07-05 - v1.15.1
