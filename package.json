@@ -1,6 +1,6 @@
 {
   "name": "jsonapi-server",
-  "version": "1.15.2",
+  "version": "1.15.3",
   "description": "A config driven NodeJS framework implementing json:api",
   "keywords": [
     "jsonapi",
