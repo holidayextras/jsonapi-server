@@ -1,3 +1,5 @@
+- 2016-07-06 - v1.15.2
+- 2016-07-06 - CORS headers are now applier further up the middleware chain
 - 2016-07-05 - v1.15.1
 - 2016-07-05 - Fixed bug when deleting singular relationships via deep urls
 - 2016-07-05 - Added warning messages to test suite to warn when handlers don't filter
