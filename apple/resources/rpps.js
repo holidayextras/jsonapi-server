@@ -31,6 +31,9 @@ jsonApi.define({
     plcStatus: jsonApi.Joi.string()
       .description("Is the plc up or down or some other status.")
       .example("OK"),
+    plcScanEnabled: jsonApi.Joi.boolean().required()
+      .description("Should the driver try to connect and scan the plc.")
+      .example("FALSE"),
     tags: jsonApi.Joi.many("tags")
       .description("All of the common tags associated with this RPP"),
     dps: jsonApi.Joi.many("dps")
