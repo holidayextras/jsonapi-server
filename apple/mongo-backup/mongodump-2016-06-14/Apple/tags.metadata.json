@@ -1,1 +1,1 @@
-{"options":{},"indexes":[{"v":1,"key":{"_id":1},"name":"_id_","ns":"Apple.tags"},{"v":1,"key":{"circuit.id":1},"name":"circuit.id_1","ns":"Apple.tags"},{"v":1,"key":{"rpp.id":1},"name":"rpp.id_1","ns":"Apple.tags"},{"v":1,"key":{"dp.id":1},"name":"dp.id_1","ns":"Apple.tags"}]}
+{"options":{},"indexes":[{"v":1,"key":{"_id":1},"name":"_id_","ns":"Apple.tags"}]}
