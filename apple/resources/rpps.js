@@ -13,6 +13,9 @@ jsonApi.define({
   }),
   searchParams: {},
   attributes: {
+    name: jsonApi.Joi.string().required()
+      .description("The panel name.")
+      .example("RPP"),
     ipAddressPlc: jsonApi.Joi.string().required()
       .description("The IP address of the plc.")
       .example("10.10.10.10"),
