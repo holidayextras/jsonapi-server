@@ -12,7 +12,7 @@ Handlers represent the mechanism that backs a resource. Each handler is an objec
  * `delete` - for deleting an existing resource.
  * `update` - for updating an existing resource.
 
-Failure to provide the above handler functions will result in `EFORBIDDEN` HTTP errors if the corresponding REST routes are requested.
+Failure to provide the above handler functions will result in `EMETHODNOTALLOWED` errors with HTTP status code 405 if the corresponding REST routes are requested.
 
 #### The `rawResource` Format
 
