@@ -140,8 +140,9 @@ describe("Testing jsonapi-server", function() {
         assert.equal(json.meta.page.limit, 2, "should have a limit of 2 records");
         assert.equal(json.meta.page.total, 4, "should have a total of 4 records");
 
-        assert.equal(json.data[0].attributes.title, "Linux Rocks", "should be on the third article");
-        assert.equal(json.data[1].attributes.title, "NodeJS Best Practices", "should be on the third article");
+        console.log(json.data);
+        assert.equal(json.data[0].attributes.title, "NodeJS Best Practices", "should be on the third article");
+        assert.equal(json.data[1].attributes.title, "Tea for Beginners", "should be on the fourth article");
 
         assert.ok(Object.keys(json.links).length, 5, "should have 5x links");
         assert.ok(json.links.first.match(/page%5Boffset%5D=0&page%5Blimit%5D=2/), "first should target offset-0 limit-2");
