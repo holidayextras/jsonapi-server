@@ -1,3 +1,5 @@
+- 2016-08-04 - v1.15.5
+- 2016-08-04 - Fix MemoryHandler pagination
 - 2016-07-06 - v1.15.4
 - 2016-07-06 - Prevent express from appending the charset to the content-type header
 - 2016-07-06 - v1.15.3
