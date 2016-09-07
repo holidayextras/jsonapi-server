@@ -97,14 +97,13 @@ swaggerValidator._validateArray = function(model, payload, urlPath, validationPa
 
 swaggerValidator._validateObject = function(model, payload, urlPath, validationPath) {
   if (!model.properties) return;
-
   for (var i in model.properties) {
     var isRequired = ((model.required || [ ]).indexOf(i) !== -1);
     swaggerValidator._validateModel(model.properties[i], payload[i], urlPath, validationPath + "." + i, isRequired);
   }
 
   for (var j in payload) {
-    if (!model.properties[j]) {
+    if (!model.properties[j] && ((payload[j].meta || { }).relation !== "foreign")) {
       throw new Error("Swagger Validation: " + urlPath + " Found unexpected property at " + validationPath + "." + j);
     }
   }
