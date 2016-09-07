@@ -1,12 +1,13 @@
 var jsonApi = require("../../.");
 var articleHandler = require("../handlers/articleHandler.js");
+var timestampHandler = require("../handlers/timestampHandler.js");
 var authenticationHandler = require('../handlers/authenticationHandler.js')
 
 jsonApi.define({
   namespace: "json:api",
   resource: "articles",
   description: "Represents the core content, people love to read articles.",
-  handlers: authenticationHandler.chain(articleHandler),
+  handlers: authenticationHandler.chain(timestampHandler).chain(articleHandler),
   searchParams: {
     query: jsonApi.Joi.number()
       .description("Fuzzy text match against titles")
