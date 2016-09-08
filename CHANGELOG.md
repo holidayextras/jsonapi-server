@@ -1,6 +1,9 @@
-- 2016-08-07 - v1.16.0
-- 2016-08-07 - Accept initilize with a 'z'
-- 2016-08-07 - Implemented new ChainHandler
+- 2016-09-08 - v1.16.1
+- 2016-09-08 - Improving ChainHandler for synchronous functions
+- 2016-09-08 - Improving ChainHandler for 'after' functions
+- 2016-09-08 - v1.16.0
+- 2016-09-07 - Accept initilize with a 'z'
+- 2016-09-07 - Implemented new ChainHandler
 - 2016-08-07 - Additional validation when defining primary relationships
 - 2016-07-06 - v1.15.4
 - 2016-07-06 - Prevent express from appending the charset to the content-type header
