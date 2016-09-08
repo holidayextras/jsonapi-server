@@ -7,12 +7,11 @@ authenticationHandler.beforeSearch = function(request, callback) {
   return callback(null, request);
 };
 
-authenticationHandler.afterSearch = function(results, pagination, callback) {
+authenticationHandler.afterSearch = function(request, results, pagination, callback) {
   console.log("After Search 1");
   return callback(null, results, pagination);
 };
 
-authenticationHandler.beforeInitialise = function(resourceConfig, callback) {
-  console.log("Before Initialise 1");
-  return callback(null, resourceConfig);
+authenticationHandler.beforeInitialise = function(resourceConfig) {
+  console.log("Before Initialise 1", resourceConfig.resource);
 };
