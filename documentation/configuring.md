@@ -3,6 +3,9 @@
 
 ```javascript
 jsonApi.setConfig({
+  // (optional) An alias of the absolute portion of URLs generated in a response file
+  // eg http://localhost:16006/some-resource/ -> https://www.example.com/my-api/some-resource/
+  urlPrefixAlias: "https://www.example.com/my-api/",
   // (optional) HTTP / HTTPS
   protocol: "http",
   // (optional) The hostname the API will be sat behind, from the customer's perspective
