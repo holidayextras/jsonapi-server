@@ -16,6 +16,10 @@ jsonApi.setConfig({
   meta: {
     copyright: "Blah"
   }
+  // (optional) meta can be a function to be invoked at the end of every request
+  meta: function(request) {
+    return { timestamp: new Date() };
+  }
 });
 ```
 
