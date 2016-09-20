@@ -1,7 +1,7 @@
 
 ### Chaining handlers together with the ChainHandler
 
-This project ships with a handler called the `ChainHandler`. It's purpose is to make it easier to wrap the functionality of one handler with additional functionality. For example using the relational data store may be ideal for storing resources, but what if we want to add an authentication layer on top of those resources? An authentication handler shouldn't know or care about the storage of the underlying resource, it should only deal with authentication - we need an abstraction layer to help us glue all of this together. 
+This project ships with a handler called the `ChainHandler`. It's purpose is to make it easier to wrap the functionality of one handler with additional functionality. For example using the relational data store may be ideal for storing resources, but what if we want to add an authentication layer on top of those resources? An authentication handler shouldn't know or care about the storage of the underlying resource, it should only deal with authentication - we need an abstraction layer to help us glue all of this together.
 
 To get started with the ChainHandler, go ahead and instantiate one:
 ```javascript
@@ -16,10 +16,11 @@ testChainHandler.beforeSearch = function(request, callback) {
   return callback(null, request);
 };
 
-testChainHandler.afterSearch = function(results, pagination, callback) {
+testChainHandler.afterSearch = function(request, results, pagination, callback) {
   return callback(null, results, pagination);
 };
 ```
+*NOTE* The only exception to the above is that all `after` function signatures are also passed the original `request` object in addition to the other objects. This enables us to implement clever features on a per-request basis by providing a mechanism to push state between `before` and `after` functions.
 
 With a new ChainHandler ready to go, this is how we can stack them up:
 ```javascript

@@ -7,12 +7,11 @@ timestampHandler.beforeSearch = function(request, callback) {
   return callback(null, request);
 };
 
-timestampHandler.afterSearch = function(results, pagination, callback) {
+timestampHandler.afterSearch = function(request, results, pagination, callback) {
   console.log("After Search 2");
   return callback(null, results, pagination);
 };
 
-timestampHandler.beforeInitialise = function(resourceConfig, callback) {
-  console.log("Before Initialise 2");
-  return callback(null, resourceConfig);
+timestampHandler.beforeInitialise = function(resourceConfig) {
+  console.log("Before Initialise 1", resourceConfig.resource);
 };
