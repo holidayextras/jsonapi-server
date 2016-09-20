@@ -1,3 +1,9 @@
+- 2016-09-20 - v1.17.0
+- 2016-09-20 - Remove metrics listeners on server.close()
+- 2016-09-20 - Dynamic swagger.json based on handler capabilities
+- 2016-09-20 - Dynamic metadata in body of responses
+- 2016-09-20 - Comma separated filter values
+- 2016-09-20 - Option to override base urls in links
 - 2016-09-08 - v1.16.1
 - 2016-09-08 - Improving ChainHandler for synchronous functions
 - 2016-09-08 - Improving ChainHandler for 'after' functions
