@@ -368,6 +368,38 @@ describe("Testing jsonapi-server", function() {
         });
       });
 
+      it("allows for multiple filter values to be combined in a comma-separated list", function(done) {
+        var url = "http://localhost:16006/rest/articles?filter[tags]=6ec62f6d-9f82-40c5-b4f4-279ed1765492,7541a4de-4986-4597-81b9-cf31b6762486,2a3bdea4-a889-480d-b886-104498c86f69";
+        helpers.request({
+          method: "GET",
+          url: url
+        }, function(err, res, json) {
+          assert.equal(err, null);
+          json = helpers.validateJson(json);
+
+          assert.equal(res.statusCode, "200", "Expecting 200 OK");
+          assert.equal(json.data.length, 3, "Should only give the 3x requested resources");
+
+          done();
+        });
+      });
+
+      it("allows for a compound of comma-separated list filters", function(done) {
+        var url = 'http://localhost:16006/rest/articles?filter[tags]=6ec62f6d-9f82-40c5-b4f4-279ed1765492,7541a4de-4986-4597-81b9-cf31b6762486,2a3bdea4-a889-480d-b886-104498c86f69&filter[id]=de305d54-75b4-431b-adb2-eb6b9e546014,1be0913c-3c25-4261-98f1-e41174025ed5'
+        helpers.request({
+          method: "GET",
+          url: url
+        }, function(err, res, json) {
+          assert.equal(err, null);
+          json = helpers.validateJson(json);
+
+          assert.equal(res.statusCode, "200", "Expecting 200 OK");
+          assert.equal(json.data.length, 2, "Should only give the 2x requested resources");
+
+          done();
+        });
+      });
+
       it("allows deep filtering", function(done) {
         var url = "http://localhost:16006/rest/articles?include=author&filter[author]=d850ea75-4427-4f81-8595-039990aeede5&filter[author][firstname]=Mark";
         helpers.request({
