@@ -7,14 +7,15 @@
 
 # jsonapi-server
 
-A config driven NodeJS framework implementing [`json:api`](http://jsonapi.org/). You define the resources, it provides the api.
+A config driven NodeJS framework implementing [`json:api`](http://jsonapi.org/) and [`graphQl`](http://graphql.org/). You define the resources, it provides the api.
 
 ### Motivation / Justification / Rationale
 
-This framework solves the challenge of json:api without coupling us to any one ORM solution. Every other module out there is either tightly coupled to a database implementation, tracking an old version of the json:api spec, or is merely a helper library for a small feature. If you're building an API and your use case only involves reading and writing to a data store... well count yourself lucky. For everyone else, this framework provides the flexibility to provide a complex API without being confined to any one technology.
+This framework solves the challenges of json:api and GraphQL without coupling us to any one ORM solution. Every other module out there is either tightly coupled to a database implementation, tracking an old version of the json:api spec, or is merely a helper library for a small feature. If you're building an API and your use case only involves reading and writing to a data store... well count yourself lucky. For everyone else, this framework provides the flexibility to provide a complex API without being confined to any one technology.
 
 A config driven approach to building an API enables:
  * Enforced json:api responses
+ * Automatic GraphQL schema generation
  * Request validation
  * Payload validation
  * Automatic documentation generation
@@ -40,7 +41,7 @@ We've created `handler`s to automatically map our config over to database soluti
  * [jsonapi-store-elasticsearch](https://github.com/holidayextras/jsonapi-store-elasticsearch) - for Elasticsearch.
  * [jsonapi-store-dynamodb](https://github.com/holidayextras/jsonapi-server/compare/dynamodb?expand=1) - *!SIGNIFICANT WIP!* for AWS DynamoDB.
 
-We've also written a library to ease the consumption of a json:api compliant service:
+We've also written a library to ease the consumption of a json:api compliant service, if GraphQL isn't your thing:
  * [jsonapi-client](https://github.com/holidayextras/jsonapi-client) - for NodeJS and Browsers
 
 
@@ -66,6 +67,10 @@ var jsonApi = require("jsonapi-server");
 
 jsonApi.setConfig({
   port: 16006,
+  graphQl: {
+    path: '/graphql',
+    graphiql: true
+  }
 });
 
 jsonApi.define({
@@ -81,7 +86,7 @@ jsonApi.define({
 
 jsonApi.start();
 ```
-Your new API will be alive at `http://localhost:16006/` and your `photos` resources will be at `http://localhost:16006/photos`.
+Your new API will be alive at `http://localhost:16006/` and your `photos` resources will be at `http://localhost:16006/photos`. The GraphiQL interface will be available at `http://localhost:16006/graphql`.
 
 ### Show me a full example!
 

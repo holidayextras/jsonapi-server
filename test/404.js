@@ -14,7 +14,7 @@ describe("Testing jsonapi-server", function() {
       };
       request(data, function(err, res, json) {
         assert.equal(err, null);
-        json = helpers.validateError(json);
+        helpers.validateError(json);
         assert.equal(res.statusCode, "404", "Expecting 404");
 
         done();
@@ -28,7 +28,7 @@ describe("Testing jsonapi-server", function() {
       };
       request(data, function(err, res, json) {
         assert.equal(err, null);
-        json = helpers.validateError(json);
+        helpers.validateError(json);
         assert.equal(res.statusCode, "404", "Expecting 404");
 
         done();

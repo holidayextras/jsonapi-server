@@ -1,12 +1,17 @@
 {
   "extends": "eslint:recommended",
   "globals": {
+    "Promise": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 6
   },
   "env": {
     "node": true,
     "mocha": true
   },
   "rules": {
+    quotes: [ 0 ],
     "no-underscore-dangle": [ 0 ],
     "curly": [2, "multi-line"],
     "no-console": [ 0 ]
