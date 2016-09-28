@@ -7,7 +7,6 @@ env:
   matrix:
     - TEST_STEP=jscpd
     - TEST_STEP=lint
-    - TEST_STEP=flow
     - TEST_STEP=test
     - TEST_STEP=swagger
 notifications:

@@ -1,17 +1,16 @@
-"use strict";
-var jsonApiTestServer = require("./example/server.js");
-var request = require("request");
-var assert = require("assert");
+const jsonApiTestServer = require("./example/server.js");
+const request = require("request");
+const assert = require("assert");
 
-describe("Use a tool to validate the generated swagger document", function() {
-  it("should not contain any errors", function(done) {
-    var validator = require("swagger-tools").specs.v2;
+describe("Use a tool to validate the generated swagger document", () => {
+  it("should not contain any errors", done => {
+    const validator = require("swagger-tools").specs.v2;
 
-    var uri = "http://localhost:16006/rest/swagger.json";
-    request(uri, function(meh, res, swaggerObject) {
+    const uri = "http://localhost:16006/rest/swagger.json";
+    request(uri, (meh, res, swaggerObject) => {
       swaggerObject = JSON.parse(swaggerObject);
 
-      validator.validate(swaggerObject, function (err, result) {
+      validator.validate(swaggerObject, (err, result) => {
         assert.ifError(err);
 
         if (!result) {
@@ -39,10 +38,10 @@ describe("Use a tool to validate the generated swagger document", function() {
     });
   });
 
-  before(function() {
+  before(() => {
     jsonApiTestServer.start();
   });
-  after(function() {
+  after(() => {
     jsonApiTestServer.close();
   });
 });

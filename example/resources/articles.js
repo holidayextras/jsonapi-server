@@ -1,7 +1,7 @@
-var jsonApi = require('../../.')
-var articleHandler = require('../handlers/articleHandler.js')
-var timestampHandler = require('../handlers/timestampHandler.js')
-var authenticationHandler = require('../handlers/authenticationHandler.js')
+const jsonApi = require('../../.')
+const articleHandler = require('../handlers/articleHandler.js')
+const timestampHandler = require('../handlers/timestampHandler.js')
+const authenticationHandler = require('../handlers/authenticationHandler.js')
 
 jsonApi.define({
   namespace: 'json:api',

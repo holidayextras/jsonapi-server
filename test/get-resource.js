@@ -1,17 +1,16 @@
-'use strict'
-var assert = require('assert')
-var helpers = require('./helpers.js')
-var request = require('request')
-var jsonApiTestServer = require('../example/server.js')
+const assert = require('assert')
+const helpers = require('./helpers.js')
+const request = require('request')
+const jsonApiTestServer = require('../example/server.js')
 
-describe('Testing jsonapi-server', function () {
-  describe('Searching for resources', function () {
-    it('unknown resource should error', function (done) {
-      var url = 'http://localhost:16006/rest/foobar'
+describe('Testing jsonapi-server', () => {
+  describe('Searching for resources', () => {
+    it('unknown resource should error', done => {
+      const url = 'http://localhost:16006/rest/foobar'
       helpers.request({
         method: 'GET',
-        url: url
-      }, function (err, res, json) {
+        url
+      }, (err, res, json) => {
         assert.equal(err, null)
         helpers.validateError(json)
         assert.equal(res.statusCode, '404', 'Expecting 404')
@@ -19,19 +18,19 @@ describe('Testing jsonapi-server', function () {
       })
     })
 
-    it('empty search should return all objects', function (done) {
-      var url = 'http://localhost:16006/rest/articles'
+    it('empty search should return all objects', done => {
+      const url = 'http://localhost:16006/rest/articles'
       helpers.request({
         method: 'GET',
-        url: url
-      }, function (err, res, json) {
+        url
+      }, (err, res, json) => {
         assert.equal(err, null)
         json = helpers.validateJson(json)
 
         assert.equal(res.statusCode, '200', 'Expecting 200 OK')
         assert.deepEqual(json.included, [ ], 'Response should have no included resources')
         assert.equal(json.data.length, 4, 'Response should contain exactly 4 resources')
-        json.data.forEach(function (resource) {
+        json.data.forEach(resource => {
           helpers.validateArticle(resource)
         })
 
@@ -39,22 +38,22 @@ describe('Testing jsonapi-server', function () {
       })
     })
 
-    describe('applying sort', function () {
-      it('ASC sort', function (done) {
-        var url = 'http://localhost:16006/rest/articles?sort=title'
+    describe('applying sort', () => {
+      it('ASC sort', done => {
+        const url = 'http://localhost:16006/rest/articles?sort=title'
         helpers.request({
           method: 'GET',
-          url: url
-        }, function (err, res, json) {
+          url
+        }, (err, res, json) => {
           assert.equal(err, null)
           json = helpers.validateJson(json)
 
           assert.equal(res.statusCode, '200', 'Expecting 200 OK')
           assert.equal(json.data.length, 4, 'Response should contain exactly 4 resources')
 
-          var previous = json.data[0]
-          var current
-          for (var i = 1; i < json.data.length; i++) {
+          const previous = json.data[0]
+          let current
+          for (let i = 1; i < json.data.length; i++) {
             current = json.data[i]
             assert.ok(previous.attributes.title < current.attributes.title, 'Resources should be ordered')
           }
@@ -63,21 +62,21 @@ describe('Testing jsonapi-server', function () {
         })
       })
 
-      it('DESC sort', function (done) {
-        var url = 'http://localhost:16006/rest/articles?sort=-title'
+      it('DESC sort', done => {
+        const url = 'http://localhost:16006/rest/articles?sort=-title'
         helpers.request({
           method: 'GET',
-          url: url
-        }, function (err, res, json) {
+          url
+        }, (err, res, json) => {
           assert.equal(err, null)
           json = helpers.validateJson(json)
 
           assert.equal(res.statusCode, '200', 'Expecting 200 OK')
           assert.equal(json.data.length, 4, 'Response should contain exactly 4 resources')
 
-          var previous = json.data[0]
-          var current
-          for (var i = 1; i < json.data.length; i++) {
+          const previous = json.data[0]
+          let current
+          for (let i = 1; i < json.data.length; i++) {
             current = json.data[i]
             assert.ok(previous.attributes.title > current.attributes.title, 'Resources should be ordered')
           }
@@ -87,49 +86,49 @@ describe('Testing jsonapi-server', function () {
       })
     })
 
-    describe('applying filter', function () {
-      it('unknown attribute should error', function (done) {
-        var url = 'http://localhost:16006/rest/articles?filter[foobar]=<M'
+    describe('applying filter', () => {
+      it('unknown attribute should error', done => {
+        const url = 'http://localhost:16006/rest/articles?filter[foobar]=<M'
         helpers.request({
           method: 'GET',
-          url: url
-        }, function (err, res, json) {
+          url
+        }, (err, res, json) => {
           assert.equal(err, null)
           json = helpers.validateError(json)
           assert.equal(res.statusCode, '403', 'Expecting 403 FORBIDDEN')
-          var error = json.errors[0]
+          const error = json.errors[0]
           assert.equal(error.code, 'EFORBIDDEN')
           assert.equal(error.title, 'Invalid filter')
           done()
         })
       })
 
-      it('unknown multiple attribute should error', function (done) {
-        var url = 'http://localhost:16006/rest/articles?filter[foo]=bar&filter[foo]=baz'
+      it('unknown multiple attribute should error', done => {
+        const url = 'http://localhost:16006/rest/articles?filter[foo]=bar&filter[foo]=baz'
         helpers.request({
           method: 'GET',
-          url: url
-        }, function (err, res, json) {
+          url
+        }, (err, res, json) => {
           assert.equal(err, null)
           json = helpers.validateError(json)
           assert.equal(res.statusCode, '403', 'Expecting 403 FORBIDDEN')
-          var error = json.errors[0]
+          const error = json.errors[0]
           assert.equal(error.code, 'EFORBIDDEN')
           assert.equal(error.title, 'Invalid filter')
           done()
         })
       })
 
-      it('value of wrong type should error', function (done) {
-        var url = 'http://localhost:16006/rest/photos?filter[raw]=bob'
+      it('value of wrong type should error', done => {
+        const url = 'http://localhost:16006/rest/photos?filter[raw]=bob'
         helpers.request({
           method: 'GET',
-          url: url
-        }, function (err, res, json) {
+          url
+        }, (err, res, json) => {
           assert.equal(err, null)
           json = helpers.validateError(json)
           assert.equal(res.statusCode, '403', 'Expecting 403 FORBIDDEN')
-          var error = json.errors[0]
+          const error = json.errors[0]
           assert.equal(error.code, 'EFORBIDDEN')
           assert.equal(error.title, 'Invalid filter')
           assert(error.detail.match("Filter value for key '.*?' is invalid"))
@@ -137,17 +136,17 @@ describe('Testing jsonapi-server', function () {
         })
       })
 
-      it('equality for strings', function (done) {
-        var url = 'http://localhost:16006/rest/articles?filter[title]=How%20to%20AWS'
+      it('equality for strings', done => {
+        const url = 'http://localhost:16006/rest/articles?filter[title]=How%20to%20AWS'
         helpers.request({
           method: 'GET',
-          url: url
-        }, function (err, res, json) {
+          url
+        }, (err, res, json) => {
           assert.equal(err, null)
           json = helpers.validateJson(json)
 
           assert.equal(res.statusCode, '200', 'Expecting 200 OK')
-          var titles = json.data.map(function (i) { return i.attributes.title })
+          const titles = json.data.map(i => i.attributes.title)
           titles.sort()
           assert.deepEqual(titles, [ 'How to AWS' ], 'expected matching resources')
 
@@ -155,17 +154,17 @@ describe('Testing jsonapi-server', function () {
         })
       })
 
-      it('equality for numbers', function (done) {
-        var url = 'http://localhost:16006/rest/articles?filter[views]=10'
+      it('equality for numbers', done => {
+        const url = 'http://localhost:16006/rest/articles?filter[views]=10'
         helpers.request({
           method: 'GET',
-          url: url
-        }, function (err, res, json) {
+          url
+        }, (err, res, json) => {
           assert.equal(err, null)
           json = helpers.validateJson(json)
 
           assert.equal(res.statusCode, '200', 'Expecting 200 OK')
-          var titles = json.data.map(function (i) { return i.attributes.title })
+          const titles = json.data.map(i => i.attributes.title)
           titles.sort()
           assert.deepEqual(titles, [ 'NodeJS Best Practices' ], 'expected matching resources')
 
@@ -173,35 +172,35 @@ describe('Testing jsonapi-server', function () {
         })
       })
 
-      describe('equality for booleans', function () {
-        it('matches false', function (done) {
-          var url = 'http://localhost:16006/rest/photos?filter[raw]=false'
+      describe('equality for booleans', () => {
+        it('matches false', done => {
+          const url = 'http://localhost:16006/rest/photos?filter[raw]=false'
           helpers.request({
             method: 'GET',
-            url: url
-          }, function (err, res, json) {
+            url
+          }, (err, res, json) => {
             assert.equal(err, null)
             json = helpers.validateJson(json)
 
             assert.equal(res.statusCode, '200', 'Expecting 200 OK')
-            var photoTypes = json.data.map(function (i) { return i.attributes.raw })
+            const photoTypes = json.data.map(i => i.attributes.raw)
             assert.deepEqual(photoTypes, [ false, false ], 'expected matching resources')
 
             done()
           })
         })
 
-        it('matches true', function (done) {
-          var url = 'http://localhost:16006/rest/photos?filter[raw]=true'
+        it('matches true', done => {
+          const url = 'http://localhost:16006/rest/photos?filter[raw]=true'
           helpers.request({
             method: 'GET',
-            url: url
-          }, function (err, res, json) {
+            url
+          }, (err, res, json) => {
             assert.equal(err, null)
             json = helpers.validateJson(json)
 
             assert.equal(res.statusCode, '200', 'Expecting 200 OK')
-            var photoTypes = json.data.map(function (i) { return i.attributes.raw })
+            const photoTypes = json.data.map(i => i.attributes.raw)
             assert.deepEqual(photoTypes, [ true ], 'expected matching resources')
 
             done()
@@ -209,17 +208,17 @@ describe('Testing jsonapi-server', function () {
         })
       })
 
-      it('less than for strings', function (done) {
-        var url = 'http://localhost:16006/rest/articles?filter[title]=<M'
+      it('less than for strings', done => {
+        const url = 'http://localhost:16006/rest/articles?filter[title]=<M'
         helpers.request({
           method: 'GET',
-          url: url
-        }, function (err, res, json) {
+          url
+        }, (err, res, json) => {
           assert.equal(err, null)
           json = helpers.validateJson(json)
 
           assert.equal(res.statusCode, '200', 'Expecting 200 OK')
-          var titles = json.data.map(function (i) { return i.attributes.title })
+          const titles = json.data.map(i => i.attributes.title)
           titles.sort()
           assert.deepEqual(titles, [ 'How to AWS', 'Linux Rocks' ], 'expected matching resources')
 
@@ -227,17 +226,17 @@ describe('Testing jsonapi-server', function () {
         })
       })
 
-      it('less than for numbers', function (done) {
-        var url = 'http://localhost:16006/rest/articles?filter[views]=<23'
+      it('less than for numbers', done => {
+        const url = 'http://localhost:16006/rest/articles?filter[views]=<23'
         helpers.request({
           method: 'GET',
-          url: url
-        }, function (err, res, json) {
+          url
+        }, (err, res, json) => {
           assert.equal(err, null)
           json = helpers.validateJson(json)
 
           assert.equal(res.statusCode, '200', 'Expecting 200 OK')
-          var titles = json.data.map(function (i) { return i.attributes.title })
+          const titles = json.data.map(i => i.attributes.title)
           titles.sort()
           assert.deepEqual(titles, [ 'Linux Rocks', 'NodeJS Best Practices' ], 'expected matching resources')
 
@@ -245,17 +244,17 @@ describe('Testing jsonapi-server', function () {
         })
       })
 
-      it('greater than for strings', function (done) {
-        var url = 'http://localhost:16006/rest/articles?filter[title]=>M'
+      it('greater than for strings', done => {
+        const url = 'http://localhost:16006/rest/articles?filter[title]=>M'
         helpers.request({
           method: 'GET',
-          url: url
-        }, function (err, res, json) {
+          url
+        }, (err, res, json) => {
           assert.equal(err, null)
           json = helpers.validateJson(json)
 
           assert.equal(res.statusCode, '200', 'Expecting 200 OK')
-          var titles = json.data.map(function (i) { return i.attributes.title })
+          const titles = json.data.map(i => i.attributes.title)
           titles.sort()
           assert.deepEqual(titles, [ 'NodeJS Best Practices', 'Tea for Beginners' ], 'expected matching resources')
 
@@ -263,17 +262,17 @@ describe('Testing jsonapi-server', function () {
         })
       })
 
-      it('greater than for numbers', function (done) {
-        var url = 'http://localhost:16006/rest/articles?filter[views]=>27'
+      it('greater than for numbers', done => {
+        const url = 'http://localhost:16006/rest/articles?filter[views]=>27'
         helpers.request({
           method: 'GET',
-          url: url
-        }, function (err, res, json) {
+          url
+        }, (err, res, json) => {
           assert.equal(err, null)
           json = helpers.validateJson(json)
 
           assert.equal(res.statusCode, '200', 'Expecting 200 OK')
-          var titles = json.data.map(function (i) { return i.attributes.title })
+          const titles = json.data.map(i => i.attributes.title)
           titles.sort()
           assert.deepEqual(titles, [ 'How to AWS', 'Tea for Beginners' ], 'expected matching resources')
 
@@ -281,29 +280,29 @@ describe('Testing jsonapi-server', function () {
         })
       })
 
-      it('case insensitive', function (done) {
-        var url = 'http://localhost:16006/rest/articles?filter[title]=~linux rocks'
+      it('case insensitive', done => {
+        const url = 'http://localhost:16006/rest/articles?filter[title]=~linux rocks'
         helpers.request({
           method: 'GET',
-          url: url
-        }, function (err, res, json) {
+          url
+        }, (err, res, json) => {
           assert.equal(err, null)
           json = helpers.validateJson(json)
 
           assert.equal(res.statusCode, '200', 'Expecting 200 OK')
-          var titles = json.data.map(function (i) { return i.attributes.title })
+          const titles = json.data.map(i => i.attributes.title)
           assert.deepEqual(titles, [ 'Linux Rocks' ], 'expected matching resources')
 
           done()
         })
       })
 
-      it('case insensitive for non-string types', function (done) {
-        var url = 'http://localhost:16006/rest/articles?filter[created]=~2016-01-01'
+      it('case insensitive for non-string types', done => {
+        const url = 'http://localhost:16006/rest/articles?filter[created]=~2016-01-01'
         helpers.request({
           method: 'GET',
-          url: url
-        }, function (err, res, json) {
+          url
+        }, (err, res, json) => {
           assert.equal(err, null)
           json = helpers.validateJson(json)
 
@@ -314,29 +313,29 @@ describe('Testing jsonapi-server', function () {
         })
       })
 
-      it('similar to', function (done) {
-        var url = 'http://localhost:16006/rest/articles?filter[title]=:for'
+      it('similar to', done => {
+        const url = 'http://localhost:16006/rest/articles?filter[title]=:for'
         helpers.request({
           method: 'GET',
-          url: url
-        }, function (err, res, json) {
+          url
+        }, (err, res, json) => {
           assert.equal(err, null)
           json = helpers.validateJson(json)
 
           assert.equal(res.statusCode, '200', 'Expecting 200 OK')
-          var titles = json.data.map(function (i) { return i.attributes.title })
+          const titles = json.data.map(i => i.attributes.title)
           assert.deepEqual(titles, [ 'Tea for Beginners' ], 'expected matching resources')
 
           done()
         })
       })
 
-      it('similar to for non-string types', function (done) {
-        var url = 'http://localhost:16006/rest/articles?filter[created]=:2016-01-01'
+      it('similar to for non-string types', done => {
+        const url = 'http://localhost:16006/rest/articles?filter[created]=:2016-01-01'
         helpers.request({
           method: 'GET',
-          url: url
-        }, function (err, res, json) {
+          url
+        }, (err, res, json) => {
           assert.equal(err, null)
           json = helpers.validateJson(json)
 
@@ -347,12 +346,12 @@ describe('Testing jsonapi-server', function () {
         })
       })
 
-      it('allows filtering by id', function (done) {
-        var url = 'http://localhost:16006/rest/articles?filter[id]=1be0913c-3c25-4261-98f1-e41174025ed5&filter[id]=de305d54-75b4-431b-adb2-eb6b9e546014'
+      it('allows filtering by id', done => {
+        const url = 'http://localhost:16006/rest/articles?filter[id]=1be0913c-3c25-4261-98f1-e41174025ed5&filter[id]=de305d54-75b4-431b-adb2-eb6b9e546014'
         helpers.request({
           method: 'GET',
-          url: url
-        }, function (err, res, json) {
+          url
+        }, (err, res, json) => {
           assert.equal(err, null)
           json = helpers.validateJson(json)
 
@@ -363,12 +362,12 @@ describe('Testing jsonapi-server', function () {
         })
       })
 
-      it('allows for multiple filter values to be combined in a comma-separated list', function (done) {
-        var url = 'http://localhost:16006/rest/articles?filter[tags]=6ec62f6d-9f82-40c5-b4f4-279ed1765492,7541a4de-4986-4597-81b9-cf31b6762486,2a3bdea4-a889-480d-b886-104498c86f69'
+      it('allows for multiple filter values to be combined in a comma-separated list', done => {
+        const url = 'http://localhost:16006/rest/articles?filter[tags]=6ec62f6d-9f82-40c5-b4f4-279ed1765492,7541a4de-4986-4597-81b9-cf31b6762486,2a3bdea4-a889-480d-b886-104498c86f69'
         helpers.request({
           method: 'GET',
-          url: url
-        }, function (err, res, json) {
+          url
+        }, (err, res, json) => {
           assert.equal(err, null)
           json = helpers.validateJson(json)
 
@@ -379,12 +378,12 @@ describe('Testing jsonapi-server', function () {
         })
       })
 
-      it('allows for a compound of comma-separated list filters', function (done) {
-        var url = 'http://localhost:16006/rest/articles?filter[tags]=6ec62f6d-9f82-40c5-b4f4-279ed1765492,7541a4de-4986-4597-81b9-cf31b6762486,2a3bdea4-a889-480d-b886-104498c86f69&filter[id]=de305d54-75b4-431b-adb2-eb6b9e546014,1be0913c-3c25-4261-98f1-e41174025ed5'
+      it('allows for a compound of comma-separated list filters', done => {
+        const url = 'http://localhost:16006/rest/articles?filter[tags]=6ec62f6d-9f82-40c5-b4f4-279ed1765492,7541a4de-4986-4597-81b9-cf31b6762486,2a3bdea4-a889-480d-b886-104498c86f69&filter[id]=de305d54-75b4-431b-adb2-eb6b9e546014,1be0913c-3c25-4261-98f1-e41174025ed5'
         helpers.request({
           method: 'GET',
-          url: url
-        }, function (err, res, json) {
+          url
+        }, (err, res, json) => {
           assert.equal(err, null)
           json = helpers.validateJson(json)
 
@@ -395,12 +394,12 @@ describe('Testing jsonapi-server', function () {
         })
       })
 
-      it('allows deep filtering', function (done) {
-        var url = 'http://localhost:16006/rest/articles?include=author&filter[author]=d850ea75-4427-4f81-8595-039990aeede5&filter[author][firstname]=Mark'
+      it('allows deep filtering', done => {
+        const url = 'http://localhost:16006/rest/articles?include=author&filter[author]=d850ea75-4427-4f81-8595-039990aeede5&filter[author][firstname]=Mark'
         helpers.request({
           method: 'GET',
-          url: url
-        }, function (err, res, json) {
+          url
+        }, (err, res, json) => {
           assert.equal(err, null)
           json = helpers.validateJson(json)
 
@@ -413,13 +412,13 @@ describe('Testing jsonapi-server', function () {
       })
     })
 
-    describe('applying fields', function () {
-      it('unknown attribute should error', function (done) {
-        var url = 'http://localhost:16006/rest/articles?fields[article]=title'
+    describe('applying fields', () => {
+      it('unknown attribute should error', done => {
+        const url = 'http://localhost:16006/rest/articles?fields[article]=title'
         helpers.request({
           method: 'GET',
-          url: url
-        }, function (err, res, json) {
+          url
+        }, (err, res, json) => {
           assert.equal(err, null)
           helpers.validateError(json)
           assert.equal(res.statusCode, '403', 'Expecting 403')
@@ -427,18 +426,18 @@ describe('Testing jsonapi-server', function () {
         })
       })
 
-      it('just title', function (done) {
-        var url = 'http://localhost:16006/rest/articles?fields[articles]=title'
+      it('just title', done => {
+        const url = 'http://localhost:16006/rest/articles?fields[articles]=title'
         request({
           method: 'GET',
-          url: url
-        }, function (err, res, json) {
+          url
+        }, (err, res, json) => {
           assert.equal(err, null)
           json = helpers.validateJson(json)
 
           assert.equal(res.statusCode, '200', 'Expecting 200 OK')
-          json.data.forEach(function (resource) {
-            var keys = Object.keys(resource.attributes)
+          json.data.forEach(resource => {
+            const keys = Object.keys(resource.attributes)
             assert.deepEqual(keys, [ 'title' ], 'should only have the title attribute')
           })
 
@@ -446,18 +445,18 @@ describe('Testing jsonapi-server', function () {
         })
       })
 
-      it('title AND content', function (done) {
-        var url = 'http://localhost:16006/rest/articles?fields[articles]=title,content'
+      it('title AND content', done => {
+        const url = 'http://localhost:16006/rest/articles?fields[articles]=title,content'
         request({
           method: 'GET',
-          url: url
-        }, function (err, res, json) {
+          url
+        }, (err, res, json) => {
           assert.equal(err, null)
           json = helpers.validateJson(json)
 
           assert.equal(res.statusCode, '200', 'Expecting 200 OK')
-          json.data.forEach(function (resource) {
-            var keys = Object.keys(resource.attributes)
+          json.data.forEach(resource => {
+            const keys = Object.keys(resource.attributes)
             assert.deepEqual(keys, [ 'title', 'content' ], 'should only have the title attribute')
           })
 
@@ -466,13 +465,13 @@ describe('Testing jsonapi-server', function () {
       })
     })
 
-    describe('applying includes', function () {
-      it('unknown attribute should error', function (done) {
-        var url = 'http://localhost:16006/rest/articles?include=foobar'
+    describe('applying includes', () => {
+      it('unknown attribute should error', done => {
+        const url = 'http://localhost:16006/rest/articles?include=foobar'
         helpers.request({
           method: 'GET',
-          url: url
-        }, function (err, res, json) {
+          url
+        }, (err, res, json) => {
           assert.equal(err, null)
           helpers.validateError(json)
           assert.equal(res.statusCode, '403', 'Expecting 403')
@@ -480,125 +479,107 @@ describe('Testing jsonapi-server', function () {
         })
       })
 
-      it('include author', function (done) {
-        var url = 'http://localhost:16006/rest/articles?include=author'
+      it('include author', done => {
+        const url = 'http://localhost:16006/rest/articles?include=author'
         helpers.request({
           method: 'GET',
-          url: url
-        }, function (err, res, json) {
+          url
+        }, (err, res, json) => {
           assert.equal(err, null)
           json = helpers.validateJson(json)
 
           assert.equal(res.statusCode, '200', 'Expecting 200 OK')
           assert.equal(json.included.length, 4, 'Should be 4 included resources')
 
-          var people = json.included.filter(function (resource) {
-            return resource.type === 'people'
-          })
+          const people = json.included.filter(resource => resource.type === 'people')
           assert.equal(people.length, 4, 'Should be 4 included people resources')
 
           done()
         })
       })
 
-      it('include author and photos', function (done) {
-        var url = 'http://localhost:16006/rest/articles?include=author,photos'
+      it('include author and photos', done => {
+        const url = 'http://localhost:16006/rest/articles?include=author,photos'
         helpers.request({
           method: 'GET',
-          url: url
-        }, function (err, res, json) {
+          url
+        }, (err, res, json) => {
           assert.equal(err, null)
           json = helpers.validateJson(json)
 
           assert.equal(res.statusCode, '200', 'Expecting 200 OK')
           assert.equal(json.included.length, 7, 'Should be 7 included resources')
 
-          var people = json.included.filter(function (resource) {
-            return resource.type === 'people'
-          })
+          const people = json.included.filter(resource => resource.type === 'people')
           assert.equal(people.length, 4, 'Should be 4 included people resources')
 
-          var photos = json.included.filter(function (resource) {
-            return resource.type === 'photos'
-          })
+          const photos = json.included.filter(resource => resource.type === 'photos')
           assert.equal(photos.length, 3, 'Should be 3 included photos resources')
 
           done()
         })
       })
 
-      it('include author.photos and photos', function (done) {
-        var url = 'http://localhost:16006/rest/articles?include=author.photos,photos'
+      it('include author.photos and photos', done => {
+        const url = 'http://localhost:16006/rest/articles?include=author.photos,photos'
         helpers.request({
           method: 'GET',
-          url: url
-        }, function (err, res, json) {
+          url
+        }, (err, res, json) => {
           assert.equal(err, null)
           json = helpers.validateJson(json)
 
           assert.equal(res.statusCode, '200', 'Expecting 200 OK')
           assert.equal(json.included.length, 7, 'Should be 7 included resources')
 
-          var people = json.included.filter(function (resource) {
-            return resource.type === 'people'
-          })
+          const people = json.included.filter(resource => resource.type === 'people')
           assert.equal(people.length, 4, 'Should be 4 included people resources')
 
-          var photos = json.included.filter(function (resource) {
-            return resource.type === 'photos'
-          })
+          const photos = json.included.filter(resource => resource.type === 'photos')
           assert.equal(photos.length, 3, 'Should be 3 included photos resources')
 
           done()
         })
       })
 
-      it('include author.photos', function (done) {
-        var url = 'http://localhost:16006/rest/articles?include=author.photos'
+      it('include author.photos', done => {
+        const url = 'http://localhost:16006/rest/articles?include=author.photos'
         helpers.request({
           method: 'GET',
-          url: url
-        }, function (err, res, json) {
+          url
+        }, (err, res, json) => {
           assert.equal(err, null)
           json = helpers.validateJson(json)
 
           assert.equal(res.statusCode, '200', 'Expecting 200 OK')
           assert.equal(json.included.length, 7, 'Should be 7 included resources')
 
-          var people = json.included.filter(function (resource) {
-            return resource.type === 'people'
-          })
+          const people = json.included.filter(resource => resource.type === 'people')
           assert.equal(people.length, 4, 'Should be 4 included people resources')
 
-          var photos = json.included.filter(function (resource) {
-            return resource.type === 'photos'
-          })
+          const photos = json.included.filter(resource => resource.type === 'photos')
           assert.equal(photos.length, 3, 'Should be 3 included photos resources')
 
           done()
         })
       })
 
-      it('include author.photos with filter', function (done) {
-        var url = 'http://localhost:16006/rest/articles?include=author.photos&filter[author][firstname]=Mark'
+      it('include author.photos with filter', done => {
+        const url = 'http://localhost:16006/rest/articles?include=author.photos&filter[author][firstname]=Mark'
         helpers.request({
           method: 'GET',
-          url: url
-        }, function (err, res, json) {
+          url
+        }, (err, res, json) => {
           assert.equal(err, null)
           json = helpers.validateJson(json)
 
           assert.equal(res.statusCode, '200', 'Expecting 200 OK')
           assert.equal(json.included.length, 2, 'Should be 2 included resources')
 
-          var people = json.included.filter(function (resource) {
-            return resource.type === 'people'
-          })
+          const people = json.included.filter(resource => resource.type === 'people')
           assert.equal(people.length, 1, 'Should be 1 included people resource')
 
-          var photos = json.included.filter(function (resource) {
-            return resource.type === 'photos'
-          })
+          const photos = json.included.filter(resource => resource.type === 'photos')
           assert.equal(photos.length, 1, 'Should be 1 included photos resource')
 
           done()
@@ -606,13 +587,13 @@ describe('Testing jsonapi-server', function () {
       })
     })
 
-    describe('by foreign key', function () {
-      it('should find resources by a relation', function (done) {
-        var url = 'http://localhost:16006/rest/articles/?filter[photos]=aab14844-97e7-401c-98c8-0bd5ec922d93'
+    describe('by foreign key', () => {
+      it('should find resources by a relation', done => {
+        const url = 'http://localhost:16006/rest/articles/?filter[photos]=aab14844-97e7-401c-98c8-0bd5ec922d93'
         helpers.request({
           method: 'GET',
-          url: url
-        }, function (err, res, json) {
+          url
+        }, (err, res, json) => {
           assert.equal(err, null)
           json = helpers.validateJson(json)
 
@@ -622,12 +603,12 @@ describe('Testing jsonapi-server', function () {
         })
       })
 
-      it('should find resources by many relations', function (done) {
-        var url = 'http://localhost:16006/rest/articles/?filter[photos]=aab14844-97e7-401c-98c8-0bd5ec922d93&filter[photos]=4a8acd65-78bb-4020-b9eb-2d058a86a2a0'
+      it('should find resources by many relations', done => {
+        const url = 'http://localhost:16006/rest/articles/?filter[photos]=aab14844-97e7-401c-98c8-0bd5ec922d93&filter[photos]=4a8acd65-78bb-4020-b9eb-2d058a86a2a0'
         helpers.request({
           method: 'GET',
-          url: url
-        }, function (err, res, json) {
+          url
+        }, (err, res, json) => {
           assert.equal(err, null)
           json = helpers.validateJson(json)
 
@@ -637,17 +618,17 @@ describe('Testing jsonapi-server', function () {
         })
       })
 
-      it('should error with incorrectly named relations', function (done) {
-        var url = 'http://localhost:16006/rest/articles/?filter[photo]=aab14844-97e7-401c-98c8-0bd5ec922d93'
+      it('should error with incorrectly named relations', done => {
+        const url = 'http://localhost:16006/rest/articles/?filter[photo]=aab14844-97e7-401c-98c8-0bd5ec922d93'
         helpers.request({
           method: 'GET',
-          url: url
-        }, function (err, res, json) {
+          url
+        }, (err, res, json) => {
           assert.equal(err, null)
           json = helpers.validateError(json)
 
           assert.equal(res.statusCode, '403', 'Expecting 403 FORBIDDEN')
-          var error = json.errors[0]
+          const error = json.errors[0]
           assert.equal(error.code, 'EFORBIDDEN')
           assert.equal(error.title, 'Invalid filter')
           assert(error.detail.match('do not have attribute or relationship'))
@@ -655,17 +636,17 @@ describe('Testing jsonapi-server', function () {
         })
       })
 
-      it('should error when querying the foreign end of a relationship', function (done) {
-        var url = 'http://localhost:16006/rest/comments/?filter[article]=aab14844-97e7-401c-98c8-0bd5ec922d93'
+      it('should error when querying the foreign end of a relationship', done => {
+        const url = 'http://localhost:16006/rest/comments/?filter[article]=aab14844-97e7-401c-98c8-0bd5ec922d93'
         helpers.request({
           method: 'GET',
-          url: url
-        }, function (err, res, json) {
+          url
+        }, (err, res, json) => {
           assert.equal(err, null)
           json = helpers.validateError(json)
 
           assert.equal(res.statusCode, '403', 'Expecting 403 FORBIDDEN')
-          var error = json.errors[0]
+          const error = json.errors[0]
           assert.equal(error.code, 'EFORBIDDEN')
           assert.equal(error.title, 'Invalid filter')
           assert(error.detail.match('is a foreign reference and does not exist on'))
@@ -675,10 +656,10 @@ describe('Testing jsonapi-server', function () {
     })
   })
 
-  before(function () {
+  before(() => {
     jsonApiTestServer.start()
   })
-  after(function () {
+  after(() => {
     jsonApiTestServer.close()
   })
 })
