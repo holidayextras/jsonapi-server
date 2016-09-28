@@ -1,48 +1,47 @@
-"use strict";
-var request = require("request");
-var assert = require("assert");
-var jsonApiTestServer = require("../example/server.js");
-var helpers = require("./helpers.js");
+const request = require('request')
+const assert = require('assert')
+const jsonApiTestServer = require('../example/server.js')
+const helpers = require('./helpers.js')
 
-describe("Testing jsonapi-server", function() {
-  describe("authentication", function() {
-    it("blocks access with the blockMe header", function(done) {
-      var data = {
-        method: "get",
-        url: "http://localhost:16006/rest/articles",
+describe('Testing jsonapi-server', () => {
+  describe('authentication', () => {
+    it('blocks access with the blockMe header', done => {
+      const data = {
+        method: 'get',
+        url: 'http://localhost:16006/rest/articles',
         headers: {
-          "blockMe": "please"
+          'blockMe': 'please'
         }
-      };
-      request(data, function(err, res, json) {
-        assert.equal(err, null);
-        assert.equal(res.statusCode, "401", "Expecting 401");
-        helpers.validateError(json);
-        done();
-      });
-    });
+      }
+      request(data, (err, res, json) => {
+        assert.equal(err, null)
+        assert.equal(res.statusCode, '401', 'Expecting 401')
+        helpers.validateError(json)
+        done()
+      })
+    })
 
-    it("blocks access with the blockMe cookies", function(done) {
-      var data = {
-        method: "get",
-        url: "http://localhost:16006/rest/articles",
+    it('blocks access with the blockMe cookies', done => {
+      const data = {
+        method: 'get',
+        url: 'http://localhost:16006/rest/articles',
         headers: {
-          "cookie": "blockMe=please"
+          'cookie': 'blockMe=please'
         }
-      };
-      request(data, function(err, res, json) {
-        assert.equal(err, null);
-        assert.equal(res.statusCode, "401", "Expecting 401");
-        helpers.validateError(json);
-        done();
-      });
-    });
-  });
+      }
+      request(data, (err, res, json) => {
+        assert.equal(err, null)
+        assert.equal(res.statusCode, '401', 'Expecting 401')
+        helpers.validateError(json)
+        done()
+      })
+    })
+  })
 
-  before(function() {
-    jsonApiTestServer.start();
-  });
-  after(function() {
-    jsonApiTestServer.close();
-  });
-});
+  before(() => {
+    jsonApiTestServer.start()
+  })
+  after(() => {
+    jsonApiTestServer.close()
+  })
+})
