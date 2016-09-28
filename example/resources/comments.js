@@ -1,5 +1,5 @@
-var jsonApi = require('../../.')
-var commentHandler = require('../handlers/commentHandler.js')
+const jsonApi = require('../../.')
+const commentHandler = require('../handlers/commentHandler.js')
 
 jsonApi.define({
   namespace: 'json:api',

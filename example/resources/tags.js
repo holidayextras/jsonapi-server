@@ -1,5 +1,5 @@
-var jsonApi = require('../../.')
-var tagHandler = require('../handlers/tagHandler.js')
+const jsonApi = require('../../.')
+const tagHandler = require('../handlers/tagHandler.js')
 
 jsonApi.define({
   namespace: 'json:api',

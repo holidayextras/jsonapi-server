@@ -1,17 +1,16 @@
-'use strict'
-var assert = require('assert')
-var request = require('request')
-var helpers = require('./helpers.js')
-var jsonApiTestServer = require('../example/server.js')
+const assert = require('assert')
+const request = require('request')
+const helpers = require('./helpers.js')
+const jsonApiTestServer = require('../example/server.js')
 
-describe('Testing jsonapi-server', function () {
-  describe('foreign lookup', function () {
-    it('unknown id should error', function (done) {
-      var url = 'http://localhost:16006/rest/foobar/relationships?author=cc5cca2e-0dd8-4b95-8cfc-a11230e73116'
+describe('Testing jsonapi-server', () => {
+  describe('foreign lookup', () => {
+    it('unknown id should error', done => {
+      const url = 'http://localhost:16006/rest/foobar/relationships?author=cc5cca2e-0dd8-4b95-8cfc-a11230e73116'
       request({
         method: 'GET',
-        url: url
-      }, function (err, res, json) {
+        url
+      }, (err, res, json) => {
         assert.equal(err, null)
         helpers.validateError(json)
         assert.equal(res.statusCode, '404', 'Expecting 404')
@@ -20,12 +19,12 @@ describe('Testing jsonapi-server', function () {
       })
     })
 
-    it('unknown relation should error', function (done) {
-      var url = 'http://localhost:16006/rest/articles/relationships?title=cc5cca2e-0dd8-4b95-8cfc-a11230e73116'
+    it('unknown relation should error', done => {
+      const url = 'http://localhost:16006/rest/articles/relationships?title=cc5cca2e-0dd8-4b95-8cfc-a11230e73116'
       request({
         method: 'GET',
-        url: url
-      }, function (err, res, json) {
+        url
+      }, (err, res, json) => {
         assert.equal(err, null)
         helpers.validateError(json)
         assert.equal(res.statusCode, '403', 'Expecting 403')
@@ -34,12 +33,12 @@ describe('Testing jsonapi-server', function () {
       })
     })
 
-    it('Lookup by id', function (done) {
-      var url = 'http://localhost:16006/rest/articles/relationships?author=cc5cca2e-0dd8-4b95-8cfc-a11230e73116'
+    it('Lookup by id', done => {
+      const url = 'http://localhost:16006/rest/articles/relationships?author=cc5cca2e-0dd8-4b95-8cfc-a11230e73116'
       request({
         method: 'GET',
-        url: url
-      }, function (err, res, json) {
+        url
+      }, (err, res, json) => {
         assert.equal(err, null)
         json = helpers.validateJson(json)
 
@@ -51,10 +50,10 @@ describe('Testing jsonapi-server', function () {
         assert.ok(json.links instanceof Object, 'Response should have a links block')
         assert.equal(typeof json.links.self, 'string', 'Response should have a "self" link')
 
-        var someDataBlock = json.data
+        let someDataBlock = json.data
         if (!(someDataBlock instanceof Array)) someDataBlock = [ someDataBlock ]
-        someDataBlock.forEach(function (dataBlock) {
-          var keys = Object.keys(dataBlock)
+        someDataBlock.forEach(dataBlock => {
+          const keys = Object.keys(dataBlock)
           assert.deepEqual(keys, [ 'id', 'type' ], 'Relationship data blocks should have specific properties')
           assert.equal(typeof dataBlock.id, 'string', 'Relationship data blocks id should be string')
           assert.equal(typeof dataBlock.type, 'string', 'Relationship data blocks type should be string')
@@ -65,10 +64,10 @@ describe('Testing jsonapi-server', function () {
     })
   })
 
-  before(function () {
+  before(() => {
     jsonApiTestServer.start()
   })
-  after(function () {
+  after(() => {
     jsonApiTestServer.close()
   })
 })
