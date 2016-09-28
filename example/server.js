@@ -7,10 +7,7 @@ var path = require("path");
 var debug = require("debug");
 
 jsonApi.setConfig({
-  graphQl: {
-    path: '/graphql',
-    graphiql: true
-  },
+  graphiql: true,
   swagger: {
     title: "Example JSON:API Server",
     version: "0.1.1",

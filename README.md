@@ -67,10 +67,7 @@ var jsonApi = require("jsonapi-server");
 
 jsonApi.setConfig({
   port: 16006,
-  graphQl: {
-    path: '/graphql',
-    graphiql: true
-  }
+  graphiql: true
 });
 
 jsonApi.define({
@@ -86,7 +83,7 @@ jsonApi.define({
 
 jsonApi.start();
 ```
-Your new API will be alive at `http://localhost:16006/` and your `photos` resources will be at `http://localhost:16006/photos`. The GraphiQL interface will be available at `http://localhost:16006/graphql`.
+Your new API will be alive at `http://localhost:16006/` and your `photos` resources will be at `http://localhost:16006/photos`. The GraphiQL interface will be available at `http://localhost:16006/`.
 
 ### Show me a full example!
 

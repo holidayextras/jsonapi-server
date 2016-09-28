@@ -18,14 +18,9 @@ jsonApi.setConfig({
   // (optional) meta block to appear in the root of every response
   meta: {
     copyright: "Blah"
-  }
-  // (optional) GraphQL is disabled by default, this block will enable it
-  graphQl: {
-    // The path relative to the hostname, where GraphQL should be served from
-    path: '/graphql',
-    // Should the interactive HTTP interface be served up?
-    graphiql: true
   },
+  // Should the interactive GraphQL HTTP interface be served up?
+  graphiql: true
   // (optional) meta can be a function to be invoked at the end of every request
   meta: function(request) {
     return { timestamp: new Date() };
