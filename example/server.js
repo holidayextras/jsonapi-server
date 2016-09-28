@@ -1,5 +1,6 @@
 const server = module.exports = { }
 
+require('use-strict')
 const jsonApi = require('../.')
 const fs = require('fs')
 const path = require('path')
