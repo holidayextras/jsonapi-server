@@ -7,7 +7,7 @@
 
 # jsonapi-server
 
-A config driven NodeJS framework implementing [`json:api`](http://jsonapi.org/) and [`graphQl`](http://graphql.org/). You define the resources, it provides the api.
+A config driven NodeJS framework implementing [`json:api`](http://jsonapi.org/) and [`GraphQL`](http://graphql.org/). You define the resources, it provides the api.
 
 ### Motivation / Justification / Rationale
 
@@ -67,10 +67,7 @@ var jsonApi = require("jsonapi-server");
 
 jsonApi.setConfig({
   port: 16006,
-  graphQl: {
-    path: '/graphql',
-    graphiql: true
-  }
+  graphiql: true
 });
 
 jsonApi.define({
@@ -86,7 +83,7 @@ jsonApi.define({
 
 jsonApi.start();
 ```
-Your new API will be alive at `http://localhost:16006/` and your `photos` resources will be at `http://localhost:16006/photos`. The GraphiQL interface will be available at `http://localhost:16006/graphql`.
+Your new API will be alive at `http://localhost:16006/` and your `photos` resources will be at `http://localhost:16006/photos`. The GraphiQL interface will be available at `http://localhost:16006/`.
 
 ### Show me a full example!
 
@@ -96,8 +93,12 @@ $ git clone https://github.com/holidayextras/jsonapi-server.git
 $ npm install
 $ npm start
 ```
-then browse to
+then browse to the JSON:API endpoints:
 ```
 http://localhost:16006/rest/photos
+```
+or, for GraphQL:
+```
+http://localhost:16006/rest/
 ```
 the example implementation can be found [here](example)
