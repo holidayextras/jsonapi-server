@@ -1,17 +1,16 @@
-'use strict'
-var request = require('request')
-var assert = require('assert')
-var helpers = require('./helpers.js')
-var jsonApiTestServer = require('../example/server.js')
+const request = require('request')
+const assert = require('assert')
+const helpers = require('./helpers.js')
+const jsonApiTestServer = require('../example/server.js')
 
-describe('Testing jsonapi-server', function () {
-  describe('Creating a new resource', function () {
-    it('errors with invalid type', function (done) {
-      var data = {
+describe('Testing jsonapi-server', () => {
+  describe('Creating a new resource', () => {
+    it('errors with invalid type', done => {
+      const data = {
         method: 'post',
         url: 'http://localhost:16006/rest/foobar'
       }
-      helpers.request(data, function (err, res, json) {
+      helpers.request(data, (err, res, json) => {
         assert.equal(err, null)
         helpers.validateError(json)
         assert.equal(res.statusCode, '404', 'Expecting 404')
@@ -20,8 +19,8 @@ describe('Testing jsonapi-server', function () {
       })
     })
 
-    it('errors if resource doesnt validate', function (done) {
-      var data = {
+    it('errors if resource doesnt validate', done => {
+      const data = {
         method: 'post',
         url: 'http://localhost:16006/rest/articles',
         headers: {
@@ -35,7 +34,7 @@ describe('Testing jsonapi-server', function () {
           }
         })
       }
-      request(data, function (err, res, json) {
+      request(data, (err, res, json) => {
         assert.equal(err, null)
         json = helpers.validateError(json)
         assert.equal(json.errors[0].detail.length, 2, 'Expecting several validation errors')
@@ -45,8 +44,8 @@ describe('Testing jsonapi-server', function () {
       })
     })
 
-    it('errors if content-type specifies a media type parameter', function (done) {
-      var data = {
+    it('errors if content-type specifies a media type parameter', done => {
+      const data = {
         method: 'post',
         url: 'http://localhost:16006/rest/photos',
         headers: {
@@ -56,7 +55,7 @@ describe('Testing jsonapi-server', function () {
           'data': { }
         })
       }
-      request(data, function (err, res) {
+      request(data, (err, res) => {
         assert.equal(err, null)
         assert.equal(res.statusCode, '415', 'Expecting 415')
 
@@ -64,8 +63,8 @@ describe('Testing jsonapi-server', function () {
       })
     })
 
-    it('errors if accept header doesnt match JSON:APIs type', function (done) {
-      var data = {
+    it('errors if accept header doesnt match JSON:APIs type', done => {
+      const data = {
         method: 'post',
         url: 'http://localhost:16006/rest/photos',
         headers: {
@@ -75,7 +74,7 @@ describe('Testing jsonapi-server', function () {
           'data': { }
         })
       }
-      request(data, function (err, res) {
+      request(data, (err, res) => {
         assert.equal(err, null)
         assert.equal(res.statusCode, '406', 'Expecting 406')
 
@@ -83,12 +82,12 @@ describe('Testing jsonapi-server', function () {
       })
     })
 
-    it('errors if no body is detected', function (done) {
-      var data = {
+    it('errors if no body is detected', done => {
+      const data = {
         method: 'post',
         url: 'http://localhost:16006/rest/photos'
       }
-      request(data, function (err, res, json) {
+      request(data, (err, res, json) => {
         assert.equal(err, null)
         helpers.validateError(json)
         assert.equal(res.statusCode, '403', 'Expecting 403')
@@ -97,11 +96,11 @@ describe('Testing jsonapi-server', function () {
       })
     })
 
-    describe('creates a resource', function () {
-      var id
+    describe('creates a resource', () => {
+      let id
 
-      it('works', function (done) {
-        var data = {
+      it('works', done => {
+        const data = {
           method: 'post',
           url: 'http://localhost:16006/rest/photos',
           headers: {
@@ -127,11 +126,11 @@ describe('Testing jsonapi-server', function () {
             }
           })
         }
-        helpers.request(data, function (err, res, json) {
+        helpers.request(data, (err, res, json) => {
           assert.equal(err, null)
           json = helpers.validateJson(json)
 
-          assert.equal(res.headers.location, 'http://localhost:16006/rest/photos/' + json.data.id)
+          assert.equal(res.headers.location, `http://localhost:16006/rest/photos/${json.data.id}`)
           assert.equal(res.statusCode, '201', 'Expecting 201')
           assert.equal(json.data.type, 'photos', 'Should be a people resource')
           helpers.validatePhoto(json.data)
@@ -141,12 +140,12 @@ describe('Testing jsonapi-server', function () {
         })
       })
 
-      it('new resource is retrievable', function (done) {
-        var url = 'http://localhost:16006/rest/photos/' + id
+      it('new resource is retrievable', done => {
+        const url = `http://localhost:16006/rest/photos/${id}`
         helpers.request({
           method: 'GET',
-          url: url
-        }, function (err, res, json) {
+          url
+        }, (err, res, json) => {
           assert.equal(err, null)
           json = helpers.validateJson(json)
 
@@ -161,10 +160,10 @@ describe('Testing jsonapi-server', function () {
     })
   })
 
-  before(function () {
+  before(() => {
     jsonApiTestServer.start()
   })
-  after(function () {
+  after(() => {
     jsonApiTestServer.close()
   })
 })

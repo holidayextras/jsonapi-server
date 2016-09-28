@@ -1,32 +1,31 @@
-'use strict'
-var assert = require('assert')
-var helpers = require('./helpers.js')
-var jsonApi = require('../lib/jsonApi')
-var jsonApiTestServer = require('../example/server')
+const assert = require('assert')
+const helpers = require('./helpers.js')
+const jsonApi = require('../lib/jsonApi')
+const jsonApiTestServer = require('../example/server')
 
-describe('Testing jsonapi-server', function () {
-  describe('resource readiness', function () {
-    it('returns 200 if resource is ready', function (done) {
-      var url = 'http://localhost:16006/rest/articles/de305d54-75b4-431b-adb2-eb6b9e546014'
+describe('Testing jsonapi-server', () => {
+  describe('resource readiness', () => {
+    it('returns 200 if resource is ready', done => {
+      const url = 'http://localhost:16006/rest/articles/de305d54-75b4-431b-adb2-eb6b9e546014'
       helpers.request({
         method: 'GET',
-        url: url
-      }, function (err, res) {
+        url
+      }, (err, res) => {
         assert(!err)
         assert.strictEqual(res.statusCode, 200, 'Expecting 200 OK')
         done()
       })
     })
 
-    it('returns 503 if resource is NOT ready', function (done) {
-      var handlers = jsonApi._resources.articles.handlers
-      var savedHandlersReady = handlers.ready
+    it('returns 503 if resource is NOT ready', done => {
+      const handlers = jsonApi._resources.articles.handlers
+      const savedHandlersReady = handlers.ready
       handlers.ready = false
-      var url = 'http://localhost:16006/rest/articles/de305d54-75b4-431b-adb2-eb6b9e546014'
+      const url = 'http://localhost:16006/rest/articles/de305d54-75b4-431b-adb2-eb6b9e546014'
       helpers.request({
         method: 'GET',
-        url: url
-      }, function (err, res) {
+        url
+      }, (err, res) => {
         assert(!err)
         assert.strictEqual(res.statusCode, 503, 'Expecting 503 SERVICE UNAVAILABLE')
         handlers.ready = savedHandlersReady
@@ -35,10 +34,10 @@ describe('Testing jsonapi-server', function () {
     })
   })
 
-  before(function () {
+  before(() => {
     jsonApiTestServer.start()
   })
-  after(function () {
+  after(() => {
     jsonApiTestServer.close()
   })
 })

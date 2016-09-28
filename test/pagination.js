@@ -1,18 +1,17 @@
-'use strict'
-var assert = require('assert')
-var helpers = require('./helpers.js')
-var jsonApiTestServer = require('../example/server.js')
+const assert = require('assert')
+const helpers = require('./helpers.js')
+const jsonApiTestServer = require('../example/server.js')
 
-var pageLinks
+let pageLinks
 
-describe('Testing jsonapi-server', function () {
-  describe('pagination', function () {
-    it('errors with invalid page parameters', function (done) {
-      var data = {
+describe('Testing jsonapi-server', () => {
+  describe('pagination', () => {
+    it('errors with invalid page parameters', done => {
+      const data = {
         method: 'get',
         url: 'http://localhost:16006/rest/articles?page[size]=10'
       }
-      helpers.request(data, function (err, res) {
+      helpers.request(data, (err, res) => {
         assert.equal(err, null)
         assert.equal(res.statusCode, '403', 'Expecting 403')
 
@@ -20,13 +19,13 @@ describe('Testing jsonapi-server', function () {
       })
     })
 
-    describe('clicks through a full result set', function () {
-      it('fetches the first page', function (done) {
-        var data = {
+    describe('clicks through a full result set', () => {
+      it('fetches the first page', done => {
+        const data = {
           method: 'get',
           url: 'http://localhost:16006/rest/articles?page[offset]=0&page[limit]=1&sort=title'
         }
-        helpers.request(data, function (err, res, json) {
+        helpers.request(data, (err, res, json) => {
           assert.equal(err, null)
           json = helpers.validateJson(json)
 
@@ -46,12 +45,12 @@ describe('Testing jsonapi-server', function () {
         })
       })
 
-      it('fetches the second page', function (done) {
-        var data = {
+      it('fetches the second page', done => {
+        const data = {
           method: 'get',
           url: pageLinks.next
         }
-        helpers.request(data, function (err, res, json) {
+        helpers.request(data, (err, res, json) => {
           assert.equal(err, null)
           json = helpers.validateJson(json)
 
@@ -73,12 +72,12 @@ describe('Testing jsonapi-server', function () {
         })
       })
 
-      it('fetches the third page', function (done) {
-        var data = {
+      it('fetches the third page', done => {
+        const data = {
           method: 'get',
           url: pageLinks.next
         }
-        helpers.request(data, function (err, res, json) {
+        helpers.request(data, (err, res, json) => {
           assert.equal(err, null)
           json = helpers.validateJson(json)
 
@@ -100,12 +99,12 @@ describe('Testing jsonapi-server', function () {
         })
       })
 
-      it('fetches the final page', function (done) {
-        var data = {
+      it('fetches the final page', done => {
+        const data = {
           method: 'get',
           url: pageLinks.next
         }
-        helpers.request(data, function (err, res, json) {
+        helpers.request(data, (err, res, json) => {
           assert.equal(err, null)
           json = helpers.validateJson(json)
 
@@ -126,12 +125,12 @@ describe('Testing jsonapi-server', function () {
       })
     })
 
-    it('fetches an obscure page', function (done) {
-      var data = {
+    it('fetches an obscure page', done => {
+      const data = {
         method: 'get',
         url: 'http://localhost:16006/rest/articles?page[offset]=1&page[limit]=2&sort=title'
       }
-      helpers.request(data, function (err, res, json) {
+      helpers.request(data, (err, res, json) => {
         assert.equal(err, null)
         json = helpers.validateJson(json)
 
@@ -155,10 +154,10 @@ describe('Testing jsonapi-server', function () {
     })
   })
 
-  before(function () {
+  before(() => {
     jsonApiTestServer.start()
   })
-  after(function () {
+  after(() => {
     jsonApiTestServer.close()
   })
 })

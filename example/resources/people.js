@@ -1,5 +1,5 @@
-var jsonApi = require('../../.')
-var peopleHandler = require('../handlers/peopleHandler.js')
+const jsonApi = require('../../.')
+const peopleHandler = require('../handlers/peopleHandler.js')
 
 jsonApi.define({
   namespace: 'json:api',

@@ -1,17 +1,16 @@
-'use strict'
-var request = require('request')
-var assert = require('assert')
-var helpers = require('./helpers.js')
-var jsonApiTestServer = require('../example/server.js')
+const request = require('request')
+const assert = require('assert')
+const helpers = require('./helpers.js')
+const jsonApiTestServer = require('../example/server.js')
 
-describe('Testing jsonapi-server', function () {
-  describe('unavailable functions', function () {
-    it('responds with a clear error', function (done) {
-      var data = {
+describe('Testing jsonapi-server', () => {
+  describe('unavailable functions', () => {
+    it('responds with a clear error', done => {
+      const data = {
         method: 'delete',
         url: 'http://localhost:16006/rest/photos/14'
       }
-      request(data, function (err, res, json) {
+      request(data, (err, res, json) => {
         assert.equal(err, null)
         json = helpers.validateError(json)
         assert.equal(res.statusCode, '403', 'Expecting 403')
@@ -22,10 +21,10 @@ describe('Testing jsonapi-server', function () {
     })
   })
 
-  before(function () {
+  before(() => {
     jsonApiTestServer.start()
   })
-  after(function () {
+  after(() => {
     jsonApiTestServer.close()
   })
 })
