@@ -5,7 +5,7 @@ var jsonApiTestServer = require("../example/server");
 var Lokka = require('lokka').Lokka;
 var Transport = require('lokka-transport-http').Transport;
 var client = new Lokka({
-  transport: new Transport('http://localhost:16006/graphql')
+  transport: new Transport('http://localhost:16006/rest/')
 });
 
 
