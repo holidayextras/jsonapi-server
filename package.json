@@ -57,7 +57,7 @@
     "v8-profiler": "^5.6.5"
   },
   "scripts": {
-    "test": "node ./node_modules/mocha/bin/mocha -S -R spec ./test/*.js",
+    "test": "node ./node_modules/mocha/bin/mocha -S --require use-strict -R spec ./test/*.js",
     "start": "node example/server.js",
     "coveralls": "node ./node_modules/mocha/bin/mocha -S --require blanket --reporter mocha-lcov-reporter ./test/*.js | node ./node_modules/coveralls/bin/coveralls.js",
     "coverage": "node ./node_modules/mocha/bin/mocha -S --require blanket --reporter html-cov ./test/*.js > coverage.html",
@@ -65,7 +65,7 @@
     "performance": "node --allow-natives-syntax --harmony ./node_modules/mocha/bin/_mocha -S --reporter mocha-performance ./test/*.js",
     "lint": "node ./node_modules/eslint/bin/eslint ./example ./lib ./test --quiet && echo '✔ All good!'",
     "jscpd": "jscpd --blame -p ./lib/ || echo 'Finished!'",
-    "swagger": "node ./node_modules/mocha/bin/mocha -S -R spec ./swaggerValidator.js --timeout 60000"
+    "swagger": "node ./node_modules/mocha/bin/mocha -S --require use-strict -R spec ./swaggerValidator.js --timeout 60000"
   },
   "config": {
     "blanket": {
