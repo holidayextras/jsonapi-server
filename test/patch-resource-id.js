@@ -1,18 +1,17 @@
-'use strict'
-var assert = require('assert')
-var request = require('request')
-var helpers = require('./helpers.js')
-var jsonApiTestServer = require('../example/server.js')
+const assert = require('assert')
+const request = require('request')
+const helpers = require('./helpers.js')
+const jsonApiTestServer = require('../example/server.js')
 
-describe('Testing jsonapi-server', function () {
-  describe('Updating a resource', function () {
-    context('with invalid urls', function () {
-      it('errors with invalid type', function (done) {
-        var data = {
+describe('Testing jsonapi-server', () => {
+  describe('Updating a resource', () => {
+    context('with invalid urls', () => {
+      it('errors with invalid type', done => {
+        const data = {
           method: 'patch',
           url: 'http://localhost:16006/rest/foobar/someId'
         }
-        helpers.request(data, function (err, res, json) {
+        helpers.request(data, (err, res, json) => {
           assert.equal(err, null)
           helpers.validateError(json)
           assert.equal(res.statusCode, '404', 'Expecting 404')
@@ -21,8 +20,8 @@ describe('Testing jsonapi-server', function () {
         })
       })
 
-      it('errors with invalid id', function (done) {
-        var data = {
+      it('errors with invalid id', done => {
+        const data = {
           method: 'patch',
           url: 'http://localhost:16006/rest/comments/foobar',
           headers: {
@@ -34,7 +33,7 @@ describe('Testing jsonapi-server', function () {
             }
           })
         }
-        request(data, function (err, res, json) {
+        request(data, (err, res, json) => {
           assert.equal(err, null)
           helpers.validateError(json)
           assert.equal(res.statusCode, '404', 'Expecting 404')
@@ -44,9 +43,9 @@ describe('Testing jsonapi-server', function () {
       })
     })
 
-    context('with invalid payloads', function () {
-      it('errors with invalid attributes', function (done) {
-        var data = {
+    context('with invalid payloads', () => {
+      it('errors with invalid attributes', done => {
+        const data = {
           method: 'patch',
           url: 'http://localhost:16006/rest/comments/3f1a89c2-eb85-4799-a048-6735db24b7eb',
           headers: {
@@ -60,7 +59,7 @@ describe('Testing jsonapi-server', function () {
             }
           })
         }
-        request(data, function (err, res, json) {
+        request(data, (err, res, json) => {
           assert.equal(err, null)
           helpers.validateError(json)
           assert.equal(res.statusCode, '403', 'Expecting 403')
@@ -69,8 +68,8 @@ describe('Testing jsonapi-server', function () {
         })
       })
 
-      it('errors with invalid one relations', function (done) {
-        var data = {
+      it('errors with invalid one relations', done => {
+        const data = {
           method: 'patch',
           url: 'http://localhost:16006/rest/articles/d850ea75-4427-4f81-8595-039990aeede5',
           headers: {
@@ -86,7 +85,7 @@ describe('Testing jsonapi-server', function () {
             }
           })
         }
-        request(data, function (err, res, json) {
+        request(data, (err, res, json) => {
           assert.equal(err, null)
           helpers.validateError(json)
           assert.equal(res.statusCode, '403', 'Expecting 403')
@@ -95,8 +94,8 @@ describe('Testing jsonapi-server', function () {
         })
       })
 
-      it('errors with invalid many relations 1', function (done) {
-        var data = {
+      it('errors with invalid many relations 1', done => {
+        const data = {
           method: 'patch',
           url: 'http://localhost:16006/rest/articles/d850ea75-4427-4f81-8595-039990aeede5',
           headers: {
@@ -112,7 +111,7 @@ describe('Testing jsonapi-server', function () {
             }
           })
         }
-        helpers.request(data, function (err, res, json) {
+        helpers.request(data, (err, res, json) => {
           assert.equal(err, null)
           helpers.validateError(json)
           assert.equal(res.statusCode, '403', 'Expecting 403')
@@ -121,8 +120,8 @@ describe('Testing jsonapi-server', function () {
         })
       })
 
-      it('errors with invalid many relations 2', function (done) {
-        var data = {
+      it('errors with invalid many relations 2', done => {
+        const data = {
           method: 'patch',
           url: 'http://localhost:16006/rest/articles/d850ea75-4427-4f81-8595-039990aeede5',
           headers: {
@@ -138,7 +137,7 @@ describe('Testing jsonapi-server', function () {
             }
           })
         }
-        helpers.request(data, function (err, res, json) {
+        helpers.request(data, (err, res, json) => {
           assert.equal(err, null)
           helpers.validateError(json)
           assert.equal(res.statusCode, '403', 'Expecting 403')
@@ -148,8 +147,8 @@ describe('Testing jsonapi-server', function () {
       })
     })
 
-    it('only validates named attributes', function (done) {
-      var data = {
+    it('only validates named attributes', done => {
+      const data = {
         method: 'patch',
         url: 'http://localhost:16006/rest/articles/d850ea75-4427-4f81-8595-039990aeede5',
         headers: {
@@ -164,7 +163,7 @@ describe('Testing jsonapi-server', function () {
           }
         })
       }
-      request(data, function (err, res, json) {
+      request(data, (err, res, json) => {
         assert.equal(err, null)
         helpers.validateJson(json)
 
@@ -174,9 +173,9 @@ describe('Testing jsonapi-server', function () {
       })
     })
 
-    describe('updating a comment', function () {
-      it('updates the resource', function (done) {
-        var data = {
+    describe('updating a comment', () => {
+      it('updates the resource', done => {
+        const data = {
           method: 'patch',
           url: 'http://localhost:16006/rest/comments/3f1a89c2-eb85-4799-a048-6735db24b7eb',
           headers: {
@@ -198,7 +197,7 @@ describe('Testing jsonapi-server', function () {
             }
           })
         }
-        request(data, function (err, res, json) {
+        request(data, (err, res, json) => {
           assert.equal(err, null)
           helpers.validateJson(json)
 
@@ -208,12 +207,12 @@ describe('Testing jsonapi-server', function () {
         })
       })
 
-      it('new resource has changed', function (done) {
-        var url = 'http://localhost:16006/rest/comments/3f1a89c2-eb85-4799-a048-6735db24b7eb'
+      it('new resource has changed', done => {
+        const url = 'http://localhost:16006/rest/comments/3f1a89c2-eb85-4799-a048-6735db24b7eb'
         helpers.request({
           method: 'GET',
-          url: url
-        }, function (err, res, json) {
+          url
+        }, (err, res, json) => {
           assert.equal(err, null)
           json = helpers.validateJson(json)
 
@@ -267,8 +266,8 @@ describe('Testing jsonapi-server', function () {
         })
       })
 
-      it('deletes a relationship', function (done) {
-        var data = {
+      it('deletes a relationship', done => {
+        const data = {
           method: 'patch',
           url: 'http://localhost:16006/rest/comments/3f1a89c2-eb85-4799-a048-6735db24b7eb',
           headers: {
@@ -290,7 +289,7 @@ describe('Testing jsonapi-server', function () {
             }
           })
         }
-        request(data, function (err, res, json) {
+        request(data, (err, res, json) => {
           assert.equal(err, null)
           helpers.validateJson(json)
 
@@ -300,12 +299,12 @@ describe('Testing jsonapi-server', function () {
         })
       })
 
-      it('new resource has changed', function (done) {
-        var url = 'http://localhost:16006/rest/comments/3f1a89c2-eb85-4799-a048-6735db24b7eb'
+      it('new resource has changed', done => {
+        const url = 'http://localhost:16006/rest/comments/3f1a89c2-eb85-4799-a048-6735db24b7eb'
         helpers.request({
           method: 'GET',
-          url: url
-        }, function (err, res, json) {
+          url
+        }, (err, res, json) => {
           assert.equal(err, null)
           json = helpers.validateJson(json)
 
@@ -358,10 +357,10 @@ describe('Testing jsonapi-server', function () {
     })
   })
 
-  before(function () {
+  before(() => {
     jsonApiTestServer.start()
   })
-  after(function () {
+  after(() => {
     jsonApiTestServer.close()
   })
 })

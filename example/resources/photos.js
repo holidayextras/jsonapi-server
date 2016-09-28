@@ -1,5 +1,5 @@
-var jsonApi = require('../../.')
-var photoHandler = require('../handlers/photoHandler.js')
+const jsonApi = require('../../.')
+const photoHandler = require('../handlers/photoHandler.js')
 
 jsonApi.define({
   namespace: 'json:api',

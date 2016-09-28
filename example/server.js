@@ -1,10 +1,9 @@
-'use strict'
-var server = module.exports = { }
+const server = module.exports = { }
 
-var jsonApi = require('../.')
-var fs = require('fs')
-var path = require('path')
-var debug = require('debug')
+const jsonApi = require('../.')
+const fs = require('fs')
+const path = require('path')
+const debug = require('debug')
 
 jsonApi.setConfig({
   graphiql: true,
@@ -31,7 +30,7 @@ jsonApi.setConfig({
   }
 })
 
-jsonApi.authenticate(function (request, callback) {
+jsonApi.authenticate((request, callback) => {
   // If a "blockMe" header is provided, block access.
   if (request.headers.blockme) return callback('Fail')
 
@@ -41,22 +40,18 @@ jsonApi.authenticate(function (request, callback) {
   return callback()
 })
 
-fs.readdirSync(path.join(__dirname, '/resources')).filter(function (filename) {
-  return /^[a-z].*\.js$/.test(filename)
-}).map(function (filename) {
-  return path.join(__dirname, '/resources/', filename)
-}).forEach(require)
+fs.readdirSync(path.join(__dirname, '/resources')).filter(filename => /^[a-z].*\.js$/.test(filename)).map(filename => path.join(__dirname, '/resources/', filename)).forEach(require)
 
-jsonApi.onUncaughtException(function (request, error) {
-  var errorDetails = error.stack.split('\n')
+jsonApi.onUncaughtException((request, error) => {
+  const errorDetails = error.stack.split('\n')
   console.error(JSON.stringify({
-    request: request,
+    request,
     error: errorDetails.shift(),
     stack: errorDetails
   }))
 })
 
-jsonApi.metrics.on('data', function (data) {
+jsonApi.metrics.on('data', data => {
   debug('metrics')(data)
 })
 
