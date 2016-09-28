@@ -7,7 +7,7 @@
 
 # jsonapi-server
 
-A config driven NodeJS framework implementing [`json:api`](http://jsonapi.org/) and [`graphQl`](http://graphql.org/). You define the resources, it provides the api.
+A config driven NodeJS framework implementing [`json:api`](http://jsonapi.org/) and [`GraphQL`](http://graphql.org/). You define the resources, it provides the api.
 
 ### Motivation / Justification / Rationale
 
