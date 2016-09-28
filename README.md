@@ -93,8 +93,12 @@ $ git clone https://github.com/holidayextras/jsonapi-server.git
 $ npm install
 $ npm start
 ```
-then browse to
+then browse to the JSON:API endpoints:
 ```
 http://localhost:16006/rest/photos
+```
+or, for GraphQL:
+```
+http://localhost:16006/rest/
 ```
 the example implementation can be found [here](example)
