@@ -14,7 +14,7 @@ describe("Testing jsonapi-server", function() {
       };
       helpers.request(data, function(err, res, json) {
         assert.equal(err, null);
-        json = helpers.validateError(json);
+        helpers.validateError(json);
         assert.equal(res.statusCode, "404", "Expecting 404");
 
         done();
@@ -70,7 +70,7 @@ describe("Testing jsonapi-server", function() {
         method: "post",
         url: "http://localhost:16006/rest/photos",
         headers: {
-          "Accept": "application/vnd.api+xml, application/vnd.api+json;foobar, application/json"
+          "Accept": "application/vnd.api+xml, application/vnd.api+json;foobar, text/json"
         },
         body: JSON.stringify({
           "data": { }
@@ -91,7 +91,7 @@ describe("Testing jsonapi-server", function() {
       };
       request(data, function(err, res, json) {
         assert.equal(err, null);
-        json = helpers.validateError(json);
+        helpers.validateError(json);
         assert.equal(res.statusCode, "403", "Expecting 403");
 
         done();

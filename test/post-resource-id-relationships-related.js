@@ -13,7 +13,7 @@ describe("Testing jsonapi-server", function() {
       };
       helpers.request(data, function(err, res, json) {
         assert.equal(err, null);
-        json = helpers.validateError(json);
+        helpers.validateError(json);
         assert.equal(res.statusCode, "404", "Expecting 404");
 
         done();
@@ -33,7 +33,7 @@ describe("Testing jsonapi-server", function() {
       };
       helpers.request(data, function(err, res, json) {
         assert.equal(err, null);
-        json = helpers.validateError(json);
+        helpers.validateError(json);
         assert.equal(res.statusCode, "404", "Expecting 404");
 
         done();
@@ -53,7 +53,7 @@ describe("Testing jsonapi-server", function() {
       };
       helpers.request(data, function(err, res, json) {
         assert.equal(err, null);
-        json = helpers.validateError(json);
+        helpers.validateError(json);
         assert.equal(res.statusCode, "403", "Expecting 403");
 
         done();
@@ -74,7 +74,7 @@ describe("Testing jsonapi-server", function() {
         };
         helpers.request(data, function(err, res, json) {
           assert.equal(err, null);
-          json = helpers.validateJson(json);
+          helpers.validateJson(json);
 
           assert.equal(res.statusCode, "201", "Expecting 201");
 
@@ -126,7 +126,7 @@ describe("Testing jsonapi-server", function() {
         };
         helpers.request(data, function(err, res, json) {
           assert.equal(err, null);
-          json = helpers.validateJson(json);
+          helpers.validateJson(json);
 
           assert.equal(res.statusCode, "201", "Expecting 201");
 
