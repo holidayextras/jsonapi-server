@@ -3,6 +3,8 @@
 
 ```javascript
 jsonApi.setConfig({
+  // (optional): An express Router to bind to instead of building a new Express server
+  router: null, // result of `express.Router()`
   // (optional) An alias of the absolute portion of URLs generated in a response file
   // eg http://localhost:16006/some-resource/ -> https://www.example.com/my-api/some-resource/
   urlPrefixAlias: "https://www.example.com/my-api/",
