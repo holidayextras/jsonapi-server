@@ -1,3 +1,5 @@
+- 2016-09-29 - v2.0.1
+- 2016-09-29 - Adding use-strict to all files
 - 2016-09-29 - v2.0.0
 - 2016-09-28 - Bumped all dependencies to latest
 - 2016-09-28 - Removed hiphens from list of allowed characters in names
