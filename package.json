@@ -1,6 +1,6 @@
 {
   "name": "jsonapi-server",
-  "version": "2.0.2",
+  "version": "2.1.0",
   "description": "A config driven NodeJS framework implementing json:api",
   "keywords": [
     "jsonapi",
@@ -35,8 +35,7 @@
     "lodash.uniqby": "^4.5.0",
     "node-uuid": "^1.4.7",
     "qs": "^6.2.0",
-    "request": "^2.72.0",
-    "use-strict": "^1.0.1"
+    "request": "^2.72.0"
   },
   "devDependencies": {
     "blanket": "^1.2.3",
@@ -56,14 +55,14 @@
     "v8-profiler": "^5.6.5"
   },
   "scripts": {
-    "test": "node ./node_modules/mocha/bin/mocha -S --require use-strict -R spec ./test/*.js",
+    "test": "node ./node_modules/mocha/bin/mocha -S -R spec ./test/*.js",
     "start": "node example/server.js",
     "coverage": "node ./node_modules/mocha/bin/mocha -S --require blanket --reporter html-cov ./test/*.js > coverage.html",
     "complexity": "node ./node_modules/plato/bin/plato -r -d complexity lib",
     "performance": "node --allow-natives-syntax --harmony ./node_modules/mocha/bin/_mocha -S --reporter mocha-performance ./test/*.js",
     "lint": "node ./node_modules/eslint/bin/eslint ./example ./lib ./test --quiet && echo '✔ All good!'",
     "jscpd": "jscpd --blame -p ./lib/ || echo 'Finished!'",
-    "swagger": "node ./node_modules/mocha/bin/mocha -S --require use-strict -R spec ./swaggerValidator.js --timeout 60000"
+    "swagger": "node ./node_modules/mocha/bin/mocha -S -R spec ./swaggerValidator.js --timeout 60000"
   },
   "config": {
     "blanket": {
