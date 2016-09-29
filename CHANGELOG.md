@@ -1,3 +1,5 @@
+- 2016-09-29 - v2.0.2
+- 2016-09-29 - Better Joi to GraphQL type conversion
 - 2016-09-29 - v2.0.1
 - 2016-09-29 - Adding use-strict to all files
 - 2016-09-29 - v2.0.0
