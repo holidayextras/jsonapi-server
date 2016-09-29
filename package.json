@@ -40,7 +40,6 @@
   },
   "devDependencies": {
     "blanket": "^1.2.3",
-    "coveralls": "^2.11.9",
     "eslint": "^3.6.1",
     "eslint-config-standard": "^6.1.0",
     "eslint-plugin-promise": "^2.0.0",
@@ -59,7 +58,6 @@
   "scripts": {
     "test": "node ./node_modules/mocha/bin/mocha -S --require use-strict -R spec ./test/*.js",
     "start": "node example/server.js",
-    "coveralls": "node ./node_modules/mocha/bin/mocha -S --require blanket --reporter mocha-lcov-reporter ./test/*.js | node ./node_modules/coveralls/bin/coveralls.js",
     "coverage": "node ./node_modules/mocha/bin/mocha -S --require blanket --reporter html-cov ./test/*.js > coverage.html",
     "complexity": "node ./node_modules/plato/bin/plato -r -d complexity lib",
     "performance": "node --allow-natives-syntax --harmony ./node_modules/mocha/bin/_mocha -S --reporter mocha-performance ./test/*.js",
