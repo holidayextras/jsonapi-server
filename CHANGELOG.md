@@ -1,3 +1,9 @@
+- 2016-09-29 - v2.0.0
+- 2016-09-28 - Bumped all dependencies to latest
+- 2016-09-28 - Removed hiphens from list of allowed characters in names
+- 2016-09-28 - Converted to ES6
+- 2016-09-28 - Converted to eslint:standard
+- 2016-09-28 - Enabled GraphQL
 - 2016-09-20 - v1.17.0
 - 2016-09-20 - Remove metrics listeners on server.close()
 - 2016-09-20 - Dynamic swagger.json based on handler capabilities
