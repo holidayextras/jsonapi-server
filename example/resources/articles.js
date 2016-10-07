@@ -7,7 +7,20 @@ jsonApi.define({
   namespace: 'json:api',
   resource: 'articles',
   description: 'Represents the core content, people love to read articles.',
-  handlers: authenticationHandler.chain(timestampHandler).chain(articleHandler),
+  handlers: ????,
+  /*
+  --> jsonApi.ProxyHandler --> /lib/ProxyHandler.js
+
+  handlers: {
+    ready: false,
+    initialise: (resourceConfig) => { },
+    search: (request, callback) => { },
+    find: (request, callback) => { },
+    create: (request, newResource, callback) => { },
+    delete: (request, callback) => { },
+    update: (request, partialResource, callback) { }
+  }
+  */
   searchParams: {
     query: jsonApi.Joi.number()
       .description('Fuzzy text match against titles')
