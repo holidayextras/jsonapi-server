@@ -15,6 +15,7 @@ describe('Testing jsonapi-server graphql', () => {
         photos(width: "<1000") {
           url
           width
+          tags
           photographer(firstname: "Rahul") {
             firstname
           }
@@ -26,11 +27,13 @@ describe('Testing jsonapi-server graphql', () => {
           {
             'url': 'http://www.example.com/penguins',
             'width': 60,
+            'tags': ['galapagos', 'emperor'],
             'photographer': null
           },
           {
             'url': 'http://www.example.com/treat',
             'width': 350,
+            'tags': ['black', 'green'],
             'photographer': {
               'firstname': 'Rahul'
             }

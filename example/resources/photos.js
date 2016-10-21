@@ -24,6 +24,8 @@ jsonApi.define({
       .default(false)
       .description('File in RAW format')
       .example(false),
+    tags: jsonApi.Joi.array().items(jsonApi.Joi.string())
+      .description('Tags for the photo'),
     photographer: jsonApi.Joi.one('people')
       .description('The person who took the photo'),
     articles: jsonApi.Joi.belongsToMany({
@@ -40,6 +42,7 @@ jsonApi.define({
       height: 1080,
       width: 1920,
       raw: true,
+      tags: ['neo', 'morpheus'],
       photographer: { type: 'people', id: 'ad3aa89e-9c5b-4ac9-a652-6670f9f27587' }
     },
     {
@@ -49,6 +52,7 @@ jsonApi.define({
       url: 'http://www.example.com/penguins',
       height: 220,
       width: 60,
+      tags: ['galapagos', 'emperor'],
       photographer: { type: 'people', id: 'd850ea75-4427-4f81-8595-039990aeede5' }
     },
     {
@@ -58,6 +62,7 @@ jsonApi.define({
       url: 'http://www.example.com/treat',
       height: 350,
       width: 350,
+      tags: ['black', 'green'],
       photographer: { type: 'people', id: 'ad3aa89e-9c5b-4ac9-a652-6670f9f27587' }
     }
   ]
