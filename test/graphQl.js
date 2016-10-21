@@ -7,7 +7,6 @@ const client = new Lokka({
   transport: new Transport('http://localhost:16006/rest/')
 })
 
-
 describe('Testing jsonapi-server graphql', () => {
   describe('read operations', () => {
     it('filter with primary join and filter', () => client.query(`
