@@ -1,1 +1,0 @@
-{"options":{},"indexes":[{"v":1,"key":{"_id":1},"name":"_id_","ns":"admin.circuits"},{"v":1,"key":{"tags.id":1,"rack.id":1},"name":"tags.id_1_rack.id_1","ns":"admin.circuits"},{"v":1,"key":{"rack.id":1,"tags.id":1},"name":"rack.id_1_tags.id_1","ns":"admin.circuits"}]}
