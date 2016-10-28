@@ -37,9 +37,6 @@ jsonApi.define({
     plcScanEnabled: jsonApi.Joi.boolean().required()
       .description("Should the driver try to connect and scan the plc.")
       .example("FALSE"),
-    pin: jsonApi.Joi.number().integer().required().default(1234)
-      .description("The pin to login to the RPP. This will work even if no ldap server is available.")
-      .example("1234"),
     tags: jsonApi.Joi.many("tags")
       .description("All of the common tags associated with this RPP"),
     dps: jsonApi.Joi.many("dps")
