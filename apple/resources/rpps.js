@@ -37,9 +37,6 @@ jsonApi.define({
     plcScanEnabled: jsonApi.Joi.boolean().required()
       .description("Should the driver try to connect and scan the plc.")
       .example("FALSE"),
-    configJSON: jsonApi.Joi.string()
-      .description("JSON structure used to store global rpp configuration options.")
-      .example("Stringified JSON configuration options."),
     tags: jsonApi.Joi.many("tags")
       .description("All of the common tags associated with this RPP"),
     dps: jsonApi.Joi.many("dps")
