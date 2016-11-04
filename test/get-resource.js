@@ -653,6 +653,22 @@ describe('Testing jsonapi-server', () => {
           done()
         })
       })
+
+      it('should give clean validation errors', done => {
+        const url = 'http://localhost:16006/rest/articles?include=fdfdds,sdf'
+        helpers.request({
+          method: 'GET',
+          url
+        }, (err, res, json) => {
+          assert.equal(err, null)
+          json = helpers.validateError(json)
+
+          assert.equal(res.statusCode, '403', 'Expecting 403 EFORBIDDEN')
+          assert.equal(json.errors.length, 2, 'Should be 2 errors')
+
+          done()
+        })
+      })
     })
   })
 
