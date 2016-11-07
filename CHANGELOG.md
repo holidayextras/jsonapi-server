@@ -1,3 +1,7 @@
+- 2016-11-07 - v2.2.0
+- 2016-11-07 - Adding polymorphic relationships
+- 2016-11-07 - Correctly handle validation errors when including non-existant resources
+- 2016-11-07 - Added Array Joi type for GraphQL
 - 2016-09-29 - v2.1.0
 - 2016-09-29 - Enable injection of an Express Router
 - 2016-09-29 - v2.0.2
