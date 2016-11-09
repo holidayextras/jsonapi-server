@@ -4,6 +4,7 @@ var server = module.exports = { };
 var jsonApi = require("../.");
 var fs = require("fs");
 var path = require("path");
+var ldap_auth = require("./ldap_auth");
 
 process.title = "jsonapi-server";
 
@@ -32,13 +33,25 @@ jsonApi.setConfig({
 });
 
 jsonApi.authenticate(function(request, callback) {
+
+  //Check for authorization header.
+  if (request.headers.hasOwnProperty('authorization') == false) return callback("Fail");
+
   // If a "blockMe" header is provided, block access.
   if (request.headers.blockme) return callback("Fail");
 
   // If a "blockMe" cookie is provided, block access.
   if (request.cookies.blockMe) return callback("Fail");
 
-  return callback();
+  //Check the authorization header to see if it is ok with ldap.
+  ldap_auth.authorize(request.headers.authorization, function (statusCode, response) {
+
+    if (statusCode != 200) return callback("Fail");
+
+    //Ok, the user is authorized.
+    return callback();
+  });
+
 });
 
 fs.readdirSync(path.join(__dirname, "/resources")).filter(function(filename) {
