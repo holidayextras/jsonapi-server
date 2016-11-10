@@ -27,8 +27,7 @@ exports.getJSON = function(options, onResult)
     });
 
     res.on('end', function() {
-      var obj = eval("(" + output + ")");
-      onResult(res.statusCode, obj);
+      onResult(res.statusCode, output);
     });
   });
 
