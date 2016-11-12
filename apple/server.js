@@ -19,8 +19,8 @@ jsonApi.setConfig({
       url: "megawin-corp.com"
     },
     license: {
-      name: "MIT",
-      url: "http://opensource.org/licenses/MIT"
+      name: "Copyright Protected",
+      url: ""
     }
   },
   protocol: "http",
@@ -34,6 +34,8 @@ jsonApi.setConfig({
 
 jsonApi.authenticate(function(request, callback) {
 
+  //Allow the request for the swagger.json as it should not be protected resource.
+   if (request.route.path.toLowerCase() == "swagger.json") return callback();
   //Check for authorization header.
   if (request.headers.hasOwnProperty('authorization') == false) return callback("Fail");
 
