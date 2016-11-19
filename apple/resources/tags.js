@@ -8,7 +8,8 @@ jsonApi.define({
   description: "Represents a tag.",
   handlers: new MongoStore({
     //url: "mongodb://localhost:27017/",
-    url: "mongodb://swagger:swagger1234@localhost:27017/Apple",
+    // url: "mongodb://swagger:swagger1234@localhost:27017/Apple",
+    url: "mongodb://swagger:swagger1234@localhost:27017/Apple?ssl=true"
   }),
   searchParams: {},
   attributes: {

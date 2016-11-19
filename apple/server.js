@@ -23,7 +23,12 @@ jsonApi.setConfig({
       url: ""
     }
   },
-  protocol: "http",
+  protocol: "https",
+  tls: {
+    cert: fs.readFileSync('/etc/ssl/rpp_server.crt'),
+    key: fs.readFileSync('/etc/ssl/rpp_server.key'),
+    passphrase: 'charger.'
+  },
   hostname: "localhost",
   port: 16006,
   base: "1",
