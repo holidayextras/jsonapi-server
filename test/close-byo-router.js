@@ -24,7 +24,7 @@ describe('Testing jsonapi-server with bring-your-own router', () => {
     assert.equal(exitSignal, null)
   })
 
-  before(() => {
+  before((done) => {
     child = null
     isErrorEmitted = false
     isExitEmitted = false
@@ -36,6 +36,7 @@ describe('Testing jsonapi-server with bring-your-own router', () => {
       exitCode = code
       exitSignal = signal
       isExitEmitted = true
+      done()
     })
   })
 

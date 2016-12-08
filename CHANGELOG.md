@@ -1,3 +1,8 @@
+- 2016-12-08 - v2.2.1
+- 2016-12-08 - Prefer client generated ID's for newly created resources
+- 2016-12-08 - ChainHandler supports .close()
+- 2016-12-08 - Better documentation around handler.close
+- 2016-12-08 - Bug fix when calling server.close with a custom router
 - 2016-11-07 - v2.2.0
 - 2016-11-07 - Adding polymorphic relationships
 - 2016-11-07 - Correctly handle validation errors when including non-existant resources
