@@ -6,6 +6,7 @@ Handlers represent the mechanism that backs a resource. Each handler is an objec
 * a `ready` property indicating the handler is ready to process requests.
 * some of the following methods:
  * `initialise` - when jsonapi-server loads, this is invoked once for every resource using this handler. Its an opportunity to allocate memory, connect to databases, etc.
+ * `close` - for cleaning up upon `jsonApi.close()` (optional)
  * `search` - for searching for resources that match some vague parameters.
  * `find` - for finding a specific resource by id.
  * `create` - for creating a new instance of a resource.
@@ -82,6 +83,10 @@ The `ready` property should be set to a _truthy_ value once the handler is ready
 function(resourceConfig) { };
 ```
 `resourceConfig` is the complete configuration object passed in to `jsonApi.define()`.
+
+#### close
+`close` is invoked without any parameters, when `jsonApi.close()` is called.
+It should close database connections, file handles, timers, event listeners, etc, as though `initialise` were never called.
 
 #### search
 `search` is invoked with a `request` object (see above).
