@@ -1,3 +1,5 @@
+- 2016-12-15 - v2.3.0
+- 2016-12-15 - Validate resource schema before starting the server
 - 2016-12-08 - v2.2.1
 - 2016-12-08 - Prefer client generated ID's for newly created resources
 - 2016-12-08 - ChainHandler supports .close()
