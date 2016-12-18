@@ -2,14 +2,14 @@
   "engines": {
     "node": "*"
   }, 
-  "name": "jsonapi-server", 
   "license": "MIT", 
-  "author": "Oliver Rumbelow", 
   "repository": {
     "url": "https://github.com/holidayextras/jsonapi-server", 
     "type": "git"
   }, 
-  "version": "0.0.8", 
+  "author": "Oliver Rumbelow", 
+  "description": "A config driven NodeJS framework implementing json:api", 
+  "version": "0.0.12", 
   "dependencies": {
     "qs": "^6.2.0", 
     "lodash.isequal": "^4.2.0", 
@@ -20,9 +20,9 @@
     "request": "^2.72.0", 
     "body-parser": "^1.15.1", 
     "lodash.pick": "^4.2.1", 
-    "joi": "6.10.1", 
-    "debug": "2.2.0", 
     "async": "1.5.2", 
+    "debug": "2.2.0", 
+    "joi": "6.10.1", 
     "lodash.assign": "^4.0.9", 
     "lodash.uniq": "^4.3.0", 
     "lodash.omit": "^4.3.0"
@@ -47,12 +47,12 @@
     "api"
   ], 
   "devDependencies": {
-    "swagger-tools": "^0.10.1", 
+    "v8-profiler": "^5.6.5", 
     "coveralls": "^2.11.9", 
     "blanket": "1.1.9", 
-    "plato": "1.5.0", 
+    "swagger-tools": "^0.10.1", 
     "mocha": "^2.5.3", 
-    "v8-profiler": "^5.6.5", 
+    "plato": "1.5.0", 
     "eslint": "^2.11.0", 
     "mocha-lcov-reporter": "^1.2.0", 
     "mocha-performance": "^0.1.1", 
@@ -71,5 +71,5 @@
       ]
     }
   }, 
-  "description": "A config driven NodeJS framework implementing json:api"
+  "name": "jsonapi-server"
 }
