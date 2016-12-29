@@ -3,13 +3,13 @@
   "engines": {
     "node": "*"
   }, 
-  "description": "A config driven NodeJS framework implementing json:api", 
   "repository": {
     "url": "https://github.com/holidayextras/jsonapi-server", 
     "type": "git"
   }, 
   "author": "Oliver Rumbelow", 
-  "version": "0.0.24", 
+  "name": "jsonapi-server", 
+  "version": "0.0.25", 
   "dependencies": {
     "qs": "^6.2.0", 
     "lodash.isequal": "^4.2.0", 
@@ -20,9 +20,9 @@
     "request": "^2.72.0", 
     "body-parser": "^1.15.1", 
     "lodash.pick": "^4.2.1", 
-    "joi": "6.10.1", 
-    "debug": "2.2.0", 
     "async": "1.5.2", 
+    "debug": "2.2.0", 
+    "joi": "6.10.1", 
     "lodash.assign": "^4.0.9", 
     "lodash.uniq": "^4.3.0", 
     "lodash.omit": "^4.3.0"
@@ -71,5 +71,5 @@
       ]
     }
   }, 
-  "name": "jsonapi-server"
+  "description": "A config driven NodeJS framework implementing json:api"
 }
