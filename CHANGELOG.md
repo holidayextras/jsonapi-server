@@ -1,3 +1,6 @@
+- 2017-01-05 - v2.3.1
+- 2017-01-05 - Fix bug when calculating the pagination offsets for last page
+- 2017-01-05 - Improve contributing doc
 - 2016-12-15 - v2.3.0
 - 2016-12-15 - Validate resource schema before starting the server
 - 2016-12-08 - v2.2.1
