@@ -126,7 +126,7 @@ describe('Testing jsonapi-server', () => {
       })
     })
 
-    describe.only('correctly computes the last pages', done => {
+    describe('correctly computes the last pages', done => {
       let page = {
         offset: 0,
         limit: 0
