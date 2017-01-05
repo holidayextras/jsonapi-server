@@ -1,6 +1,7 @@
 const assert = require('assert')
 const helpers = require('./helpers.js')
 const jsonApiTestServer = require('../example/server.js')
+const pagination = require('../lib/pagination.js')
 
 let pageLinks
 
@@ -125,31 +126,36 @@ describe('Testing jsonapi-server', () => {
       })
     })
 
-    it('fetches an obscure page', done => {
-      const data = {
-        method: 'get',
-        url: 'http://localhost:16006/rest/articles?page[offset]=1&page[limit]=2&sort=title'
+    describe('correctly computes the last pages', done => {
+      let page = {
+        offset: 0,
+        limit: 0
       }
-      helpers.request(data, (err, res, json) => {
-        assert.equal(err, null)
-        json = helpers.validateJson(json)
+      let request = {
+        params: {
+          page
+        },
+        route: {
+          combined: ''
+        }
+      }
 
-        assert.equal(res.statusCode, '200', 'Expecting 200')
-        assert.equal(json.meta.page.offset, 1, 'should be at offset 1')
-        assert.equal(json.meta.page.limit, 2, 'should have a limit of 2 records')
-        assert.equal(json.meta.page.total, 4, 'should have a total of 4 records')
+      it('with limit 4', () => {
+        page.limit = 4
+        let result = pagination.generatePageLinks(request, 16)
+        assert.ok(result.last.match(/page%5Boffset%5D=12/), 'last should target offset=12')
+      })
 
-        assert.equal(json.data[0].attributes.title, 'Linux Rocks', 'should be on the third article')
-        assert.equal(json.data[1].attributes.title, 'NodeJS Best Practices', 'should be on the third article')
+      it('with limit 5', () => {
+        page.limit = 5
+        let result = pagination.generatePageLinks(request, 16)
+        assert.ok(result.last.match(/page%5Boffset%5D=15/), 'last should target offset=15')
+      })
 
-        assert.ok(Object.keys(json.links).length, 5, 'should have 5x links')
-        assert.ok(json.links.first.match(/page%5Boffset%5D=0&page%5Blimit%5D=2/), 'first should target offset-0 limit-2')
-        assert.ok(json.links.last.match(/page%5Boffset%5D=3&page%5Blimit%5D=2/), 'last should target offset-3 limit-2')
-        assert.ok(json.links.next.match(/page%5Boffset%5D=3&page%5Blimit%5D=2/), 'next should target offset-3 limit-2')
-        assert.ok(json.links.prev.match(/page%5Boffset%5D=0&page%5Blimit%5D=2/), 'prev should target offset-0 limit-2')
-
-        pageLinks = json.links
-        done()
+      it('with limit 6', () => {
+        page.limit = 6
+        let result = pagination.generatePageLinks(request, 16)
+        assert.ok(result.last.match(/page%5Boffset%5D=12/), 'last should target offset=12')
       })
     })
   })
