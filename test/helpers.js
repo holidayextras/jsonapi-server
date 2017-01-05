@@ -3,22 +3,22 @@ const testHelpers = module.exports = { }
 const assert = require('assert')
 const request = require('request')
 const swaggerValidator = require('./swaggerValidator.js')
-const profiler = require('v8-profiler')
+//const profiler = require('v8-profiler')
 const fs = require('fs')
 const path = require('path')
 
-before(() => {
-  profiler.startProfiling('', true)
-})
+// before(() => {
+//   profiler.startProfiling('', true)
+// })
 
-after(done => {
-  const profile = profiler.stopProfiling('')
-  const profileFileName = 'jsonapi-server.cpuprofile'
-  const filePath = path.join(__dirname, '..', profileFileName)
-  fs.writeFileSync(filePath, JSON.stringify(profile))
-  console.error('Saved CPU profile to', filePath)
-  done()
-})
+// after(done => {
+//   const profile = profiler.stopProfiling('')
+//   const profileFileName = 'jsonapi-server.cpuprofile'
+//   const filePath = path.join(__dirname, '..', profileFileName)
+//   fs.writeFileSync(filePath, JSON.stringify(profile))
+//   console.error('Saved CPU profile to', filePath)
+//   done()
+// })
 
 testHelpers.validateError = json => {
   try {
