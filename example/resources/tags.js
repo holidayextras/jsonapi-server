@@ -13,7 +13,8 @@ jsonApi.define({
       .example('Summer'),
     nesteds: jsonApi.Joi.array().items(jsonApi.Joi.object().keys({
       password: jsonApi.Joi.string().regex(/^[a-zA-Z0-9]{3,30}$/)
-    })),
+        .description('Someones password apparently')
+    })).description('A deeply nested array for testing'),
     articles: jsonApi.Joi.belongsToMany({
       resource: 'articles',
       as: 'tags'
