@@ -19,6 +19,14 @@ describe('Testing jsonapi-server graphql', () => {
             firstname
           }
         }
+        articles(id:"de305d54-75b4-431b-adb2-eb6b9e546014") {
+          nested {
+            username
+          }
+          nesteds {
+            password
+          }
+        }
       }
     `).then(result => {
       assert.deepEqual(result, {
@@ -36,6 +44,18 @@ describe('Testing jsonapi-server graphql', () => {
             'photographer': {
               'firstname': 'Rahul'
             }
+          }
+        ],
+        'articles': [
+          {
+            'nested': {
+              'username': 'user1'
+            },
+            'nesteds': [
+              {
+                'password': 'qwerty'
+              }
+            ]
           }
         ]
       })
@@ -78,9 +98,17 @@ describe('Testing jsonapi-server graphql', () => {
           parent: {
             id: "7541a4de-4986-4597-81b9-cf31b6762486"
           }
+          nesteds: [
+            {
+              password: "foobar"
+            }
+          ]
         }) {
           id
           name
+          nesteds {
+            password
+          }
           parent {
             id
             name
@@ -89,6 +117,8 @@ describe('Testing jsonapi-server graphql', () => {
       }
     `).then(result => {
       assert.equal(result.createTags.name, 'test1')
+      console.log(result.createTags)
+      assert.equal(result.createTags.nesteds[0].password, 'foobar')
       assert.equal(result.createTags.parent.id, '7541a4de-4986-4597-81b9-cf31b6762486')
       assert.equal(result.createTags.parent.name, 'live')
       tagId = result.createTags.id
@@ -99,12 +129,20 @@ describe('Testing jsonapi-server graphql', () => {
         updateTags(tags: {
           id: "${tagId}"
           name: "test2"
+          nesteds: [
+            {
+              password: "baz"
+            }
+          ]
           parent: {
             id: "68538177-7a62-4752-bc4e-8f971d253b42"
           }
         }) {
           id
           name
+          nesteds {
+            password
+          }
           parent {
             id
             name
@@ -116,6 +154,11 @@ describe('Testing jsonapi-server graphql', () => {
         updateTags: {
           id: tagId,
           name: 'test2',
+          nesteds: [
+            {
+              password: 'baz'
+            }
+          ],
           parent: {
             id: '68538177-7a62-4752-bc4e-8f971d253b42',
             name: 'development'

@@ -11,6 +11,9 @@ jsonApi.define({
     name: jsonApi.Joi.string()
       .description('The tag name')
       .example('Summer'),
+    nesteds: jsonApi.Joi.array().items(jsonApi.Joi.object().keys({
+      password: jsonApi.Joi.string().regex(/^[a-zA-Z0-9]{3,30}$/)
+    })),
     articles: jsonApi.Joi.belongsToMany({
       resource: 'articles',
       as: 'tags'
