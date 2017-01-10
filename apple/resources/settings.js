@@ -31,6 +31,15 @@ jsonApi.define({
     jwtSecret: jsonApi.Joi.string().required().default("jwt.secret.apple.rpp.key")
       .description("JSON web token private key.")
       .example("my.private.jwt.key.secret"),
+    updateServer: jsonApi.Joi.string().required().default("rpp.update.server.com")
+      .description("The server that is server RPP software updates.")
+      .example("rpp.update.server.com"),
+    installedVersion: jsonApi.Joi.string().required().default("v0.0.0")
+      .description("Current RPP software version installed.")
+      .example("v1.0.0"),
+    updateVersion: jsonApi.Joi.string().required().default("v0.0.0")
+      .description("The version of RPP software you want to install.")
+      .example("v1.0.1"),
     pin: jsonApi.Joi.number().integer().required().default(1234)
       .description("The pin to login to the RPP. This will work even if no ldap server is available.")
       .example("1234")
