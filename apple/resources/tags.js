@@ -9,7 +9,7 @@ jsonApi.define({
   handlers: new MongoStore({
     //url: "mongodb://localhost:27017/",
     // url: "mongodb://swagger:swagger1234@localhost:27017/Apple",
-    url: "mongodb://swagger:swagger1234@localhost:27017/Apple?ssl=true"
+    url: process.env.MONGO_URL
   }),
   searchParams: {},
   attributes: {

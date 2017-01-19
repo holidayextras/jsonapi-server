@@ -29,7 +29,7 @@ jsonApi.setConfig({
     key: fs.readFileSync('/etc/ssl/rpp_server.key'),
     passphrase: 'charger.'
   },
-  hostname: "localhost",
+  hostname: process.env.HOSTNAME,
   port: 16006,
   base: "1",
   meta: {

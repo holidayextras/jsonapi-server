@@ -8,7 +8,7 @@ jsonApi.define({
   description: "Global RPP settings used by all applications.",
   handlers: new MongoStore({
     //url: "mongodb://localhost:27017/",
-    url: "mongodb://swagger:swagger1234@localhost:27017/Apple?ssl=true",
+    url: process.env.MONGO_URL
     // url: "mongodb://swagger:swagger1234@localhost:27017/Apple",
   }),
   searchParams: {},
