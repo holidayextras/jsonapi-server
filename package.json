@@ -1,6 +1,6 @@
 {
   "name": "jsonapi-server",
-  "version": "2.3.0",
+  "version": "2.3.1",
   "description": "A config driven NodeJS framework implementing json:api",
   "keywords": [
     "jsonapi",
@@ -27,6 +27,7 @@
     "express": "^4.13.4",
     "express-graphql": "^0.5.4",
     "graphql": "^0.7.0",
+    "istanbul": "^0.4.5",
     "joi": "^9.0.4",
     "lodash.assign": "^4.0.9",
     "lodash.isequal": "^4.2.0",
@@ -40,7 +41,6 @@
     "use-strict": "^1.0.1"
   },
   "devDependencies": {
-    "blanket": "^1.2.3",
     "eslint": "^3.6.1",
     "eslint-config-standard": "^6.1.0",
     "eslint-plugin-promise": "^2.0.0",
@@ -49,7 +49,6 @@
     "lokka": "^1.7.0",
     "lokka-transport-http": "^1.4.0",
     "mocha": "^3.1.0",
-    "mocha-lcov-reporter": "^1.2.0",
     "mocha-performance": "^0.1.1",
     "node-inspector": "^0.12.8",
     "plato": "^1.7.0",
@@ -59,7 +58,7 @@
   "scripts": {
     "test": "node ./node_modules/mocha/bin/mocha --require use-strict -S -R spec ./test/*.js",
     "start": "node example/server.js",
-    "coverage": "node ./node_modules/mocha/bin/mocha -S --require blanket --reporter html-cov ./test/*.js > coverage.html",
+    "coverage": "istanbul cover ./node_modules/mocha/bin/_mocha -- -R spec",
     "complexity": "node ./node_modules/plato/bin/plato -r -d complexity lib",
     "performance": "node --allow-natives-syntax --harmony ./node_modules/mocha/bin/_mocha -S --reporter mocha-performance ./test/*.js",
     "lint": "node ./node_modules/eslint/bin/eslint ./example ./lib ./test --quiet && echo '✔ All good!'",
