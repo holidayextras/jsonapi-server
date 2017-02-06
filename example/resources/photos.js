@@ -64,6 +64,18 @@ jsonApi.define({
       width: 350,
       tags: ['black', 'green'],
       photographer: { type: 'people', id: 'ad3aa89e-9c5b-4ac9-a652-6670f9f27587' }
+    },
+    {
+      id: 'ed45eba1-15fe-41c7-93da-1df3dfa5289f',
+      type: 'photos',
+      title: 'Sunset Horizon',
+      url: 'http://www.example.com/sunset',
+      height: 450,
+      width: 1050,
+      raw: true,
+      tags: ['orange', 'sky', 'sun'],
+      photographer: { type: 'people', id: 'cc5cca2e-0dd8-4b95-8cfc-a11230e73116' }
     }
+
   ]
 })

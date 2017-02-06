@@ -1,5 +1,5 @@
 node_modules
-coverage.html
+coverage
 complexity
 npm-debug.log
 jsonapi-server.cpuprofile

@@ -6,7 +6,7 @@ describe('Testing jsonapi-server', () => {
   [ { name: 'articles', count: 4 },
     { name: 'comments', count: 2 },
     { name: 'people', count: 4 },
-    { name: 'photos', count: 4 },
+    { name: 'photos', count: 5 },
     { name: 'tags', count: 5 }
   ].forEach(resource => {
     describe(`Searching for ${resource.name}`, () => {

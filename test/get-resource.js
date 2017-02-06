@@ -201,7 +201,7 @@ describe('Testing jsonapi-server', () => {
 
             assert.equal(res.statusCode, '200', 'Expecting 200 OK')
             const photoTypes = json.data.map(i => i.attributes.raw)
-            assert.deepEqual(photoTypes, [ true ], 'expected matching resources')
+            assert.deepEqual(photoTypes, [ true, true ], 'expected matching resources')
 
             done()
           })
@@ -530,13 +530,13 @@ describe('Testing jsonapi-server', () => {
           json = helpers.validateJson(json)
 
           assert.equal(res.statusCode, '200', 'Expecting 200 OK')
-          assert.equal(json.included.length, 7, 'Should be 7 included resources')
+          assert.equal(json.included.length, 8, 'Should be 8 included resources')
 
           const people = json.included.filter(resource => resource.type === 'people')
           assert.equal(people.length, 4, 'Should be 4 included people resources')
 
           const photos = json.included.filter(resource => resource.type === 'photos')
-          assert.equal(photos.length, 3, 'Should be 3 included photos resources')
+          assert.equal(photos.length, 4, 'Should be 4 included photos resources')
 
           done()
         })
@@ -552,13 +552,13 @@ describe('Testing jsonapi-server', () => {
           json = helpers.validateJson(json)
 
           assert.equal(res.statusCode, '200', 'Expecting 200 OK')
-          assert.equal(json.included.length, 7, 'Should be 7 included resources')
+          assert.equal(json.included.length, 8, 'Should be 8 included resources')
 
           const people = json.included.filter(resource => resource.type === 'people')
           assert.equal(people.length, 4, 'Should be 4 included people resources')
 
           const photos = json.included.filter(resource => resource.type === 'photos')
-          assert.equal(photos.length, 3, 'Should be 3 included photos resources')
+          assert.equal(photos.length, 4, 'Should be 4 included photos resources')
 
           done()
         })
@@ -581,6 +581,50 @@ describe('Testing jsonapi-server', () => {
 
           const photos = json.included.filter(resource => resource.type === 'photos')
           assert.equal(photos.length, 1, 'Should be 1 included photos resource')
+
+          done()
+        })
+      })
+
+      it('include author.photos with multiple filters', done => {
+        const url = 'http://localhost:16006/rest/articles?include=author.photos&filter[author]=ad3aa89e-9c5b-4ac9-a652-6670f9f27587&filter[author]=cc5cca2e-0dd8-4b95-8cfc-a11230e73116'
+        helpers.request({
+          method: 'GET',
+          url
+        }, (err, res, json) => {
+          assert.equal(err, null)
+          json = helpers.validateJson(json)
+
+          assert.equal(res.statusCode, '200', 'Expecting 200 OK')
+          assert.equal(json.included.length, 5, 'Should be 2 included resources')
+
+          const people = json.included.filter(resource => resource.type === 'people')
+          assert.equal(people.length, 2, 'Should be 2 included people resource')
+
+          const photos = json.included.filter(resource => resource.type === 'photos')
+          assert.equal(photos.length, 3, 'Should be 2 included photos resource')
+
+          done()
+        })
+      })
+
+      it('include author.photos with multiple filters comma delineated', done => {
+        const url = 'http://localhost:16006/rest/articles?include=author.photos&filter[author][firstname]=Mark,Oli'
+        helpers.request({
+          method: 'GET',
+          url
+        }, (err, res, json) => {
+          assert.equal(err, null)
+          json = helpers.validateJson(json)
+
+          assert.equal(res.statusCode, '200', 'Expecting 200 OK')
+          assert.equal(json.included.length, 4, 'Should be 2 included resources')
+
+          const people = json.included.filter(resource => resource.type === 'people')
+          assert.equal(people.length, 2, 'Should be 2 included people resource')
+
+          const photos = json.included.filter(resource => resource.type === 'photos')
+          assert.equal(photos.length, 2, 'Should be 2 included photos resource')
 
           done()
         })
