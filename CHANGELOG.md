@@ -1,3 +1,6 @@
+- 2017-02-06 - v2.3.2
+- 2017-02-06 - Fix bug when filtering with comma separated list
+- 2017-02-06 - Ability to skip graphiql modelling
 - 2017-01-05 - v2.3.1
 - 2017-01-05 - Fix bug when calculating the pagination offsets for last page
 - 2017-01-05 - Improve contributing doc
