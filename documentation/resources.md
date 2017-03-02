@@ -97,3 +97,6 @@ url: jsonApi.Joi.string().uri().meta("readonly").description("This attribute can
 ```
 
 If you look through the example json:api resources in the `/example/resources` folder things should become clearer.
+
+#### generateId
+By default, the server autogenerates a UUID for resources which are created without specifying an ID. To disable this behavior (for example, if the database generates an ID by auto-incrementing), set `generateId` to `false`. If the resource's ID is not a UUID, it is also necessary to specify an `id` attribute with the correct type. See `/examples/resorces/autoincrement.js` for an example of such a resource.
