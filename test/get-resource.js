@@ -564,6 +564,72 @@ describe('Testing jsonapi-server', () => {
         })
       })
 
+      it('include author with filter and people fields', done => {
+        const url = 'http://localhost:16006/rest/articles?include=author&filter[title]=Linux+Rocks&fields[people]=email'
+        request({
+          method: 'GET',
+          url
+        }, (err, res, json) => {
+          assert.equal(err, null)
+          json = helpers.validateJson(json)
+
+          assert.equal(res.statusCode, '200', 'Expecting 200 OK')
+          assert.equal(json.data.length, 1, 'Should be 1 result article')
+          assert.equal(json.data[0].attributes.created, '2015-11-11', 'Article should have created attribute')
+
+          assert.equal(json.included.length, 1, 'Should be 1 included resource')
+          const people = json.included.filter(resource => resource.type === 'people')
+          assert.equal(people.length, 1, 'Should be 1 included people resource')
+          assert.equal(people[0].attributes.email, 'mark.fermor@example.com', 'Included people should have email attribute')
+
+          done()
+        })
+      })
+
+      it('include author with filter and article fields', done => {
+        const url = 'http://localhost:16006/rest/articles?include=author&filter[title]=Linux+Rocks&fields[articles]=created'
+        request({
+          method: 'GET',
+          url
+        }, (err, res, json) => {
+          assert.equal(err, null)
+          json = helpers.validateJson(json)
+
+          assert.equal(res.statusCode, '200', 'Expecting 200 OK')
+          assert.equal(json.data.length, 1, 'Should be 1 result article')
+          assert.equal(json.data[0].attributes.created, '2015-11-11', 'Article should have created attribute')
+
+          assert.equal(json.included.length, 1, 'Should be 1 included resource')
+          const people = json.included.filter(resource => resource.type === 'people')
+          assert.equal(people.length, 1, 'Should be 1 included people resource')
+          assert.equal(people[0].attributes.email, 'mark.fermor@example.com', 'Included people should have email attribute')
+
+          done()
+        })
+      })
+
+      it('include author with filter and people+article fields', done => {
+        const url = 'http://localhost:16006/rest/articles?include=author&filter[title]=Linux+Rocks&fields[people]=email&fields[articles]=created'
+        request({
+          method: 'GET',
+          url
+        }, (err, res, json) => {
+          assert.equal(err, null)
+          json = helpers.validateJson(json)
+
+          assert.equal(res.statusCode, '200', 'Expecting 200 OK')
+          assert.equal(json.data.length, 1, 'Should be 1 result article')
+          assert.equal(json.data[0].attributes.created, '2015-11-11', 'Article should have created attribute')
+
+          assert.equal(json.included.length, 1, 'Should be 1 included resource')
+          const people = json.included.filter(resource => resource.type === 'people')
+          assert.equal(people.length, 1, 'Should be 1 included people resource')
+          assert.equal(people[0].attributes.email, 'mark.fermor@example.com', 'Included people should have email attribute')
+
+          done()
+        })
+      })
+
       it('include author.photos with filter', done => {
         const url = 'http://localhost:16006/rest/articles?include=author.photos&filter[author][firstname]=Mark'
         helpers.request({
