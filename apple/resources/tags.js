@@ -1,90 +1,90 @@
 var jsonApi = require("../../.");
 var MongoStore = require("../../../jsonapi-store-mongodb");
 //var rppHandler = require("../handlers/rppHandler.js");
+const REGEX_NAME_STRING = /^[A-Z|a-z0-9_%][^\s*\\?;{}[\]|`'"]*$/gi;
+const REGEX_VALUE_TYPE = /(^bool$)|(^real$)|(^integer$)|(^string$)$/gi;
+const REGEX_INPUT_TYPE = /(^one_shot$)|(^force$)|(^momentary$)$/gi;
 
 jsonApi.define({
   namespace: "json:api",
   resource: "tags",
   description: "Represents a tag.",
   handlers: new MongoStore({
-    //url: "mongodb://localhost:27017/",
-    // url: "mongodb://swagger:swagger1234@localhost:27017/Apple",
     url: process.env.MONGO_URL
   }),
   searchParams: {},
   attributes: {
-     tagPrefix: jsonApi.Joi.string().required()
-      .description("The tag prefix name.")
-      .example("DP01A"),
-     cabinetNum: jsonApi.Joi.string().required().allow('')
-      .description("The cabinet number of 1 - 35 or rpp.")
-      .example("1"),
-     rackNum: jsonApi.Joi.string().required().allow('')
-      .description("The rack number of 1 - 5 or local")
-      .example("1"),
-     circuitNum: jsonApi.Joi.string().required().allow('')
-      .description("The circuit number of 1 or 2.")
-      .example("1"),
-     phase: jsonApi.Joi.string().optional().allow('')
-      .description("Phase A, B, or C")
-      .example("A"),
-     memLocation: jsonApi.Joi.string().required()
+    id: jsonApi.Joi.string().default(jsonApi.Joi.ref('_id')),
+    _id: jsonApi.Joi.string(),
+    memLocation: jsonApi.Joi.string().required()
       .description("PLC memory location.")
-      .example("N21:0"),
-     postTagname: jsonApi.Joi.string().required()
-      .description("The tag suffix name.")
-      .example("CB1_CR1_PHA_Volts"),
-     tagname: jsonApi.Joi.string().required()
-      .description("The tagPrefix_postTagname.")
-      .example("DP01a_CB1_CR1_PHA_Volts"),
-     description: jsonApi.Joi.string().required()
+      .example("N21:0 or 40001 for modbus driver"),
+    valueType: jsonApi.Joi.string().trim().regex(REGEX_VALUE_TYPE)
+      .default('real')
+      .description('Can only be bool, real, integer or string.')
+      .example('bool'),
+    tagname: jsonApi.Joi.string().trim().regex(REGEX_NAME_STRING)
+      .description("The unique tag name.")
+      .example("MY_AWESOME_TAGNAME"),
+    desc: jsonApi.Joi.string().required()
       .description("The tag description.")
       .example("Volts from TrendPoint."),
-     units: jsonApi.Joi.string().required()
+    units: jsonApi.Joi.string().required()
       .description("The tag units.")
       .example("Volts"),
-     isWritable: jsonApi.Joi.boolean().required()
+    isWritable: jsonApi.Joi.boolean().default(false)
       .description("Can you write to this tag.")
       .example("FALSE"),
-     isEnabled: jsonApi.Joi.boolean().required()
-      .description("Is this tag enabled. If false, then the tag will be ignored.")
-      .example("TRUE"),
-     isHistorical: jsonApi.Joi.boolean().required()
+    isHistorical: jsonApi.Joi.boolean().default(true)
       .description("Should we store historical data for this tag.")
       .example("TRUE"),
-     divider: jsonApi.Joi.number().required()
-      .description("The tag value scaling factor to convert from raw counts to eng units.")
-      .example("1000"),
-     modbusAddress: jsonApi.Joi.number().integer()
-      .description("The modbus address for this tag, must be an integer.")
-      .example("44001"),
-     dataQuality: jsonApi.Joi.string()
+    rawMin: jsonApi.Joi.number().default(0)
+      .description("The minimum raw integer value that the PLC will return for this tag.")
+      .example(0),
+    rawMax: jsonApi.Joi.number().min(jsonApi.Joi.ref('rawMin')).required()
+      .description("The maximum raw integer value that the PLC will return for this tag."),
+    engMin: jsonApi.Joi.number().required()
+      .description("The minimum eng units value that corresponds to the rawMin value.")
+      .example(0),
+    engMax: jsonApi.Joi.number().min(jsonApi.Joi.ref('engMin')).required()
+      .description("The maximum eng units value that corresponds to the rawMax value."),
+    inputType: jsonApi.Joi.string().trim().lowercase()
+      .when('isWritable', {
+        is: true,
+        then: jsonApi.Joi.string().regex(REGEX_INPUT_TYPE),
+        otherwise: jsonApi.Joi.allow(null, '')
+      }).description("Only valid for writable tags. one_shot = write the value one time. force = " +
+        "always do a write if the tag.value is not equal to tag.input. momentary = write a 1 and" +
+        "then write a 0.")
+      .example("0"),
+    trackRuntime: jsonApi.Joi.boolean().default(false)
+      .description("If true, then count the number of times this tag goes non-zero and track the " +
+        "amount of time the tag stays non zero.")
+      .example("true"),
+    dataQuality: jsonApi.Joi.string().optional()
       .description("The data quality of the value of this tag.")
       .example("Ok"),
-     value: jsonApi.Joi.number()
+    value: jsonApi.Joi.any().optional()
       .description("The current value of the tag in engineering units.")
       .example("24.5"),
-     input: jsonApi.Joi.number()
+    input: jsonApi.Joi.any().optional()
       .description("If tag is writeable, the value to write to the tag in engineering units.")
       .example("24.5"),
-     lastUpdate: jsonApi.Joi.date()
+    lastUpdate: jsonApi.Joi.date().optional()
       .description("The last time the current value was updated in UNIX time (ms).")
       .example("1463776147123"),
-     histDeadbandPercent: jsonApi.Joi.number()
+    histDeadbandPercent: jsonApi.Joi.number().default(.03)
       .description("The percent of change of value field required to trigger a history sample where .03 is 3%. 0 means collect everything.")
       .example(".03"),
-     circuit: jsonApi.Joi.belongsToOne({
-      resource: "circuits",
-      as: "tags"
-      }).optional(),
-     rpp: jsonApi.Joi.belongsToOne({
-      resource: "rpps",
-      as: "tags"
-     }).optional(),
-     dp: jsonApi.Joi.belongsToOne({
-      resource: "dps",
-      as: "tags"
-      }).optional()
+    activeAlarm: jsonApi.Joi.string().optional()
+      .description("Is the tag in an alarm state based on an alarmDefs definition for the tag.")
+      .example("None, HH, HI, LO, LL, INVALID"),
+    alarmStatus: jsonApi.Joi.string().optional()
+      .description("Is the activeAlarm clear, acked, unacked.")
+      .example("Clear, acked, unacked"),
+    device_id: jsonApi.Joi.allow(null, '').optional()
+      .description("The device id that this tag is associated with.")
+      .example("d7a8b614-701d-41f5-b1c6-6b06790b0767")
   },
   examples: [{}]
 });

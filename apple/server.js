@@ -40,9 +40,9 @@ jsonApi.setConfig({
 jsonApi.authenticate(function(request, callback) {
 
   //Allow the request for the swagger.json as it should not be protected resource.
-   if (request.route.path.toLowerCase() == "swagger.json") return callback();
+   if (request.route.path.toLowerCase() === "swagger.json") return callback();
   //Check for authorization header.
-  if (request.headers.hasOwnProperty('authorization') == false) return callback("Fail");
+  if (request.headers.hasOwnProperty('authorization') === false) return callback("Fail");
 
   // If a "blockMe" header is provided, block access.
   if (request.headers.blockme) return callback("Fail");
@@ -53,7 +53,7 @@ jsonApi.authenticate(function(request, callback) {
   //Check the authorization header to see if it is ok with ldap.
   ldap_auth.authorize(request.headers.authorization, function (statusCode, response) {
 
-    if (statusCode != 200) return callback("Fail");
+    if (statusCode !== 200) return callback("Fail");
 
     //Ok, the user is authorized.
     return callback();

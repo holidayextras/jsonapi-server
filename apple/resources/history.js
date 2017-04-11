@@ -7,12 +7,12 @@ jsonApi.define({
   resource: "history",
   description: "History table for storing timestamped tag values.",
   handlers: new MongoStore({
-    //url: "mongodb://localhost:27017/",
     url: process.env.MONGO_URL
-    // url: "mongodb://swagger:swagger1234@localhost:27017/Apple",
   }),
   searchParams: {},
   attributes: {
+    id: jsonApi.Joi.string().default(jsonApi.Joi.ref('_id')),
+    _id: jsonApi.Joi.string(),
     timestamp: jsonApi.Joi.date().required() // also, for javascript timestamp (milliseconds)
       .description("The Unix time in milliseconds of the tag.")
       .example("1463672736248"),

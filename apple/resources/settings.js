@@ -7,12 +7,12 @@ jsonApi.define({
   resource: "settings",
   description: "Global RPP settings used by all applications.",
   handlers: new MongoStore({
-    //url: "mongodb://localhost:27017/",
     url: process.env.MONGO_URL
-    // url: "mongodb://swagger:swagger1234@localhost:27017/Apple",
   }),
   searchParams: {},
   attributes: {
+    id: jsonApi.Joi.string().default(jsonApi.Joi.ref('_id')),
+    _id: jsonApi.Joi.string(),
      ldapUrl: jsonApi.Joi.string().required().default("ldap://ldapserver.spscada.local:389")
       .description("Ldap server url.")
       .example("ldap://ldapserver.spscada.local:389"),
