@@ -23,7 +23,6 @@
     "body-parser": "^1.15.1",
     "cookie-parser": "^1.4.3",
     "debug": "^2.2.0",
-    "eslint-plugin-promise": "^3.3.0",
     "express": "^4.13.4",
     "express-graphql": "^0.5.4",
     "graphql": "^0.7.0",
@@ -43,7 +42,7 @@
   "devDependencies": {
     "eslint": "^3.6.1",
     "eslint-config-standard": "^6.1.0",
-    "eslint-plugin-promise": "^2.0.0",
+    "eslint-plugin-promise": "^3.3.0",
     "eslint-plugin-standard": "^2.0.0",
     "jscpd": "^0.6.1",
     "lokka": "^1.7.0",
