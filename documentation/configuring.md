@@ -3,6 +3,11 @@
 
 ```javascript
 jsonApi.setConfig({
+  // (optional): An express Router to bind to instead of building a new Express server
+  router: null, // result of `express.Router()`
+  // (optional) An alias of the absolute portion of URLs generated in a response file
+  // eg http://localhost:16006/some-resource/ -> https://www.example.com/my-api/some-resource/
+  urlPrefixAlias: "https://www.example.com/my-api/",
   // (optional) HTTP / HTTPS
   protocol: "http",
   // (optional) The hostname the API will be sat behind, from the customer's perspective
@@ -15,6 +20,12 @@ jsonApi.setConfig({
   // (optional) meta block to appear in the root of every response
   meta: {
     copyright: "Blah"
+  },
+  // Should the interactive GraphQL HTTP interface be served up?
+  graphiql: true
+  // (optional) meta can be a function to be invoked at the end of every request
+  meta: function(request) {
+    return { timestamp: new Date() };
   }
 });
 ```

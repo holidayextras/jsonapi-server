@@ -1,3 +1,54 @@
+- 2017-02-06 - v2.3.2
+- 2017-02-06 - Fix bug when filtering with comma separated list
+- 2017-02-06 - Ability to skip graphiql modelling
+- 2017-01-05 - v2.3.1
+- 2017-01-05 - Fix bug when calculating the pagination offsets for last page
+- 2017-01-05 - Improve contributing doc
+- 2016-12-15 - v2.3.0
+- 2016-12-15 - Validate resource schema before starting the server
+- 2016-12-08 - v2.2.1
+- 2016-12-08 - Prefer client generated ID's for newly created resources
+- 2016-12-08 - ChainHandler supports .close()
+- 2016-12-08 - Better documentation around handler.close
+- 2016-12-08 - Bug fix when calling server.close with a custom router
+- 2016-11-07 - v2.2.0
+- 2016-11-07 - Adding polymorphic relationships
+- 2016-11-07 - Correctly handle validation errors when including non-existant resources
+- 2016-11-07 - Added Array Joi type for GraphQL
+- 2016-09-29 - v2.1.0
+- 2016-09-29 - Enable injection of an Express Router
+- 2016-09-29 - v2.0.2
+- 2016-09-29 - Better Joi to GraphQL type conversion
+- 2016-09-29 - v2.0.1
+- 2016-09-29 - Adding use-strict to all files
+- 2016-09-29 - v2.0.0
+- 2016-09-28 - Bumped all dependencies to latest
+- 2016-09-28 - Removed hiphens from list of allowed characters in names
+- 2016-09-28 - Converted to ES6
+- 2016-09-28 - Converted to eslint:standard
+- 2016-09-28 - Enabled GraphQL
+- 2016-09-20 - v1.17.0
+- 2016-09-20 - Remove metrics listeners on server.close()
+- 2016-09-20 - Dynamic swagger.json based on handler capabilities
+- 2016-09-20 - Dynamic metadata in body of responses
+- 2016-09-20 - Comma separated filter values
+- 2016-09-20 - Option to override base urls in links
+- 2016-09-08 - v1.16.1
+- 2016-09-08 - Improving ChainHandler for synchronous functions
+- 2016-09-08 - Improving ChainHandler for 'after' functions
+- 2016-09-08 - v1.16.0
+- 2016-09-07 - Accept initilize with a 'z'
+- 2016-09-07 - Implemented new ChainHandler
+- 2016-08-07 - Additional validation when defining primary relationships
+- 2016-07-06 - v1.15.4
+- 2016-07-06 - Prevent express from appending the charset to the content-type header
+- 2016-07-06 - v1.15.3
+- 2016-07-06 - Provide text error to help debug HTTP 415s
+- 2016-07-06 - v1.15.2
+- 2016-07-06 - CORS headers are now applier further up the middleware chain
+- 2016-07-05 - v1.15.1
+- 2016-07-05 - Fixed bug when deleting singular relationships via deep urls
+- 2016-07-05 - Added warning messages to test suite to warn when handlers don't filter
 - 2016-06-28 - v1.15.0
 - 2016-06-28 - Scrap sub-millisecond accuracy on metrics
 - 2016-06-27 - v1.14.0

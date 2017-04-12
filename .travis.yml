@@ -1,12 +1,12 @@
 language: node_js
 node_js:
-  - "0.10"
+  - "4"
+  - "6"
 script: "npm run $TEST_STEP"
 env:
   matrix:
     - TEST_STEP=jscpd
     - TEST_STEP=lint
-    - TEST_STEP=flow
     - TEST_STEP=test
     - TEST_STEP=swagger
 notifications:
