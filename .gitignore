@@ -3,3 +3,5 @@ coverage
 complexity
 npm-debug.log
 jsonapi-server.cpuprofile
+/.idea
+/apple/swagger/swagger.json
