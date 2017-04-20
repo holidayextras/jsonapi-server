@@ -116,6 +116,39 @@ describe('Testing jsonapi-server', () => {
       })
     })
 
+    it('with two filters on same field', done => {
+      const url = 'http://localhost:16006/rest/articles/de305d54-75b4-431b-adb2-eb6b9e546014/author?filter[lastname]=>r&filter[lastname]=<u'
+      helpers.request({
+        method: 'GET',
+        url
+      }, (err, res, json) => {
+        assert.equal(err, null)
+        json = helpers.validateJson(json)
+
+        assert.equal(res.statusCode, '200', 'Expecting 200 OK')
+        assert.strictEqual(json.data.attributes.lastname, 'Rumbelow')
+
+        done()
+      })
+    })
+
+    it('with two filters on same field against has-many relation', done => {
+      const url = 'http://localhost:16006/rest/articles/de305d54-75b4-431b-adb2-eb6b9e546014/tags?filter[name]=>k&filter[name]=<m'
+      helpers.request({
+        method: 'GET',
+        url
+      }, (err, res, json) => {
+        assert.equal(err, null)
+        json = helpers.validateJson(json)
+
+        assert.equal(res.statusCode, '200', 'Expecting 200 OK')
+        assert.equal(json.data.length, 1)
+        assert.strictEqual(json.data[0].attributes.name, 'live')
+
+        done()
+      })
+    })
+
     it('with includes', done => {
       const url = 'http://localhost:16006/rest/articles/de305d54-75b4-431b-adb2-eb6b9e546014/author?include=articles'
       helpers.request({
