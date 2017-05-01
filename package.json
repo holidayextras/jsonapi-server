@@ -57,7 +57,7 @@
   "scripts": {
     "test": "node ./node_modules/mocha/bin/mocha --require use-strict -S -R spec ./test/*.js",
     "start": "node example/server.js",
-    "coverage": "istanbul cover ./node_modules/mocha/bin/_mocha -- -R spec",
+    "coverage": "istanbul cover ./node_modules/mocha/bin/_mocha -- -S -R spec",
     "complexity": "node ./node_modules/plato/bin/plato -r -d complexity lib",
     "performance": "node --allow-natives-syntax --harmony ./node_modules/mocha/bin/_mocha -S --reporter mocha-performance ./test/*.js",
     "lint": "node ./node_modules/eslint/bin/eslint ./example ./lib ./test --quiet && echo '✔ All good!'",
