@@ -1,13 +1,10 @@
+dist: trusty
+sudo: false
 language: node_js
 node_js:
-  - "4"
-  - "6"
-script: "npm run $TEST_STEP"
-env:
-  matrix:
-    - TEST_STEP=jscpd
-    - TEST_STEP=lint
-    - TEST_STEP=test
-    - TEST_STEP=swagger
+  - 4
+  - 6
+  - 7
+script: npm run ci
 notifications:
   email: false
