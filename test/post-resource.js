@@ -96,6 +96,48 @@ describe('Testing jsonapi-server', () => {
       })
     })
 
+    it('errors if body.data is not an object', done => {
+      const data = {
+        method: 'post',
+        // IMPORTANT: we're using people here because it has no required attributes.
+        // note that if data comes in as a string, then the value of the string
+        // is discarded and an empty people object would be created, which is
+        // likely not what the developer of the api client would have intended.
+        url: 'http://localhost:16006/rest/people',
+        headers: {
+          'Content-Type': 'application/vnd.api+json'
+        },
+        // some api/curl clients fail to fully serialize hashes/dictionaries
+        // if their encoding and Content-Type is not properly set.  In that
+        // case, you end up with something like this (yes, I'm
+        // looking at you, python!)
+        body: JSON.stringify({
+          'data': 'attributes'
+        })
+      }
+      request(data, (err, res, json) => {
+        assert.equal(err, null)
+        json = helpers.validateError(json)
+        assert.equal(res.statusCode, '403', 'Expecting 403')
+        // we're checking the deep equal of errors here in case
+        // someone makes a field on people required, or changes
+        // the resource used on this test to a resource that
+        // has a required field.  With this check, this will
+        // continue to work properly even if that happens; however,
+        // ideally, this test should be run against a resource
+        // with NO required fields.
+        assert.deepEqual(json.errors, [
+          {
+            'code': 'EFORBIDDEN',
+            'detail': '"data" must be an object - have you sent the right http headers?',
+            'status': '403',
+            'title': 'Request validation failed'
+          }
+        ])
+        done()
+      })
+    })
+
     describe('creates a resource', () => {
       let id
 
