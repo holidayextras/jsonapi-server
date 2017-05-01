@@ -23,7 +23,6 @@
     "body-parser": "^1.15.1",
     "cookie-parser": "^1.4.3",
     "debug": "^2.2.0",
-    "eslint-plugin-promise": "^3.3.0",
     "express": "^4.13.4",
     "express-graphql": "^0.5.4",
     "graphql": "^0.7.0",
@@ -43,14 +42,14 @@
   "devDependencies": {
     "eslint": "^3.6.1",
     "eslint-config-standard": "^6.1.0",
-    "eslint-plugin-promise": "^2.0.0",
+    "eslint-plugin-promise": "^3.3.0",
     "eslint-plugin-standard": "^2.0.0",
     "jscpd": "^0.6.1",
     "lokka": "^1.7.0",
     "lokka-transport-http": "^1.4.0",
     "mocha": "^3.1.0",
     "mocha-performance": "^0.1.1",
-    "node-inspector": "^0.12.8",
+    "node-inspector": "^1.1.0",
     "plato": "^1.7.0",
     "swagger-tools": "^0.10.1",
     "v8-profiler": "^5.6.5"
@@ -63,7 +62,8 @@
     "performance": "node --allow-natives-syntax --harmony ./node_modules/mocha/bin/_mocha -S --reporter mocha-performance ./test/*.js",
     "lint": "node ./node_modules/eslint/bin/eslint ./example ./lib ./test --quiet && echo '✔ All good!'",
     "jscpd": "jscpd --blame -p ./lib/ || echo 'Finished!'",
-    "swagger": "node ./node_modules/mocha/bin/mocha --require use-strict -S -R spec ./swaggerValidator.js --timeout 60000"
+    "swagger": "node ./node_modules/mocha/bin/mocha --require use-strict -S -R spec ./swaggerValidator.js --timeout 60000",
+    "ci": "npm run jscpd && npm run lint && npm run test && npm run swagger"
   },
   "config": {
     "blanket": {
