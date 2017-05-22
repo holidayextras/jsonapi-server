@@ -33,10 +33,10 @@
     "lodash.pick": "4.4.0",
     "lodash.uniq": "4.5.0",
     "lodash.uniqby": "4.7.0",
-    "node-uuid": "1.4.8",
     "qs": "6.4.0",
     "request": "2.81.0",
-    "use-strict": "1.0.1"
+    "use-strict": "1.0.1",
+    "uuid": "3.0.1"
   },
   "devDependencies": {
     "eslint": "^3.6.1",
