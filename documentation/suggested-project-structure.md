@@ -48,11 +48,11 @@ jsonApi.start();
 The idea is to stick to having one resource per file and stick to pure config. Each file should do nothing more than define a resource. Handlers should be referenced from the `../handlers` folder, which enables us to easily abstract functionality by sharing features amongst handlers. Resource files are effectively defining your routing layer.
 
 ```javascript
-var commentHandler = require("../handlers/commentHandler.js");
+var photosHandler = require("../handlers/photosHandler.js");
 
 jsonApi.define({
   resource: "photos",
-  handlers: memoryHandler,
+  handlers: photosHandler,
   attributes: {
     title: jsonApi.Joi.string()
     url: jsonApi.Joi.string().uri()
