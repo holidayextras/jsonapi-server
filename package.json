@@ -1,6 +1,6 @@
 {
   "name": "jsonapi-server",
-  "version": "2.3.2",
+  "version": "3.0.0",
   "description": "A config driven NodeJS framework implementing json:api",
   "keywords": [
     "jsonapi",
@@ -16,17 +16,17 @@
     "url": "https://github.com/holidayextras/jsonapi-server"
   },
   "engines": {
-    "node": "*"
+    "node": ">=4.5"
   },
   "dependencies": {
-    "express-graphql": "^0.5.4",
-    "graphql": "^0.7.0",
-    "async": "2.4.0",
+    "async": "2.4.1",
     "body-parser": "1.17.2",
     "cookie-parser": "1.4.3",
     "debug": "2.6.8",
     "express": "4.15.3",
-    "joi": "10.5.0",
+    "express-graphql": "0.5.4",
+    "graphql": "0.7.2",
+    "joi": "10.5.2",
     "lodash.assign": "4.2.0",
     "lodash.isequal": "4.5.0",
     "lodash.omit": "4.5.0",
@@ -40,14 +40,16 @@
   },
   "devDependencies": {
     "eslint": "^3.6.1",
-    "eslint-config-standard": "^6.1.0",
+    "eslint-config-standard": "10.2.1",
+    "eslint-plugin-import": "2.3.0",
+    "eslint-plugin-node": "4.2.2",
     "eslint-plugin-promise": "^3.3.0",
-    "eslint-plugin-standard": "^2.0.0",
+    "eslint-plugin-standard": "3.0.1",
     "istanbul": "0.4.5",
     "jscpd": "0.6.11",
     "lokka": "1.7.0",
     "lokka-transport-http": "1.6.1",
-    "mocha": "3.4.1",
+    "mocha": "3.4.2",
     "mocha-performance": "0.1.1",
     "node-inspector": "1.1.1",
     "plato": "1.7.0",
