@@ -1,4 +1,4 @@
-"use strict"
+'use strict'
 
 const jsonApi = require('../../.')
 const photoHandler = require('../handlers/photoHandler.js')

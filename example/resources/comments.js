@@ -1,4 +1,4 @@
-"use strict"
+'use strict'
 
 const jsonApi = require('../../.')
 const commentHandler = require('../handlers/commentHandler.js')

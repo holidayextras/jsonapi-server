@@ -1,4 +1,4 @@
-"use strict"
+'use strict'
 
 const jsonApi = require('../..')
 const authenticationHandler = module.exports = new jsonApi.ChainHandler()

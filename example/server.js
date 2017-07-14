@@ -1,4 +1,4 @@
-"use strict"
+'use strict'
 
 const server = module.exports = { }
 
