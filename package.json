@@ -1,6 +1,6 @@
 {
   "name": "jsonapi-server",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "A config driven NodeJS framework implementing json:api",
   "keywords": [
     "jsonapi",
@@ -19,30 +19,30 @@
     "node": ">=4.5"
   },
   "dependencies": {
-    "async": "2.4.1",
+    "async": "2.5.0",
     "body-parser": "1.17.2",
     "cookie-parser": "1.4.3",
     "debug": "2.6.8",
     "express": "4.15.3",
     "express-graphql": "0.5.4",
     "graphql": "0.7.2",
-    "joi": "10.5.2",
+    "joi": "10.6.0",
     "lodash.assign": "4.2.0",
     "lodash.isequal": "4.5.0",
     "lodash.omit": "4.5.0",
     "lodash.pick": "4.4.0",
     "lodash.uniq": "4.5.0",
     "lodash.uniqby": "4.7.0",
-    "qs": "6.4.0",
+    "qs": "6.5.0",
     "request": "2.81.0",
     "use-strict": "1.0.1",
-    "uuid": "3.0.1"
+    "uuid": "3.1.0"
   },
   "devDependencies": {
-    "eslint": "^3.6.1",
+    "eslint": "4.2.0",
     "eslint-config-standard": "10.2.1",
-    "eslint-plugin-import": "2.3.0",
-    "eslint-plugin-node": "4.2.2",
+    "eslint-plugin-import": "2.7.0",
+    "eslint-plugin-node": "5.1.0",
     "eslint-plugin-promise": "^3.3.0",
     "eslint-plugin-standard": "3.0.1",
     "istanbul": "0.4.5",
