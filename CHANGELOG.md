@@ -1,3 +1,5 @@
+- 2017-07-14 - v3.0.1
+- 2017-07-14 - Update dependencies.
 - 2017-06-01 - v3.0.0
 - 2017-06-01 - Use `Buffer.from` instead of deprecated `new Buffer` which only supports Node.js >= 4.5.0 requiring a major version upgrade for SemVer compliance
 - 2017-06-01 - Fix GraphQL updates
