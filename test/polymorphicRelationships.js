@@ -118,7 +118,7 @@ describe('Testing jsonapi-server', () => {
       }
     `).then(result => {
       /**
-       * This is a pragmatic fix to guarantee order. Tuples in GraphQL
+       * FIXME This is a pragmatic fix to guarantee order. Tuples in GraphQL
        * Need to be thoroughly looked at.
        */
       const orderedResult = {
