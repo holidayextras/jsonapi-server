@@ -1,3 +1,5 @@
+'use strict'
+
 const assert = require('assert')
 const helpers = require('./helpers.js')
 const jsonApiTestServer = require('../example/server.js')
@@ -115,7 +117,18 @@ describe('Testing jsonapi-server', () => {
         }
       }
     `).then(result => {
-      assert.deepEqual(result, {
+      /**
+       * FIXME This is a pragmatic fix to guarantee order. Tuples in GraphQL
+       * Need to be thoroughly looked at.
+       */
+      const orderedResult = {
+        tuples: [
+          result.tuples.filter((result) => result.preferred.author)[0],
+          result.tuples.filter((result) => result.preferred.photographer)[0]
+        ]
+      }
+
+      assert.deepEqual(orderedResult, {
         'tuples': [
           {
             'preferred': {

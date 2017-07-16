@@ -1,3 +1,5 @@
+'use strict'
+
 const server = module.exports = { }
 
 const jsonApi = require('../.')
