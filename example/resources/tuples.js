@@ -1,3 +1,5 @@
+'use strict'
+
 const jsonApi = require('../../.')
 const tupleHandler = require('../handlers/tupleHandler.js')
 

@@ -1,3 +1,5 @@
+'use strict'
+
 const server = module.exports = { }
 
 const jsonApi = require('../.')
@@ -32,10 +34,10 @@ jsonApi.setConfig({
 
 jsonApi.authenticate((request, callback) => {
   // If a "blockMe" header is provided, block access.
-  if (request.headers.blockme) return callback('Fail')
+  if (request.headers.blockme) return callback(new Error('Fail'))
 
   // If a "blockMe" cookie is provided, block access.
-  if (request.cookies.blockMe) return callback('Fail')
+  if (request.cookies.blockMe) return callback(new Error('Fail'))
 
   return callback()
 })

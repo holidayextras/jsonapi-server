@@ -1,3 +1,11 @@
+- 2017-07-14 - v3.0.3
+- 2017-07-14 - v3.0.2
+- 2017-07-14 - v3.0.1
+- 2017-07-14 - Update dependencies.
+- 2017-06-01 - v3.0.0
+- 2017-06-01 - Use `Buffer.from` instead of deprecated `new Buffer` which only supports Node.js >= 4.5.0 requiring a major version upgrade for SemVer compliance
+- 2017-06-01 - Fix GraphQL updates
+- 2017-02-06 - Ability to skip graphiql modelling
 - 2017-02-06 - v2.3.2
 - 2017-02-06 - Fix bug when filtering with comma separated list
 - 2017-02-06 - Ability to skip graphiql modelling
