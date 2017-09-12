@@ -13,6 +13,7 @@ jsonApi.setConfig({
     title: 'Example JSON:API Server',
     version: '0.1.1',
     description: 'This is the API description block that shows up in the swagger.json',
+    termsOfService: 'http://example.com/termsOfService',
     contact: {
       name: 'API Contact',
       email: 'apicontact@holidayextras.com',
@@ -21,6 +22,18 @@ jsonApi.setConfig({
     license: {
       name: 'MIT',
       url: 'http://opensource.org/licenses/MIT'
+    },
+    security: [
+      {
+        'APIKeyHeader': []
+      }
+    ],
+    securityDefinitions: {
+      APIKeyHeader: {
+        type: 'apiKey',
+        in: 'header',
+        name: 'X-API-Auth'
+      }
     }
   },
   protocol: 'http',
