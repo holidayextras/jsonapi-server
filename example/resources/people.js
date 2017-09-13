@@ -1,3 +1,5 @@
+'use strict'
+
 const jsonApi = require('../../.')
 const peopleHandler = require('../handlers/peopleHandler.js')
 
