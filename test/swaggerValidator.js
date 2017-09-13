@@ -1,3 +1,5 @@
+'use strict'
+
 const swaggerValidator = module.exports = { }
 
 const swagger = require('../lib/swagger')

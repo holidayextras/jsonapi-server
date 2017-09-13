@@ -1,3 +1,5 @@
+'use strict'
+
 const jsonApi = require('../../.')
 const articleHandler = require('../handlers/articleHandler.js')
 const timestampHandler = require('../handlers/timestampHandler.js')
