@@ -1,3 +1,8 @@
+- 2017-09-14 - v3.1.0
+- 2017-09-14 - Improved Swagger 2.0 configuration.
+- 2017-09-14 - Correct sorting of date properties.
+- 2017-09-14 - Fix bug when trying to detect arrays during Joi validation.
+- 2017-09-14 - Fix bug for some requests with both `include` and `fields`.
 - 2017-07-14 - v3.0.3
 - 2017-07-14 - v3.0.2
 - 2017-07-14 - v3.0.1
