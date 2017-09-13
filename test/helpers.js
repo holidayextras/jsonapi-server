@@ -1,3 +1,5 @@
+'use strict'
+
 const testHelpers = module.exports = { }
 
 const assert = require('assert')
