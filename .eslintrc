@@ -3,5 +3,8 @@
   "env": {
     "node": true,
     "mocha": true
+  },
+  "rules": {
+    "no-var": "error"
   }
 }
