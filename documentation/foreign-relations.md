@@ -143,7 +143,7 @@ The main gotcha here is this in this situation:
 ```
 Looking up a person creates a reverse lookup against Bookings, creating a reverse lookup against Trips, causing a reverse lookup against People, creating a reverse lookup against....
 
-Our solution here is to add `meta` blocks to relationships to inform the consumer what kind of linage they are looking at, and to not provide foreign keys directly:
+Our solution here is to add `meta` blocks to relationships to inform the consumer what kind of linkage they are looking at, and to not provide foreign keys directly:
 ```
 relationships: {
   author: {
