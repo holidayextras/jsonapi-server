@@ -34,7 +34,7 @@ npm test
 To check the code coverage is still great:
 ```
 npm run coverage
-google-chrome ./coverage.html
+google-chrome ./coverage/lcov-report/index.html
 ```
 
 To see code complexity statistics:

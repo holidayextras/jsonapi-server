@@ -1,3 +1,5 @@
+'use strict'
+
 const assert = require('assert')
 const childProcess = require('child_process')
 const path = require('path')

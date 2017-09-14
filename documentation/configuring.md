@@ -22,7 +22,7 @@ jsonApi.setConfig({
     copyright: "Blah"
   },
   // Should the interactive GraphQL HTTP interface be served up?
-  graphiql: true
+  graphiql: true,
   // (optional) meta can be a function to be invoked at the end of every request
   meta: function(request) {
     return { timestamp: new Date() };

@@ -1,3 +1,5 @@
+'use strict'
+
 const jsonApi = require('../..')
 const timestampHandler = module.exports = new jsonApi.ChainHandler()
 
