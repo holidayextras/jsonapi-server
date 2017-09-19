@@ -1,3 +1,5 @@
+- 2017-09-19 - v3.2.0
+- 2017-09-19 - Node.js 8 support.
 - 2017-09-14 - v3.1.0
 - 2017-09-14 - Improved Swagger 2.0 configuration.
 - 2017-09-14 - Correct sorting of date properties.
