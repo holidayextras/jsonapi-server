@@ -51,7 +51,6 @@
     "lokka-transport-http": "1.6.1",
     "mocha": "3.5.3",
     "mocha-performance": "0.1.1",
-    "node-inspector": "1.1.1",
     "plato": "1.7.0",
     "swagger-tools": "0.10.1",
     "v8-profiler": "5.7.0"
