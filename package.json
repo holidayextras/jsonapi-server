@@ -51,7 +51,6 @@
     "lokka-transport-http": "1.6.1",
     "mocha": "4.0.1",
     "mocha-performance": "0.1.1",
-    "plato": "1.7.0",
     "swagger-tools": "0.9.11",
     "v8-profiler": "5.7.0"
   },
@@ -59,7 +58,6 @@
     "test": "node ./node_modules/mocha/bin/mocha --require use-strict -S -R spec ./test/*.js",
     "start": "node example/server.js",
     "coverage": "istanbul cover ./node_modules/mocha/bin/_mocha -- -S -R spec",
-    "complexity": "node ./node_modules/plato/bin/plato -r -d complexity lib",
     "performance": "node --allow-natives-syntax --harmony ./node_modules/mocha/bin/_mocha -S --reporter mocha-performance ./test/*.js",
     "lint": "node ./node_modules/eslint/bin/eslint ./example ./lib ./test --quiet && echo '✔ All good!'",
     "jscpd": "jscpd --blame -p ./lib/ || echo 'Finished!'",
