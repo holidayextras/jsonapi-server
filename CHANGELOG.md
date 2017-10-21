@@ -1,3 +1,6 @@
+- 2017-10-21 - v3.2.2
+- 2017-10-21 - Report coverage with Coveralls.
+- 2017-10-21 - Modernise script.
 - 2017-09-23 - v3.2.1
 - 2017-09-23 - Fix packaging.
 - 2017-09-19 - v3.2.0
