@@ -24,9 +24,9 @@
     "cookie-parser": "1.4.3",
     "debug": "3.1.0",
     "express": "4.16.2",
-    "express-graphql": "0.5.4",
-    "graphql": "0.7.2",
-    "joi": "10.6.0",
+    "express-graphql": "0.6.11",
+    "graphql": "0.11.7",
+    "joi": "13.0.1",
     "lodash.assign": "4.2.0",
     "lodash.isequal": "4.5.0",
     "lodash.omit": "4.5.0",
@@ -52,7 +52,7 @@
     "mocha": "4.0.1",
     "mocha-performance": "0.1.1",
     "nyc": "11.2.1",
-    "swagger-tools": "0.9.11",
+    "swagger-tools": "0.10.3",
     "v8-profiler": "5.7.0"
   },
   "scripts": {
