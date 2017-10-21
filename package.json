@@ -18,6 +18,14 @@
   "engines": {
     "node": ">=4.5"
   },
+  "greenkeeper": {
+    "ignore": [
+      "express-graphql",
+      "graphql",
+      "joi",
+      "swagger-tools"
+    ]
+  },
   "dependencies": {
     "async": "2.5.0",
     "body-parser": "1.18.2",
