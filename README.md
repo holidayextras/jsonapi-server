@@ -5,6 +5,8 @@
 
 # jsonapi-server
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/holidayextras/jsonapi-server.svg)](https://greenkeeper.io/)
+
 A config driven NodeJS framework implementing [`json:api`](http://jsonapi.org/) and [`GraphQL`](http://graphql.org/). You define the resources, it provides the api.
 
 ### Motivation / Justification / Rationale
