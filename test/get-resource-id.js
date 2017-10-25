@@ -20,6 +20,23 @@ describe('Testing jsonapi-server', () => {
       })
     })
 
+    it('broken response should error', done => {
+      const url = 'http://localhost:16006/rest/brokenResponse/b3ea78f4-8d03-4708-9945-d58cadc97b04'
+      helpers.request({
+        method: 'GET',
+        url
+      }, (err, res, json) => {
+        assert.equal(err, null)
+        helpers.validateError(json)
+        const errors = JSON.parse(json).errors
+        assert.equal(res.statusCode, '500', 'Expecting 500')
+        assert.equal(errors.length, 1)
+        assert.equal(errors[0].code, 'EINVALIDITEM')
+        assert.equal(errors[0].detail.error, 'child "boolean" fails because ["boolean" must be a boolean]')
+        done()
+      })
+    })
+
     it('valid lookup', done => {
       const url = 'http://localhost:16006/rest/articles/de305d54-75b4-431b-adb2-eb6b9e546014'
       helpers.request({
