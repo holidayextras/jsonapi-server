@@ -1,5 +1,5 @@
 {
-  "name": "jsonapi-server",
+  "name": "jsonapi-graphql-server",
   "version": "3.2.2",
   "description": "A config driven NodeJS framework implementing json:api",
   "keywords": [
