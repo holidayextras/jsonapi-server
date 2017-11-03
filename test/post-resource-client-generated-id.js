@@ -12,6 +12,7 @@ describe('Testing jsonapi-server', () => {
       let id = 'e4a1a34f-151b-41ca-a0d9-21726068ba8b'
 
       it('works', done => {
+        console.log(process.env)
         const data = {
           method: 'post',
           url: 'http://localhost:16006/rest/people',
