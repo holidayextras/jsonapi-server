@@ -16,7 +16,7 @@
     "url": "https://github.com/holidayextras/jsonapi-server"
   },
   "engines": {
-    "node": ">=4.5"
+    "node": ">=6"
   },
   "greenkeeper": {
     "ignore": [
