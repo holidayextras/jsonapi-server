@@ -1,3 +1,5 @@
+- 2017-11-02 - v3.3.0
+- 2017-11-02 - support generateId type
 - 2017-10-21 - v3.2.2
 - 2017-10-21 - Report coverage with Coveralls.
 - 2017-10-21 - Modernise script.
