@@ -8,7 +8,8 @@ before_install:
 - npm install -g npm@5
 - npm install -g greenkeeper-lockfile@1
 before_script: greenkeeper-lockfile-update
-script: npm run ci
+script:
+- TRAVIS_BRANCH=$TRAVIS_PULL_REQUEST_BRANCH npm run ci
 after_script: greenkeeper-lockfile-upload
 after_success: npm run coverage
 notifications:
