@@ -59,7 +59,7 @@
     "lokka-transport-http": "1.6.1",
     "mocha": "4.0.1",
     "mocha-performance": "0.1.1",
-    "nyc": "11.2.1",
+    "nyc": "11.3.0",
     "swagger-tools": "0.9.11",
     "v8-profiler": "5.7.0"
   },
