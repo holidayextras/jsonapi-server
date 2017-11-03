@@ -11,6 +11,5 @@ before_script: greenkeeper-lockfile-update
 script: npm run ci
 after_script: greenkeeper-lockfile-upload
 after_success: npm run coverage
-after_failure: ls -al /home/travis/builds/holidayextras/jsonapi-server
 notifications:
   email: false
