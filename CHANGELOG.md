@@ -1,3 +1,6 @@
+- 2017-11-03 - v4.0.0
+- 2017-11-03 - Return error when a response item does not validate.
+- 2017-11-03 - Remove Node.js 4 support.
 - 2017-10-21 - v3.2.2
 - 2017-10-21 - Report coverage with Coveralls.
 - 2017-10-21 - Modernise script.
