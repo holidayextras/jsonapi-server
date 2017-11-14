@@ -1,3 +1,7 @@
+- 2017-11-14 - v4.1.0
+- 2017-11-14 - New configuration option to disable automatic id generation.
+- 2017-11-14 - Update GraphQL dependencies to latest versions.
+- 2017-11-14 - Remove yarn lockfile.
 - 2017-11-03 - v4.0.0
 - 2017-11-03 - Return error when a response item does not validate.
 - 2017-11-03 - Remove Node.js 4 support.
