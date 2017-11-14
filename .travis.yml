@@ -2,9 +2,14 @@ dist: trusty
 sudo: false
 language: node_js
 node_js:
-  - 4
   - 6
   - 8
+before_install:
+- npm install -g npm@latest
+- npm install -g greenkeeper-lockfile@latest
+before_script: greenkeeper-lockfile-update
 script: npm run ci
+after_script: greenkeeper-lockfile-upload
+after_success: npm run coverage
 notifications:
   email: false

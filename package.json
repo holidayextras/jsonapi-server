@@ -1,6 +1,6 @@
 {
   "name": "jsonapi-server",
-  "version": "3.2.1",
+  "version": "4.0.0",
   "description": "A config driven NodeJS framework implementing json:api",
   "keywords": [
     "jsonapi",
@@ -16,17 +16,25 @@
     "url": "https://github.com/holidayextras/jsonapi-server"
   },
   "engines": {
-    "node": ">=4.5"
+    "node": ">=6"
+  },
+  "greenkeeper": {
+    "ignore": [
+      "express-graphql",
+      "graphql",
+      "joi",
+      "swagger-tools"
+    ]
   },
   "dependencies": {
     "async": "2.5.0",
     "body-parser": "1.18.2",
     "cookie-parser": "1.4.3",
-    "debug": "3.0.1",
-    "express": "4.15.4",
+    "debug": "3.1.0",
+    "express": "4.16.2",
     "express-graphql": "0.5.4",
     "graphql": "0.7.2",
-    "joi": "11.0.3",
+    "joi": "10.6.0",
     "lodash.assign": "4.2.0",
     "lodash.isequal": "4.5.0",
     "lodash.omit": "4.5.0",
@@ -34,46 +42,35 @@
     "lodash.uniq": "4.5.0",
     "lodash.uniqby": "4.7.0",
     "qs": "6.5.1",
-    "request": "2.82.0",
+    "request": "2.83.0",
     "use-strict": "1.0.1",
     "uuid": "3.1.0"
   },
   "devDependencies": {
-    "eslint": "4.7.2",
+    "coveralls": "3.0.0",
+    "eslint": "4.10.0",
     "eslint-config-standard": "10.2.1",
-    "eslint-plugin-import": "2.7.0",
-    "eslint-plugin-node": "5.1.1",
-    "eslint-plugin-promise": "3.5.0",
+    "eslint-plugin-import": "2.8.0",
+    "eslint-plugin-node": "5.2.1",
+    "eslint-plugin-promise": "3.6.0",
     "eslint-plugin-standard": "3.0.1",
-    "istanbul": "0.4.5",
     "jscpd": "0.6.15",
     "lokka": "1.7.0",
     "lokka-transport-http": "1.6.1",
-    "mocha": "3.5.3",
+    "mocha": "4.0.1",
     "mocha-performance": "0.1.1",
-    "plato": "1.7.0",
-    "swagger-tools": "0.10.1",
+    "nyc": "11.2.1",
+    "swagger-tools": "0.9.11",
     "v8-profiler": "5.7.0"
   },
   "scripts": {
-    "test": "node ./node_modules/mocha/bin/mocha --require use-strict -S -R spec ./test/*.js",
     "start": "node example/server.js",
-    "coverage": "istanbul cover ./node_modules/mocha/bin/_mocha -- -S -R spec",
-    "complexity": "node ./node_modules/plato/bin/plato -r -d complexity lib",
+    "test": "nyc mocha",
+    "coverage": "[ -n \"$TRAVIS\" ] && nyc report --reporter=text-lcov | coveralls || nyc report --reporter=html",
     "performance": "node --allow-natives-syntax --harmony ./node_modules/mocha/bin/_mocha -S --reporter mocha-performance ./test/*.js",
-    "lint": "node ./node_modules/eslint/bin/eslint ./example ./lib ./test --quiet && echo '✔ All good!'",
+    "lint": "eslint ./example ./lib ./test --quiet && echo '✔ All good!'",
     "jscpd": "jscpd --blame -p ./lib/ || echo 'Finished!'",
-    "swagger": "node ./node_modules/mocha/bin/mocha --require use-strict -S -R spec ./swaggerValidator.js --timeout 60000",
+    "swagger": "mocha ./swaggerValidator.js --timeout 60000",
     "ci": "npm run jscpd && npm run lint && npm run test && npm run swagger"
-  },
-  "config": {
-    "blanket": {
-      "pattern": ".js",
-      "data-cover-never": [
-        "node_modules",
-        "test",
-        "example"
-      ]
-    }
   }
 }

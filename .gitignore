@@ -1,6 +1,6 @@
 *.tgz
-complexity
-coverage.html
 jsonapi-server.cpuprofile
 node_modules
 npm-debug.log
+/.nyc_output/
+/coverage/
