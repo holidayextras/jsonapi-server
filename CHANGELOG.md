@@ -1,3 +1,6 @@
+- 2017-11-15 - v4.1.1
+- 2017-11-15 - Downgrade Joi to a version supported by Node.js v6.
+- 2017-11-15 - Force `engine-strict=true` when running npm.
 - 2017-11-14 - v4.1.0
 - 2017-11-14 - New configuration option to disable automatic id generation.
 - 2017-11-14 - Update GraphQL dependencies to latest versions.
