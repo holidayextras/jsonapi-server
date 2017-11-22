@@ -1,3 +1,5 @@
+- 2017-11-21 - v4.1.2
+- 2017-11-21 - Fix broken response test resource to enable integration with data store handlers.
 - 2017-11-15 - v4.1.1
 - 2017-11-15 - Downgrade Joi to a version supported by Node.js v6.
 - 2017-11-15 - Force `engine-strict=true` when running npm.

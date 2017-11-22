@@ -17,8 +17,8 @@ jsonApi.define({
     {
       id: 'b3ea78f4-8d03-4708-9945-d58cadc97b04',
       type: 'brokenResponse',
-      boolean: 1,
-      number: '3'
+      boolean: true,
+      number: 3
     }
   ]
 })
