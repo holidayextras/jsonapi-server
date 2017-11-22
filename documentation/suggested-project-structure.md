@@ -54,9 +54,9 @@ jsonApi.define({
   resource: "photos",
   handlers: photosHandler,
   attributes: {
-    title: jsonApi.Joi.string()
-    url: jsonApi.Joi.string().uri()
-    height: jsonApi.Joi.number().min(1).max(10000).precision(0)
+    title: jsonApi.Joi.string(),
+    url: jsonApi.Joi.string().uri(),
+    height: jsonApi.Joi.number().min(1).max(10000).precision(0),
     width: jsonApi.Joi.number().min(1).max(10000).precision(0)
   }
 });
