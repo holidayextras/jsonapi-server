@@ -26,7 +26,11 @@ jsonApi.setConfig({
   // (optional) meta can be a function to be invoked at the end of every request
   meta: function(request) {
     return { timestamp: new Date() };
-  }
+  },
+  // (optional) queryStringParsingParameterLimit allows to
+  // override the default limit of 1000 parameters in query string parsing,
+  // documented at : https://github.com/ljharb/qs
+  queryStringParsingParameterLimit: Infinity
 });
 ```
 
