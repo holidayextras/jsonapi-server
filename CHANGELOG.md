@@ -1,3 +1,7 @@
+- 2018-01-31 - v4.2.0
+- 2018-01-31 - Support setting limit of query string parameters through a configuration property.
+- 2018-01-31 - Support setting `bodyParser.json` option through a configuration property.
+- 2018-01-31 - Fix CRUD operation detection when using chain handlers.
 - 2017-12-11 - v4.1.2
 - 2017-12-11 - Fix broken response test resource to enable integration with data store handlers.
 - 2017-11-15 - v4.1.1
@@ -63,7 +67,8 @@
 - 2016-09-20 - Remove metrics listeners on server.close()
 - 2016-09-20 - Dynamic swagger.json based on handler capabilities
 - 2016-09-20 - Dynamic metadata in body of responses
-- 2016-09-20 - Comma separated filter values
+- 2016-09-20 - Comma separated filter v 1 successful check
+alues
 - 2016-09-20 - Option to override base urls in links
 - 2016-09-08 - v1.16.1
 - 2016-09-08 - Improving ChainHandler for synchronous functions
