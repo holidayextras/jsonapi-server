@@ -36,7 +36,7 @@ jsonApi.setConfig({
   // (optional) queryStringParsingParameterLimit allows to
   // override the default limit of 1000 parameters in query string parsing,
   // documented at : https://github.com/ljharb/qs
-  queryStringParsingParameterLimit: Infinity
+  queryStringParsingParameterLimit: 2000
 });
 ```
 
