@@ -26,6 +26,12 @@ jsonApi.setConfig({
   // (optional) meta can be a function to be invoked at the end of every request
   meta: function(request) {
     return { timestamp: new Date() };
+  },
+  // (optional) bodyParserJsonOpts allows setting the options passed to the json body parser,
+  // such as the maximum allowed body size (default is 100kb). All the options are
+  // documented at https://github.com/expressjs/body-parser#bodyparserjsonoptions
+  bodyParserJsonOpts: {
+    limit: '256kb',
   }
 });
 ```
