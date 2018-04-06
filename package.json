@@ -8,7 +8,7 @@
     "swagger",
     "api"
   ],
-  "main": "lib/jsonApi.js",
+  "main": "dist/jsonApi.js",
   "author": "Oliver Rumbelow",
   "license": "MIT",
   "repository": {
@@ -47,10 +47,12 @@
     "uuid": "3.2.1"
   },
   "devDependencies": {
+    "babel-cli": "6.26.0",
+    "babel-preset-env": "1.6.1",
     "coveralls": "3.0.0",
     "eslint": "4.18.1",
-    "eslint-plugin-import": "2.10.0",
     "eslint-config-standard": "11.0.0",
+    "eslint-plugin-import": "2.10.0",
     "eslint-plugin-node": "6.0.1",
     "eslint-plugin-promise": "3.7.0",
     "eslint-plugin-standard": "3.0.1",
@@ -64,6 +66,8 @@
     "v8-profiler": "5.7.0"
   },
   "scripts": {
+    "build": "babel lib -d dist",
+    "prepublish": "npm run build",
     "start": "node example/server.js",
     "test": "nyc mocha",
     "coverage": "[ -n \"$TRAVIS\" ] && nyc report --reporter=text-lcov | coveralls || nyc report --reporter=html",

@@ -19,7 +19,8 @@ describe('Testing jsonapi-server', () => {
       })
     })
 
-    it('returns 503 if resource is NOT ready', done => {
+    it.only('returns 503 if resource is NOT ready', done => {
+      console.log(jsonApi._resources)
       const handlers = jsonApi._resources.articles.handlers
       const savedHandlersReady = handlers.ready
       handlers.ready = false
