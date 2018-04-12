@@ -43,7 +43,33 @@ describe('Testing jsonapi-server graphql', () => {
       })
     }))
 
-    it('filter with foreign join and filter', () => client.query(`
+    it('filter with foreign join and filter using a GraphQl variable', () => client.query(`
+        query filterWithForeignJoin($name: String!) {
+          people(firstname: $name) {
+            firstname
+            photos(width: "<1000") {
+              url
+              width
+            }
+          }
+        }
+    `, { 'name': 'Rahul' }).then(result => {
+      assert.deepEqual(result, {
+        'people': [
+          {
+            'firstname': 'Rahul',
+            'photos': [
+              {
+                'url': 'http://www.example.com/treat',
+                'width': 350
+              }
+            ]
+          }
+        ]
+      })
+    }))
+
+    it('filter with foreign join and filter with a named query', () => client.query(`
       {
         people(firstname: "Rahul") {
           firstname
