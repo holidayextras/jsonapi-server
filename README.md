@@ -1,8 +1,11 @@
 [![Build Status](https://travis-ci.org/holidayextras/jsonapi-server.svg?branch=master)](https://travis-ci.org/holidayextras/jsonapi-server)
+[![Coverage Status](https://coveralls.io/repos/github/holidayextras/jsonapi-server/badge.svg?branch=master)](https://coveralls.io/github/holidayextras/jsonapi-server?branch=master)
 [![npm version](https://badge.fury.io/js/jsonapi-server.svg)](http://badge.fury.io/js/jsonapi-server)
 [![Dependencies Status](https://david-dm.org/holidayextras/jsonapi-server.svg)](https://david-dm.org/holidayextras/jsonapi-server)
 
 # jsonapi-server
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/holidayextras/jsonapi-server.svg)](https://greenkeeper.io/)
 
 A config driven NodeJS framework implementing [`json:api`](http://jsonapi.org/) and [`GraphQL`](http://graphql.org/). You define the resources, it provides the api.
 

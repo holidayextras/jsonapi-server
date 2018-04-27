@@ -201,6 +201,53 @@ describe('Testing jsonapi-server', () => {
           done()
         })
       })
+      describe('creates a resource with non-UUID ID', () => {
+        let id
+
+        it('works', done => {
+          const data = {
+            method: 'post',
+            url: 'http://localhost:16006/rest/autoincrement',
+            headers: {
+              'Content-Type': 'application/vnd.api+json'
+            },
+            body: JSON.stringify({
+              'data': {
+                'type': 'autoincrement',
+                'attributes': {
+                  'name': 'bar'
+                }
+              }
+            })
+          }
+          helpers.request(data, (err, res, json) => {
+            assert.equal(err, null)
+            json = helpers.validateJson(json)
+
+            assert.equal(json.data.id, '2')
+            assert.equal(res.headers.location, `http://localhost:16006/rest/autoincrement/${json.data.id}`)
+            assert.equal(res.statusCode, '201', 'Expecting 201')
+            assert.equal(json.data.type, 'autoincrement', 'Should be a autoincrement resource')
+            id = json.data.id
+
+            done()
+          })
+        })
+
+        it('new resource is retrievable', done => {
+          const url = `http://localhost:16006/rest/autoincrement/${id}`
+          helpers.request({
+            method: 'GET',
+            url
+          }, (err, res, json) => {
+            assert.equal(err, null)
+            json = helpers.validateJson(json)
+            assert.equal(res.statusCode, '200', 'Expecting 200 OK')
+            assert.equal(json.included.length, 0, 'Should be no included resources')
+            done()
+          })
+        })
+      })
     })
   })
 

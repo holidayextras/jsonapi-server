@@ -1,3 +1,26 @@
+- 2018-01-31 - v4.2.0
+- 2018-01-31 - Support setting limit of query string parameters through a configuration property.
+- 2018-01-31 - Support setting `bodyParser.json` option through a configuration property.
+- 2018-01-31 - Fix CRUD operation detection when using chain handlers.
+- 2017-12-11 - v4.1.2
+- 2017-12-11 - Fix broken response test resource to enable integration with data store handlers.
+- 2017-11-15 - v4.1.1
+- 2017-11-15 - Downgrade Joi to a version supported by Node.js v6.
+- 2017-11-15 - Force `engine-strict=true` when running npm.
+- 2017-11-14 - v4.1.0
+- 2017-11-14 - New configuration option to disable automatic id generation.
+- 2017-11-14 - Update GraphQL dependencies to latest versions.
+- 2017-11-14 - Remove yarn lockfile.
+- 2017-11-03 - v4.0.0
+- 2017-11-03 - Return error when a response item does not validate.
+- 2017-11-03 - Remove Node.js 4 support.
+- 2017-10-21 - v3.2.2
+- 2017-10-21 - Report coverage with Coveralls.
+- 2017-10-21 - Modernise script.
+- 2017-09-23 - v3.2.1
+- 2017-09-23 - Fix packaging.
+- 2017-09-19 - v3.2.0
+- 2017-09-19 - Node.js 8 support.
 - 2017-09-14 - v3.1.0
 - 2017-09-14 - Improved Swagger 2.0 configuration.
 - 2017-09-14 - Correct sorting of date properties.
@@ -44,7 +67,8 @@
 - 2016-09-20 - Remove metrics listeners on server.close()
 - 2016-09-20 - Dynamic swagger.json based on handler capabilities
 - 2016-09-20 - Dynamic metadata in body of responses
-- 2016-09-20 - Comma separated filter values
+- 2016-09-20 - Comma separated filter v 1 successful check
+alues
 - 2016-09-20 - Option to override base urls in links
 - 2016-09-08 - v1.16.1
 - 2016-09-08 - Improving ChainHandler for synchronous functions
