@@ -74,6 +74,36 @@ describe('Testing jsonapi-server', () => {
           done()
         })
       })
+
+      it('errors when creating resource with existing id', done => {
+        const existingId = 'cc5cca2e-0dd8-4b95-8cfc-a11230e73116'
+        const data = {
+          method: 'post',
+          url: 'http://localhost:16006/rest/people',
+          headers: {
+            'Content-Type': 'application/vnd.api+json'
+          },
+          body: JSON.stringify({
+            'data': {
+              'id': existingId,
+              'type': 'people',
+              'attributes': {
+                firstname: 'Harry',
+                lastname: 'Potter',
+                email: 'harry.potter@hogwarts.edu.uk'
+              }
+            }
+          })
+        }
+        helpers.request(data, (err, res, json) => {
+          assert.equal(err, null)
+          json = helpers.validateError(json)
+          assert.equal(json.errors[0].detail, `The requested resource already exists of type people with id ${existingId}`, 'Expecting detail with correct type and id')
+          assert.equal(res.statusCode, '403', 'Expecting 403')
+
+          done()
+        })
+      })
     })
   })
 
