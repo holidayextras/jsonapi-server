@@ -77,6 +77,21 @@ The handler object constructor can, depending on the handler's requirements, exp
 
 The `ready` property should be set to a _truthy_ value once the handler is ready to process requests (which will usually happen at the end of `initialise`). If the handler is temporarily unable to process requests this property should be set to a _falsy_ value during the down period.
 
+#### handles<Sort|Filter>
+
+Some post-process steps can be handled within the handler itself.  For instance, some handlers may be capable of 
+returning data that is already sorted in the correct order.  If the `handlesSort` or `handlesFilter` property is set to 
+a _truthy_ value on the custom handler instance, then the corresponding post-processing step will be skipped.
+ 
+The following flags can be set:
+```javascript
+{
+  handlesSort: true; // skips the 'sort' post process step
+  handlesFilter: true; // skips the 'filter' post process step
+  // . . .
+}
+```
+
 #### initialise
 `initialise` is invoked with the `resourceConfig` of each resource using this handler.
 ```javascript
