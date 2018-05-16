@@ -91,9 +91,10 @@ Attributes can be marked as `required` using the regular `Joi` functionality. Re
 url: jsonApi.Joi.string().uri().required()
 ```
 
-Attributes can be declared `readonly` by attaching metadata. Any attempt to write to this attribute when creating a new resource via POST, or when amending a resource via PUT/PATCH/DELETE will result in a validation error.
+Attributes can be declared `readonly` or `immutable` by attaching metadata. Any attempt to write to readonly attribute when creating a new resource via POST, or when amending a readonly/immutable resource via PUT/PATCH/DELETE will result in a validation error.
 ```javascript
 url: jsonApi.Joi.string().uri().meta("readonly").description("This attribute cannot be created nor modified by a user");
+perma_link: jsonApi.Joi.string().uri().meta("immutable").description("This attribute can only be set when the record is created");
 ```
 
 If you look through the example json:api resources in the `/example/resources` folder things should become clearer.
