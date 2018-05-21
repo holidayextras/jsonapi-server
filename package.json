@@ -42,7 +42,7 @@
     "lodash.uniq": "4.5.0",
     "lodash.uniqby": "4.7.0",
     "qs": "6.5.1",
-    "request": "2.83.0",
+    "request": "2.87.0",
     "use-strict": "1.0.1",
     "uuid": "3.2.1"
   },
