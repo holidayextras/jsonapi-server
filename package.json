@@ -44,7 +44,7 @@
     "qs": "6.5.1",
     "request": "2.83.0",
     "use-strict": "1.0.1",
-    "uuid": "3.2.1"
+    "uuid": "3.3.0"
   },
   "devDependencies": {
     "coveralls": "3.0.0",
