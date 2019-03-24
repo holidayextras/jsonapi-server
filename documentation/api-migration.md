@@ -12,7 +12,7 @@ If you've got an existing API powered by ExpressJS and you want to migrate towar
 We're using something similar to the below snippet to run jsonapi-server alongside our existing express application:
 
 ```javascript
-var jsonApi = require('jsonapi-server');
+var jsonApi = require('jsonapi-server/server');
 var express = require('express');
 var app = express();
 
